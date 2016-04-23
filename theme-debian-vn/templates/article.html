@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+    <title>{% block windowtitle %}{{ SITENAME }} - {{ article.title }}{% endblock %}</title>
+{% endblock %}
+
+{% block content %}
+    <div class='article' lang='{{ article.lang }}'>
+        <div class="content-title">
+            <h1>{{ article.title }}</h1>
+            {% include "metadata.html" %}
+        </div>
+
+        <div>{{ article.content }}</div>
+
+        <hr>
+    </div>
+{% endblock %}

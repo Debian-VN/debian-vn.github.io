@@ -1,0 +1,99 @@
+/* 2013 - Ana Guerrero Lopez <ana@debian.org> */
+
+body {
+    font-family: tahoma,verdana,sans-serif;
+    /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
+    font-size: 14px;
+}
+
+p {
+    padding: 10px;
+}
+
+a:link {
+   color: #C70038;
+   text-decoration: none
+}
+
+a:active {
+   color: #000000;
+   text-decoration: none
+}
+
+a:visited {
+    color: #C70038;
+	text-decoration: none
+}
+
+a:hover {
+    color: #FF0000;
+	text-decoration: underline
+}
+
+
+#wrapper {
+    margin: 0 auto;
+}
+
+#header {
+    float: left;
+    height: 125px;
+}
+
+/* This is for having "Bits from Debian" more aligned to the center */
+#header p {
+    font-size: 36px;
+	margin-left: 2.5cm;
+}
+
+#content {
+    float: left;
+}
+
+#rightcolumn {
+    background: #fff;
+    float: left;
+}
+
+#footer {
+    height: 30px;
+    text-align:center;
+    clear: both;
+}
+
+.article h1 {
+    color: #C70038;
+}
+
+
+.lateral h1 {
+    font-size: 15px;
+	padding-left: 1em;
+	padding-top: 0em;
+}
+
+.nocss {
+    display: none;
+}
+
+@media screen and (min-width: 940px) {
+    #wrapper {
+        width: 940px;
+    }
+
+    #header {
+        width: 940px;
+    }
+
+    #content {
+        width: 690px;
+    }
+
+    #rightcolumn {
+        width: 250px;
+    }
+
+    #footer {
+        width: 940px;
+    }
+}

@@ -1,0 +1,6 @@
+{% extends "index.html" %}
+
+{% block head %}
+{{ super() }}
+    <title>{% block windowtitle %}{{ SITENAME }} - {{ tag }} {% endblock %}</title>
+{% endblock %}

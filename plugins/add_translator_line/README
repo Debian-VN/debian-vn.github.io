@@ -1,0 +1,18 @@
+add_translator_line
+-------------------
+
+This plugin adds the ``translator`` variable in the post when this variable
+exists.
+
+You can  use the ``article.translator`` variable in your templates like
+in this example:
+
+
+    {% if article.translator %}
+        {{ article.translator }}
+    {% endif %}
+
+
+Copyright (C) 2016, Ana Guerrero López
+This plugin is is licensed under the GNU GENERAL PUBLIC LICENSE version 2 or
+later.
