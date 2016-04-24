@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Debian VN</title>
+    <title>Debian VN - Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title>
     <meta name="description" content="">
     <meta name="author" content="Debian Việt Nam">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,11 +22,9 @@
 
     <hr class="nocss" />
     <div id="content">
-
-
-    <div class='article'>
+    <div class='article' lang='vi'>
         <div class="content-title">
-            <a href="https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html"><h1>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</h1></a>
+            <h1>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</h1>
 Sun 24 April 2016
 
 by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Giáp Trần</a>
@@ -120,135 +118,9 @@ with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a>
 
 
 <p>Còn để build epub còn 1 số gói phụ thuộc nữa.</p></div>
-        <hr />
+
+        <hr>
     </div>
-
-
-    <div class='article'>
-        <div class="content-title">
-            <a href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html"><h1>Hướng dẫn dịch trang bits.debian.org</h1></a>
-Sun 24 April 2016
-
-by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Giáp Trần</a>
-
-
-
-
-with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> <p>
-
-</p>        </div>
-
-        <div><p><a href="http://bits.debian.org">bits.debian.org</a> là trang web tin tức chính thức của dự án Debian.</p>
-<p>Các tin tức quan trọng luôn được cập nhật ở <a href="http://bits.debian.org">bits</a>.
-Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn giản.</p>
-<p>Bits sử dụng <a href="http://docs.getpelican.com/">Pelican</a> để quản lý nội dung bằng markdown và tạo ra nội dung web.</p>
-<h2>Bắt đầu dịch như thế nào?</h2>
-<h4><strong>Kéo mã nguồn của bits về</strong></h4>
-<div class="highlight"><pre><span></span>        git clone https://github.com/Debian-VN/bits ~/bits
-        cd ~/bits
-</pre></div>
-
-
-<h4>Chúng ta thấy nội dung như sau:</h4>
-<div class="highlight"><pre><span></span>        content/
-        ├── 2013
-        .
-        └── 2016
-            ├── debconf16-cfp.md
-            ├── debconf16-cfp-vi.md  // bản dịch tiếng việt của debconf16-cfp
-            └── results-dpl-election.md
-</pre></div>
-
-
-<div class="highlight"><pre><span></span>    Nội dung nào chưa có tập tin chứa &quot;-vi&quot; là chưa được dịch.
-</pre></div>
-
-
-<h4>Mình lấy ví dụ 1 đoạn về dịch trang <a href="https://bits.debian.org/2016/04/results-dpl-elections-2016.html">results-dpl-election.md</a></h4>
-<p><em>Nội dung gốc:</em></p>
-<blockquote>
-<div class="highlight"><pre><span></span>  Title: DPL elections 2016, congratulations Mehdi Dogguy!
-  Date: 2016-04-17 18:40
-  Tags: dpl
-  Slug: results-dpl-elections-2016
-  Author: Ana Guerrero Lopez
-  Status: published
-
-  The Debian Project Leader elections finished yesterday and the winner is Mehdi Dogguy!
-  ...
-</pre></div>
-
-
-</blockquote>
-<p><em>Bản dịch:</em></p>
-<blockquote>
-<div class="highlight"><pre><span></span>  Title: Bầu cử lãnh đạo dự án Debian 2016, chúc mừng Mehdi Dogguy!
-  Date: 2016-04-17 18:40
-  Tags: dpl
-  Slug: results-dpl-elections-2016
-  Author: Ana Guerrero Lopez
-  Translator: Giáp Trần
-  Lang: vi
-  Status: published
-
-  Bầu cử lãnh đạo dự án Debian đã kết thúc vào ngày hôm qua và người thằng cuộc là Mehdi Dogguy!
-  ...
-</pre></div>
-
-
-</blockquote>
-<p>Chỉ cần thêm 2 dòng: <strong>Translator</strong>(ghi danh nào) và <strong>Lang</strong>. Còn lại là dịch thôi.</p>
-<p>Đấy, công việc dịch khá là đơn giản, khó nhất là ở dịch cho sát nghĩa với nội dùng nhiều từ không biết.</p>
-<p>Nhiều từ không rõ, không biết tra ở đâu <a href="http://vi.wiktionary.org/">vi.wiktionary</a> là tử điển mở do cộng đồng việt đóng góp</p>
-<h4>Làm sao để chạy thử web, xem lại trình bày, dịch có chuẩn không</h4>
-<ul>
-<li>Sinh web và bật server</li>
-</ul>
-<div class="highlight"><pre><span></span>        make html &amp;&amp; make devserver
-</pre></div>
-
-
-<ul>
-<li>
-<p>Trang web đã hiện có tại <a href="http://127.0.0.1:8000">127.0.0.1:8000</a></p>
-</li>
-<li>
-<p>Tắt server</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>        make stopserver
-</pre></div>
-
-
-<h4>Gửi đóng góp bản dịch cho dự án Debian</h4>
-<ul>
-<li>Tạo commit thôi nào</li>
-</ul>
-<div class="highlight"><pre><span></span>        git checkout vietnamese
-        git add content/2016/results-dpl-election-vi.md
-        git commit -m &#39;Add results-dpl-election translatian for Vietnamese&#39;
-</pre></div>
-
-
-<ul>
-<li>Gửi đóng góp</li>
-</ul>
-<p>Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án dịch <a href="mailto:debian-l10n-vietnamese@lists.debian.org">debian-l10n-vietnamese</a> do anh Trần Ngọc Quân điều phối.</p>
-<p><strong>Nhưng </strong>
-Để cộng đồng hoạt động sổi nổi qua 2 kênh <strong>facebook</strong> và <strong>github</strong> (sẽ mở rộng thêm). Nên các bạn sau khi commit thì push lên nhánh vietnamese trên github của Debian-VN/bits. Sau đó mình sẽ tổng hợp lại và gửi bản patch cho anh Quân. <strong><em>Quyền tác giả dịch là của các bạn</em></strong>.</p>
-<div class="highlight"><pre><span></span>    git push origin/vietnamese vietnamese
-</pre></div>
-
-
-<p>Và rồi có thể báo cho mọi người trong group cùng biết đề cùng review, cùng sửa nếu thấy chưa ổn nhé.</p>
-<p>Xin hết!</p></div>
-        <hr />
-    </div>
-
-  
-<p class="paginator">
-    Page 1 / 1
-</p>
     </div>
 
     <div id="rightcolumn">

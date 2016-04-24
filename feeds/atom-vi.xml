@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom-vi.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2016-04-24T10:10:00+07:00</updated><entry><title>Hướng dẫn dịch trang bits.debian.org</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html" rel="alternate"></link><published>2016-04-24T10:10:00+07:00</published><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:2016/04/huong-dan-dich-trang-bits-debian.html</id><summary type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang web tin tức chính thức của dự án Debian.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom-vi.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2016-04-24T18:26:00+07:00</updated><entry><title>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html" rel="alternate"></link><published>2016-04-24T18:26:00+07:00</published><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html</id><summary type="html">&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.&lt;/p&gt;
+&lt;p&gt;Cuốn sách này dạy các yếu tố cần thiết cho bất cứ ai muốn trở thành một quản trị viên &lt;a href="https://www.debian.org"&gt;Debian GNU/Linux&lt;/a&gt; hiệu quả và độc lập.&lt;/p&gt;
+&lt;h2&gt;Tiến hành dịch như thế nào?&lt;/h2&gt;
+&lt;h4&gt;&lt;strong&gt;Kéo mã nguồn của sách về&lt;/strong&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git clone https://github.com/Debian-VN/debian-handbook ~/debian-handbook
+        cd ~/debian-handbook
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Chúng ta thấy nội dung như sau:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── ja-JP
+├── vi-VN
+│   ├── 00a_preface.po
+│   ├── 00b_foreword.po
+.   .   ...
+.   .   ...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và chỉ cần quan tâm các tập tin ở trong thư mục &lt;a href="https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN"&gt;vi-VN&lt;/a&gt; thôi.&lt;/p&gt;
+&lt;h4&gt;Mình sẽ dịch 1 đoạn trong phần &lt;em&gt;00a_preface&lt;/em&gt; của quyển sách này&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;TxGVNN&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;txgvnn&lt;/span&gt;&lt;span class="k"&gt;@gmail&lt;/span&gt;&lt;span class="nc"&gt;.com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;2016&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="err"&gt;ê&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;email&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="err"&gt;ă&lt;/span&gt;&lt;span class="nt"&gt;m-d&lt;/span&gt;&lt;span class="err"&gt;ị&lt;/span&gt;&lt;span class="nt"&gt;ch&lt;/span&gt;
+&lt;span class="nt"&gt;msgid&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="nt"&gt;msgstr&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;Project-Id-Version: 0\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;POT-Creation-Date: 2015-10-01 20:53+0200\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;PO-Revision-Date: 2015-10-01 20:53+0200\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;Last-Translator: Automatically generated\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;Language-Team: Debian-VN\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;Language: vi-VN \n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;MIME-Version: 1.0\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;Content-Type: application/x-publican; charset=UTF-8\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;Content-Transfer-Encoding: 8bit\n&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;X-Generator: Publican v4.3.2\n&amp;quot;&lt;/span&gt;
+
+&lt;span class="nt"&gt;msgid&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Preface&amp;quot;&lt;/span&gt;
+&lt;span class="nt"&gt;msgstr&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Lời nói đầu&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Đầu tiên hãy thêm tác giả dịch cho chính mình bằng chú thích # TÊN EMAIL NĂM_DỊCH.&lt;/li&gt;
+&lt;li&gt;Dịch các thông tin trong bản gốc &lt;strong&gt;msgid&lt;/strong&gt; và điền vào &lt;strong&gt;msgstr&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Gửi đóng góp bản dịch&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Tạo commit thôi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git add vi-VN/00a_preface.po
+        git commit -m &amp;#39;vi-VN: translate first line in 00a_preface&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Chú ý là commit thì bắt đầu bằng &lt;strong&gt;vi-VN:&lt;/strong&gt; để các bạn nước khác còn biết mà phân biệt nhé&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Đẩy lên github&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Như vậy là xong&lt;/p&gt;
+&lt;h4&gt;[Tuỳ chọn] Bạn muốn build thử pdf,html hay epub để xem.&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Cài đặt môi trường, tool để build&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        sudo apt-get install dblatex texlive-xetex publican publican-debian
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Build thôi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        cd ~/debian-handbook
+        ./build/build-pdf --lang=&amp;quot;vi-VN&amp;quot;        #build only pdf
+        ./build/build-html --lang=&amp;quot;vi-VN&amp;quot;       #build only html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Còn để build epub còn 1 số gói phụ thuộc nữa.&lt;/p&gt;</summary><category term="huong-dan"></category></entry><entry><title>Hướng dẫn dịch trang bits.debian.org</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html" rel="alternate"></link><published>2016-04-24T10:10:00+07:00</published><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:2016/04/huong-dan-dich-trang-bits-debian.html</id><summary type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang web tin tức chính thức của dự án Debian.&lt;/p&gt;
 &lt;p&gt;Các tin tức quan trọng luôn được cập nhật ở &lt;a href="http://bits.debian.org"&gt;bits&lt;/a&gt;.
 Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn giản.&lt;/p&gt;
 &lt;p&gt;Bits sử dụng &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; để quản lý nội dung bằng markdown và tạo ra nội dung web.&lt;/p&gt;

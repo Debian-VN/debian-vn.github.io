@@ -26,6 +26,106 @@
 
     <div class='article'>
         <div class="content-title">
+            <a href="https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html"><h1>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</h1></a>
+Sun 24 April 2016
+
+by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Giáp Trần</a>
+
+
+
+
+with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> <p>
+
+</p>        </div>
+
+        <div><p><a href="https://debian-handbook.info/">The Debian Administrator's Handbook</a> được viết bởi hai nhà phát triển <em>Raphaël Hertzog</em> và <em>Roland Mas</em>. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.</p>
+<p>Cuốn sách này dạy các yếu tố cần thiết cho bất cứ ai muốn trở thành một quản trị viên <a href="https://www.debian.org">Debian GNU/Linux</a> hiệu quả và độc lập.</p>
+<h2>Tiến hành dịch như thế nào?</h2>
+<h4><strong>Kéo mã nguồn của sách về</strong></h4>
+<div class="highlight"><pre><span></span>        git clone https://github.com/Debian-VN/debian-handbook ~/debian-handbook
+        cd ~/debian-handbook
+</pre></div>
+
+
+<h4>Chúng ta thấy nội dung như sau:</h4>
+<div class="highlight"><pre><span></span>.
+├── ja-JP
+├── vi-VN
+│   ├── 00a_preface.po
+│   ├── 00b_foreword.po
+.   .   ...
+.   .   ...
+</pre></div>
+
+
+<p>Và chỉ cần quan tâm các tập tin ở trong thư mục <a href="https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN">vi-VN</a> thôi.</p>
+<h4>Mình sẽ dịch 1 đoạn trong phần <em>00a_preface</em> của quyển sách này</h4>
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="nt">TxGVNN</span> <span class="o">&lt;</span><span class="nt">txgvnn</span><span class="k">@gmail</span><span class="nc">.com</span><span class="o">&gt;</span> <span class="nt">2016</span>
+<span class="err">#</span> <span class="nt">T</span><span class="err">ê</span><span class="nt">n</span> <span class="o">&lt;</span><span class="nt">email</span><span class="o">&gt;</span> <span class="nt">n</span><span class="err">ă</span><span class="nt">m-d</span><span class="err">ị</span><span class="nt">ch</span>
+<span class="nt">msgid</span> <span class="s2">&quot;&quot;</span>
+<span class="nt">msgstr</span> <span class="s2">&quot;&quot;</span>
+<span class="s2">&quot;Project-Id-Version: 0\n&quot;</span>
+<span class="s2">&quot;POT-Creation-Date: 2015-10-01 20:53+0200\n&quot;</span>
+<span class="s2">&quot;PO-Revision-Date: 2015-10-01 20:53+0200\n&quot;</span>
+<span class="s2">&quot;Last-Translator: Automatically generated\n&quot;</span>
+<span class="s2">&quot;Language-Team: Debian-VN\n&quot;</span>
+<span class="s2">&quot;Language: vi-VN \n&quot;</span>
+<span class="s2">&quot;MIME-Version: 1.0\n&quot;</span>
+<span class="s2">&quot;Content-Type: application/x-publican; charset=UTF-8\n&quot;</span>
+<span class="s2">&quot;Content-Transfer-Encoding: 8bit\n&quot;</span>
+<span class="s2">&quot;X-Generator: Publican v4.3.2\n&quot;</span>
+
+<span class="nt">msgid</span> <span class="s2">&quot;Preface&quot;</span>
+<span class="nt">msgstr</span> <span class="s2">&quot;Lời nói đầu&quot;</span>
+</pre></div>
+
+
+<ul>
+<li>Đầu tiên hãy thêm tác giả dịch cho chính mình bằng chú thích # TÊN EMAIL NĂM_DỊCH.</li>
+<li>Dịch các thông tin trong bản gốc <strong>msgid</strong> và điền vào <strong>msgstr</strong>.</li>
+</ul>
+<h4>Gửi đóng góp bản dịch</h4>
+<ul>
+<li>Tạo commit thôi</li>
+</ul>
+<div class="highlight"><pre><span></span>        git add vi-VN/00a_preface.po
+        git commit -m &#39;vi-VN: translate first line in 00a_preface&#39;
+</pre></div>
+
+
+<p><em>Chú ý là commit thì bắt đầu bằng <strong>vi-VN:</strong> để các bạn nước khác còn biết mà phân biệt nhé</em>.</p>
+<ul>
+<li>Đẩy lên github</li>
+</ul>
+<div class="highlight"><pre><span></span>    git push origin master
+</pre></div>
+
+
+<p>Như vậy là xong</p>
+<h4>[Tuỳ chọn] Bạn muốn build thử pdf,html hay epub để xem.</h4>
+<ul>
+<li>Cài đặt môi trường, tool để build</li>
+</ul>
+<div class="highlight"><pre><span></span>        sudo apt-get install dblatex texlive-xetex publican publican-debian
+</pre></div>
+
+
+<ul>
+<li>Build thôi</li>
+</ul>
+<div class="highlight"><pre><span></span>        cd ~/debian-handbook
+        ./build/build-pdf --lang=&quot;vi-VN&quot;        #build only pdf
+        ./build/build-html --lang=&quot;vi-VN&quot;       #build only html
+</pre></div>
+
+
+<p>Còn để build epub còn 1 số gói phụ thuộc nữa.</p></div>
+        <hr />
+    </div>
+
+
+    <div class='article'>
+        <div class="content-title">
             <a href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html"><h1>Hướng dẫn dịch trang bits.debian.org</h1></a>
 Sun 24 April 2016
 
@@ -174,7 +274,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
             <div class="lateral" style="padding: 8px 0;">
             <h1>Tags</h1>
                 <ul class="nav-list">
-                  <li><a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> (1)</li>
+                  <li><a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> (2)</li>
                 </ul>
             </div>
 
