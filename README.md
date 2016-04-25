@@ -1,3 +1,8 @@
+# Sao lại có 2 nhánh  khác nhau hoàn toàn?
+- generate: nhánh dùng quản trị nội dung markdown. output => nhánh master
+- master: nhánh nội dung html. Hiển thị ra [debian-vn.github.io](http://debian-vn.github.io)
+
+_**Vì vậy không bao giờ trộn 2 nhánh lại với nhau!**_
 # Đây là gì?
 Là môi trường phát triển, quản lý trang [debian-vn.github.io](http://debian-vn.github.io)
 
@@ -11,6 +16,6 @@ $sudo pip install pelican markdown
 ```
 ## Sao chép nguồn về
 ```
-$git clone git@github.com:Debian-VN/debian-vn-generate.git ~/debian-vn-generate
+$git clone --recursive --branch generate git@github.com:Debian-VN/debian-vn.github.io.git
 $cd  ~/debian-vn-generate
 ```
