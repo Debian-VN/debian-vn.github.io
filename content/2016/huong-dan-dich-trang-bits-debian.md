@@ -5,7 +5,7 @@ Slug: huong-dan-dich-trang-bits-debian
 Author: Giáp Trần
 Status: published
 
-[bits.debian.org](http://bits.debian.org) là trang web tin tức chính thức của dự án Debian.
+[bits.debian.org](http://bits.debian.org) là trang blog chính thức của dự án Debian.
 
 Các tin tức quan trọng luôn được cập nhật ở [bits](http://bits.debian.org).
 Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn giản.

@@ -7,8 +7,10 @@ Nhiệm vụ đơn giản, trước mắt nhằm xây dựng các kho package, t
 
 Tham gia cộng đồng cùng chúng tôi:
 
- * [Debian VN Group](https://www.facebook.com/groups/426931777506013/)
  * [Debian VN Github](http://github.com/Debian-VN)
+ * [Debian VN Email](mailto:debian-vn@googlegroups.com)
+ * [Debian VN Facebook](https://www.facebook.com/groups/426931777506013/)
+
 
 Blogs này sử dụng [Pelican][pelican]. Và giao diện được sao chép từ [Bits from Debian](https://bits.debian.org/)
 
