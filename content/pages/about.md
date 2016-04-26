@@ -1,9 +1,9 @@
 Title: About
 Slug: about
 
-Nhóm người dùng Debian tại Việt Nam.
+Cộng đồng Debian Việt Nam.
 
-Nhiệm vụ đơn giản, trước mắt nhằm xây dựng các kho package, tài liệu, tin tức và bài báo Debian hỗ trợ tiếng việt.
+Nhiệm vụ đơn giản, trước mắt nhằm xây dựng các tài liệu, hướng dẫn, tin tức và bài báo Debian hỗ trợ tiếng việt.
 
 Tham gia cộng đồng cùng chúng tôi:
 
