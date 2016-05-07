@@ -1,4 +1,4 @@
-Title: About
+Title: Giới thiệu
 Slug: about
 
 Cộng đồng Debian Việt Nam.
