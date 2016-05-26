@@ -15,7 +15,7 @@ Bits sử dụng [Pelican](http://docs.getpelican.com/) để quản lý nội d
 ## Bắt đầu dịch như thế nào?
 #### **Kéo mã nguồn của bits về**
 ```
-		git clone https://github.com/Debian-VN/bits ~/bits
+		git clone git://anonscm.debian.org/publicity/bits.git ~/bits
 		cd ~/bits
 ```
 #### Chúng ta thấy nội dung như sau:
@@ -95,12 +95,14 @@ Nhiều từ không rõ, không biết tra ở đâu [vi.wiktionary](http://vi.w
 - Gửi đóng góp
 
 Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án dịch [debian-l10n-vietnamese](mailto:debian-l10n-vietnamese@lists.debian.org) do anh Trần Ngọc Quân điều phối.
+```
+		git format-patch origin/master --stdout > ban-dich-results-dpl-election.patch
+```
+Tạo email mới và đính kèm "ban-dich-results-dpl-election.path"
+gửi tới [debian-l10n-vietnamese@lists.debian.org](mailto:debian-l10n-vietnamese@lists.debian.org)
+với nội dung "gửi bản vá đóng góp bản dịch results-dpl-election".
 
-**Nhưng **
-Để cộng đồng hoạt động sổi nổi qua 2 kênh **facebook** và **github** (sẽ mở rộng thêm). Nên các bạn sau khi commit thì push lên nhánh vietnamese trên github của Debian-VN/bits. Sau đó mình sẽ tổng hợp lại và gửi bản patch cho anh Quân. **_Quyền tác giả dịch là của các bạn_**.
-```
-	git push origin/vietnamese vietnamese
-```
-Và rồi có thể báo cho mọi người trong group cùng biết đề cùng review, cùng sửa nếu thấy chưa ổn nhé.
+- Hòm thư công khai tại:
+[https://lists.debian.org/debian-l10n-vietnamese/](https://lists.debian.org/debian-l10n-vietnamese/)
 
 Xin hết!
