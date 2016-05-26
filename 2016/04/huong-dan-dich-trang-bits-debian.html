@@ -42,7 +42,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <p>Bits sử dụng <a href="http://docs.getpelican.com/">Pelican</a> để quản lý nội dung bằng markdown và tạo ra nội dung web.</p>
 <h2>Bắt đầu dịch như thế nào?</h2>
 <h4><strong>Kéo mã nguồn của bits về</strong></h4>
-<div class="highlight"><pre><span></span>        git clone https://github.com/Debian-VN/bits ~/bits
+<div class="highlight"><pre><span></span>        git clone git://anonscm.debian.org/publicity/bits.git ~/bits
         cd ~/bits
 </pre></div>
 
@@ -132,13 +132,17 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <li>Gửi đóng góp</li>
 </ul>
 <p>Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án dịch <a href="mailto:debian-l10n-vietnamese@lists.debian.org">debian-l10n-vietnamese</a> do anh Trần Ngọc Quân điều phối.</p>
-<p><strong>Nhưng </strong>
-Để cộng đồng hoạt động sổi nổi qua 2 kênh <strong>facebook</strong> và <strong>github</strong> (sẽ mở rộng thêm). Nên các bạn sau khi commit thì push lên nhánh vietnamese trên github của Debian-VN/bits. Sau đó mình sẽ tổng hợp lại và gửi bản patch cho anh Quân. <strong><em>Quyền tác giả dịch là của các bạn</em></strong>.</p>
-<div class="highlight"><pre><span></span>    git push origin/vietnamese vietnamese
+<div class="highlight"><pre><span></span>        git format-patch origin/master --stdout &gt; ban-dich-results-dpl-election.patch
 </pre></div>
 
 
-<p>Và rồi có thể báo cho mọi người trong group cùng biết đề cùng review, cùng sửa nếu thấy chưa ổn nhé.</p>
+<p>Tạo email mới và đính kèm "ban-dich-results-dpl-election.path"
+gửi tới <a href="mailto:debian-l10n-vietnamese@lists.debian.org">debian-l10n-vietnamese@lists.debian.org</a>
+với nội dung "gửi bản vá đóng góp bản dịch results-dpl-election".</p>
+<ul>
+<li>Hòm thư công khai tại:
+<a href="https://lists.debian.org/debian-l10n-vietnamese/">https://lists.debian.org/debian-l10n-vietnamese/</a></li>
+</ul>
 <p>Xin hết!</p></div>
 
         <hr>
