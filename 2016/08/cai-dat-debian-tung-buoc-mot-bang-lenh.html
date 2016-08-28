@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Debian VN - Cài đặt Debian từng bước một bằng lệnh</title>
+    <meta name="description" content="">
+    <meta name="author" content="Debian Việt Nam">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- Styles -->
+    <link href="https://debian-vn.github.io/theme/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <a href="https://debian-vn.github.io"><img align="left" class="logo" src="https://debian-vn.github.io/theme/images/openlogo-nd-75.png" alt="Debian VN" align="left" style="margin-top: 20px;"></a>
+        <p>Debian Việt Nam</p>
+    </div>
+
+    <hr class="nocss" />
+    <div id="content">
+    <div class='article' lang='vi'>
+        <div class="content-title">
+            <h1>Cài đặt Debian từng bước một bằng lệnh</h1>
+Sun 28 August 2016
+
+by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Giáp Trần</a>
+
+
+
+
+with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> <p>
+
+</p>        </div>
+
+        <div><p><strong>Cài Debian từng bước một là sao?</strong></p>
+<p>Không phải next next (<em>trình cài đặt nhanh</em>) là xong sao?</p>
+<p>Bạn đã nghe một số distro với triết lý tinh chỉnh nhiều vào hệ thống,
+các distro này không cung cấp <em>trình cài đặt nhanh</em> mà muốn người phải cài đặt bằng tay (VD: Arch Linux)</p>
+<p>Bài hướng dẫn hôm nay trình bày các bước cài đặt Debian bằng tay với 1 bản livecd,
+mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơn bản chất của việc cài đặt.</p>
+<p>Việc cài đặt gồm 3 bước chính:</p>
+<ol>
+<li>Tạo file hệ thống vào phân vùng</li>
+<li>Cài đặt kernel, initrd và bootloader</li>
+<li>Cài các gói cấn thiết (sudo, kết nối mạng), thêm user
+Chú ý:</li>
+</ol>
+<p>Trong phần câu lệnh:</p>
+<ul>
+<li>Với $ dành cho user thường trên máy local</li>
+<li>Còn # là quyền root sau khi đã chroot vào /mnt (Chroot là gì? Hồi sau sẽ rõ)</li>
+</ul>
+<h2>Chuẩn bị</h2>
+<p>Cần chuẩn bị:</p>
+<ul>
+<li>1 bản Livecd <a href="http://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/">debian-live-8.5.0-amd64-standard.iso</a></li>
+<li>1 cái máy để cài</li>
+</ul>
+<p>Mình sử dụng KVM để demo. Với giả định là máy chưa có phân vùng nào.</p>
+<p>Nếu cài vào phân vùng khác thì tương tự.</p>
+<h2>I. Tạo hệ thống file vào phân vùng OS</h2>
+<h4>Chọn chế độ livecd và login vào tài khoản</h4>
+<div class="highlight"><pre>  login: user
+  pass: livecd
+</pre></div>
+
+
+<p><em>P/S: Đối với bản livecd mình đưa link trên</em></p>
+<h4>Chia phân vùng</h4>
+<ul>
+<li>/dev/sda1 7GB phân vùng cho OS</li>
+<li>/dev/sda2 1GB cho swap</li>
+</ul>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> cfdisk /dev/sda</span>
+</pre></div>
+
+
+<p><img alt="cfdisk" src="https://debian-vn.github.io/images/cfdisk.png" /></p>
+<p>Format phân vùng cài OS</p>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mkfs.ext4 /dev/sda1</span>
+</pre></div>
+
+
+<p>Format swap</p>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mkswap /dev/sda2</span>
+</pre></div>
+
+
+<h4>Mount /dev/sda1 vào /mnt</h4>
+<p>Mục đích là cài đặt hệ thống file vào thư mục này</p>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount /dev/sda1 /mnt</span>
+</pre></div>
+
+
+<h4>Cài đặt <code>debootstrap</code></h4>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> apt-get install debootstrap -y</span>
+</pre></div>
+
+
+<p><strong>Debootstrap</strong> là script có chức năng tạo ra hệ thống file Debian.</p>
+<p>Có thể bạn không biết nhưng <strong>debootsrap</strong> được dùng rất nhiều.</p>
+<p><em>Ví dụ:</em> tạo ra <a href="https://hub.docker.com/_/debian">base image: Debian</a> dùng cho Docker</p>
+<p>Nó là 1 công cụ rất tuyệt vời.</p>
+<p>Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là <code>pacstrap</code></p>
+<h4>Cài đặt hệ thống file cho Debian</h4>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> debootstrap stable /mnt http://debian.xtdv.net/debian</span>
+</pre></div>
+
+
+<p>Lệnh này sẽ:</p>
+<ul>
+<li>cài bản stable (hiện là bản jessie 8.5)</li>
+<li>vào thư mục /mnt</li>
+<li>với mirror từ debian.xtdv.net (Mirror này ở việt nam dùng rất nhanh)</li>
+</ul>
+<p><img alt="debootstrap" src="https://debian-vn.github.io/images/debootstrap.png" /></p>
+<p>Bạn có thể  gõ <code>man debootstrap</code> hay <code>debootstrap --help</code> để rõ hơn</p>
+<p>debootstrap hỗ trợ cả cài đặt Ubuntu và cũng có trên Ubuntu</p>
+<h2>II. Cài đặt boot cho OS</h2>
+<p>Sau khi đã có hệ thống file cho OS.
+<img alt="ls-mnt" src="https://debian-vn.github.io/images/ls-mnt.png" /></p>
+<p>Việc cần làm tiếp theo là phải làm sao boot được cái OS này lên.
+Vậy chúng ta cần:</p>
+<ul>
+<li>Kernel linux</li>
+<li>Initrd file</li>
+<li>Bootloader (grub, lilo,..)</li>
+</ul>
+<p>Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào <code>/mnt</code> và <code>chroot</code> để tiến hành cài đặt</p>
+<h4>Mount các thư mục của hệ thống local vào /mnt</h4>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount -o bind /proc /mnt/proc</span>
+<span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount -o bind /sys /mnt/sys</span>
+<span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount -o bind /dev /mnt/dev</span>
+<span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> chroot /mnt</span>
+<span class="x">  </span><span class="err">#</span><span class="x"></span>
+</pre></div>
+
+
+<p><img alt="mount" src="https://debian-vn.github.io/images/mount.png" /></p>
+<h4>Cài đặt các gói</h4>
+<h5><em>Cài đặt kernel và initrd</em></h5>
+<p>Tìm gói chứa kernel và initrd</p>
+<div class="highlight"><pre>  #apt-cache search linux-image
+  linux-headers-3.16.0-4-amd64 - Header files for Linux 3.16.0-4-amd64
+  linux-image-3.16.0-4-amd64 - Linux 3.16 for 64-bit PCs
+  linux-image-3.16.0-4-amd64-dbg - Debugging symbols for Linux 3.16.0-4-amd64
+  linux-image-amd64 - Linux for 64-bit PCs (meta-package)
+  linux-image-amd64-dbg - Debugging symbols for Linux amd64 configuration (meta-package)
+</pre></div>
+
+
+<p>Kernel phiên bản 3.16. Tiến hành cài đặt</p>
+<div class="highlight"><pre>  #apt-get install linux-image-3.16.0-4-amd64 -y
+</pre></div>
+
+
+<h5><em>Cài đặt GRUB</em></h5>
+<div class="highlight"><pre>  #apt-get install grub2 -y
+</pre></div>
+
+
+<p><img alt="grub" src="https://debian-vn.github.io/images/grub.png" /></p>
+<h2>III. Cấu hình hệ thống, cài đặt cái gói cần thiết</h2>
+<h4>Viết file hệ thống /etc/fstab</h4>
+<p>Sao phải viết file này?</p>
+<p>Grub boot hệ thống thì nó sẽ đọc /boot/grub/grub.cfg và boot ngon lành cơ mà.</p>
+<p>Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly</p>
+<p>Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.</p>
+<h5><em>Lây UUID của phân vùng chưa OS (ở đây là /dev/sda1)</em></h5>
+<div class="highlight"><pre>#ls -la /dev/disk/by-uuid/
+</pre></div>
+
+
+<p><img alt="ls-dev-disk-by-uuid" src="https://debian-vn.github.io/images/ls-dev-disk-by-uuid.png" />
+Chúng ta thấy được UUID của /dev/sda1 là <code>2c0f6023-c802-4640-a8ce-214d079b22c9</code></p>
+<h5>* Cấu hình vào /etc/fstab*</h5>
+<div class="highlight"><pre>#cat &gt; /etc/fstab &lt;&lt; EOF
+UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0
+EOF
+</pre></div>
+
+
+<h4>Cài sudo, và tạo user mới (ví dụ user test)</h4>
+<div class="highlight"><pre>#apt-get install sudo -y
+useradd -s /bin/bash -m test
+passwd test
+adduser test sudo
+</pre></div>
+
+
+<h4>Đặt password cho root (tùy chọn)</h4>
+<div class="highlight"><pre>  #passwd
+</pre></div>
+
+
+<h4>Cài các gói bạn cần.</h4>
+<p>Ở bước này (tức là đã mout proc,sys,dev vào mnt và chroot)</p>
+<p>Bạn hoàn toàn có thể sử dụng cài đặt luôn các desktop enviroment, windown manager hay các gói khác.</p>
+<p>VD: cài Gnome3, Mate, KDE, i3,...</p>
+<p>Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vô mạng được.</p>
+<h2>Kết thúc</h2>
+<p>Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.</p>
+<p>Cần umount <code>/mnt/{sys,proc,dev,}</code> và reboot lại máy để dùng nữa thôi.</p>
+<h4>Thoát Chroot</h4>
+<div class="highlight"><pre>  #exit
+  $
+</pre></div>
+
+
+<h4>Umount và reboot</h4>
+<div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> umount /mnt/proc /mnt/sys /mnt/dev /mnt</span>
+<span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> reboot</span>
+</pre></div>
+
+
+<p><img alt="umount" src="https://debian-vn.github.io/images/umount.png" /></p>
+<h4>Thành quả</h4>
+<p><img alt="debian-boot" src="https://debian-vn.github.io/images/debian-boot.png" /></p>
+<p><img alt="debian-login-test" src="https://debian-vn.github.io/images/debian-login-test.png" /></p></div>
+
+        <hr>
+    </div>
+    </div>
+
+    <div id="rightcolumn">
+
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+                <ul class="nav-list">
+
+                <li><a href="http://debian-vn.github.io">Home</a></li>
+
+                <li><a href="https://debian-vn.github.io/pages/about.html">Giới thiệu</a></li>
+                <li><a href="https://debian-vn.github.io/pages/why.html">Lý do</a></li>
+                <br />
+                <li><a href="https://debian-vn.github.io/archives.html">Archives</a>
+                <li><a href="https://debian-vn.github.io/feeds/atom.xml" rel="alternate">Atom feed</a></li>
+                <li><a href="https://debian-vn.github.io/feeds/feed.rss" rel="alternate">RSS feed</a></li>
+                </ul>
+            </div>
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>Tags</h1>
+                <ul class="nav-list">
+                  <li><a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> (3)</li>
+                </ul>
+            </div>
+
+
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>More on Debian</h1>
+                <ul class="nav-list">
+                <li><a href="http://www.debian.org/News/">Debian Project News</a></li>
+                <li><a href="http://get.debian.net">Get Debian</a></li>
+                </ul>
+            </div>
+
+    </div>
+
+    <hr class="nocss" />
+    <div id="footer">
+        <p><a href="https://debian-vn.github.io">debian-vn.github.io</a> is the official blog of <a href="https://www.facebook.com/groups/426931777506013/"> Debian VN Community</a></p>
+    </div>
+
+</div>
+</body>
+</html>

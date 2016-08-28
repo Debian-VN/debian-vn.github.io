@@ -1,15 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Debian VN</title><link>https://debian-vn.github.io/</link><description></description><lastBuildDate>Sun, 24 Apr 2016 18:26:00 +0700</lastBuildDate><item><title>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title><link>https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html</link><description>&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.&lt;/p&gt;
+<rss version="2.0"><channel><title>Debian VN</title><link>https://debian-vn.github.io/</link><description></description><lastBuildDate>Sun, 28 Aug 2016 17:43:00 +0700</lastBuildDate><item><title>Cài đặt Debian từng bước một bằng lệnh</title><link>https://debian-vn.github.io/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</link><description>&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Không phải next next (&lt;em&gt;trình cài đặt nhanh&lt;/em&gt;) là xong sao?&lt;/p&gt;
+&lt;p&gt;Bạn đã nghe một số distro với triết lý tinh chỉnh nhiều vào hệ thống,
+các distro này không cung cấp &lt;em&gt;trình cài đặt nhanh&lt;/em&gt; mà muốn người phải cài đặt bằng tay (VD: Arch Linux)&lt;/p&gt;
+&lt;p&gt;Bài hướng dẫn hôm nay trình bày các bước cài đặt Debian bằng tay với 1 bản livecd,
+mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơn bản chất của việc cài đặt.&lt;/p&gt;
+&lt;p&gt;Việc cài đặt gồm 3 bước chính:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tạo file hệ thống vào phân vùng&lt;/li&gt;
+&lt;li&gt;Cài đặt kernel, initrd và bootloader&lt;/li&gt;
+&lt;li&gt;Cài các gói cấn thiết (sudo, kết nối mạng), thêm user
+Chú ý:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Trong phần câu lệnh:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Với $ dành cho user thường trên máy local&lt;/li&gt;
+&lt;li&gt;Còn # là quyền root sau khi đã chroot vào /mnt (Chroot là gì? Hồi sau sẽ rõ)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Chuẩn bị&lt;/h2&gt;
+&lt;p&gt;Cần chuẩn bị:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 bản Livecd &lt;a href="http://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/"&gt;debian-live-8.5.0-amd64-standard.iso&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1 cái máy để cài&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mình sử dụng KVM để demo. Với giả định là máy chưa có phân vùng nào.&lt;/p&gt;
+&lt;p&gt;Nếu cài vào phân vùng khác thì tương tự.&lt;/p&gt;
+&lt;h2&gt;I. Tạo hệ thống file vào phân vùng OS&lt;/h2&gt;
+&lt;h4&gt;Chọn chế độ livecd và login vào tài khoản&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  login: user
+  pass: livecd
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;P/S: Đối với bản livecd mình đưa link trên&lt;/em&gt;&lt;/p&gt;
+&lt;h4&gt;Chia phân vùng&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;/dev/sda1 7GB phân vùng cho OS&lt;/li&gt;
+&lt;li&gt;/dev/sda2 1GB cho swap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; cfdisk /dev/sda&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="cfdisk" src="https://debian-vn.github.io/images/cfdisk.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Format phân vùng cài OS&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mkfs.ext4 /dev/sda1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Format swap&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mkswap /dev/sda2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Mount /dev/sda1 vào /mnt&lt;/h4&gt;
+&lt;p&gt;Mục đích là cài đặt hệ thống file vào thư mục này&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount /dev/sda1 /mnt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Cài đặt &lt;code&gt;debootstrap&lt;/code&gt;&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; apt-get install debootstrap -y&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Debootstrap&lt;/strong&gt; là script có chức năng tạo ra hệ thống file Debian.&lt;/p&gt;
+&lt;p&gt;Có thể bạn không biết nhưng &lt;strong&gt;debootsrap&lt;/strong&gt; được dùng rất nhiều.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Ví dụ:&lt;/em&gt; tạo ra &lt;a href="https://hub.docker.com/_/debian"&gt;base image: Debian&lt;/a&gt; dùng cho Docker&lt;/p&gt;
+&lt;p&gt;Nó là 1 công cụ rất tuyệt vời.&lt;/p&gt;
+&lt;p&gt;Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là &lt;code&gt;pacstrap&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Cài đặt hệ thống file cho Debian&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; debootstrap stable /mnt http://debian.xtdv.net/debian&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lệnh này sẽ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cài bản stable (hiện là bản jessie 8.5)&lt;/li&gt;
+&lt;li&gt;vào thư mục /mnt&lt;/li&gt;
+&lt;li&gt;với mirror từ debian.xtdv.net (Mirror này ở việt nam dùng rất nhanh)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="debootstrap" src="https://debian-vn.github.io/images/debootstrap.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Bạn có thể  gõ &lt;code&gt;man debootstrap&lt;/code&gt; hay &lt;code&gt;debootstrap --help&lt;/code&gt; để rõ hơn&lt;/p&gt;
+&lt;p&gt;debootstrap hỗ trợ cả cài đặt Ubuntu và cũng có trên Ubuntu&lt;/p&gt;
+&lt;h2&gt;II. Cài đặt boot cho OS&lt;/h2&gt;
+&lt;p&gt;Sau khi đã có hệ thống file cho OS.
+&lt;img alt="ls-mnt" src="https://debian-vn.github.io/images/ls-mnt.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Việc cần làm tiếp theo là phải làm sao boot được cái OS này lên.
+Vậy chúng ta cần:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kernel linux&lt;/li&gt;
+&lt;li&gt;Initrd file&lt;/li&gt;
+&lt;li&gt;Bootloader (grub, lilo,..)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào &lt;code&gt;/mnt&lt;/code&gt; và &lt;code&gt;chroot&lt;/code&gt; để tiến hành cài đặt&lt;/p&gt;
+&lt;h4&gt;Mount các thư mục của hệ thống local vào /mnt&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount -o bind /proc /mnt/proc&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount -o bind /sys /mnt/sys&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount -o bind /dev /mnt/dev&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; chroot /mnt&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="mount" src="https://debian-vn.github.io/images/mount.png" /&gt;&lt;/p&gt;
+&lt;h4&gt;Cài đặt các gói&lt;/h4&gt;
+&lt;h5&gt;&lt;em&gt;Cài đặt kernel và initrd&lt;/em&gt;&lt;/h5&gt;
+&lt;p&gt;Tìm gói chứa kernel và initrd&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  #apt-cache search linux-image
+  linux-headers-3.16.0-4-amd64 - Header files for Linux 3.16.0-4-amd64
+  linux-image-3.16.0-4-amd64 - Linux 3.16 for 64-bit PCs
+  linux-image-3.16.0-4-amd64-dbg - Debugging symbols for Linux 3.16.0-4-amd64
+  linux-image-amd64 - Linux for 64-bit PCs (meta-package)
+  linux-image-amd64-dbg - Debugging symbols for Linux amd64 configuration (meta-package)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Kernel phiên bản 3.16. Tiến hành cài đặt&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  #apt-get install linux-image-3.16.0-4-amd64 -y
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;&lt;em&gt;Cài đặt GRUB&lt;/em&gt;&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  #apt-get install grub2 -y
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="grub" src="https://debian-vn.github.io/images/grub.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;III. Cấu hình hệ thống, cài đặt cái gói cần thiết&lt;/h2&gt;
+&lt;h4&gt;Viết file hệ thống /etc/fstab&lt;/h4&gt;
+&lt;p&gt;Sao phải viết file này?&lt;/p&gt;
+&lt;p&gt;Grub boot hệ thống thì nó sẽ đọc /boot/grub/grub.cfg và boot ngon lành cơ mà.&lt;/p&gt;
+&lt;p&gt;Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly&lt;/p&gt;
+&lt;p&gt;Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.&lt;/p&gt;
+&lt;h5&gt;&lt;em&gt;Lây UUID của phân vùng chưa OS (ở đây là /dev/sda1)&lt;/em&gt;&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;#ls -la /dev/disk/by-uuid/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="ls-dev-disk-by-uuid" src="https://debian-vn.github.io/images/ls-dev-disk-by-uuid.png" /&gt;
+Chúng ta thấy được UUID của /dev/sda1 là &lt;code&gt;2c0f6023-c802-4640-a8ce-214d079b22c9&lt;/code&gt;&lt;/p&gt;
+&lt;h5&gt;* Cấu hình vào /etc/fstab*&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;#cat &amp;gt; /etc/fstab &amp;lt;&amp;lt; EOF
+UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0
+EOF
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Cài sudo, và tạo user mới (ví dụ user test)&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;#apt-get install sudo -y
+useradd -s /bin/bash -m test
+passwd test
+adduser test sudo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Đặt password cho root (tùy chọn)&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  #passwd
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Cài các gói bạn cần.&lt;/h4&gt;
+&lt;p&gt;Ở bước này (tức là đã mout proc,sys,dev vào mnt và chroot)&lt;/p&gt;
+&lt;p&gt;Bạn hoàn toàn có thể sử dụng cài đặt luôn các desktop enviroment, windown manager hay các gói khác.&lt;/p&gt;
+&lt;p&gt;VD: cài Gnome3, Mate, KDE, i3,...&lt;/p&gt;
+&lt;p&gt;Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vô mạng được.&lt;/p&gt;
+&lt;h2&gt;Kết thúc&lt;/h2&gt;
+&lt;p&gt;Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.&lt;/p&gt;
+&lt;p&gt;Cần umount &lt;code&gt;/mnt/{sys,proc,dev,}&lt;/code&gt; và reboot lại máy để dùng nữa thôi.&lt;/p&gt;
+&lt;h4&gt;Thoát Chroot&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  #exit
+  $
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Umount và reboot&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; umount /mnt/proc /mnt/sys /mnt/dev /mnt&lt;/span&gt;
+&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; reboot&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="umount" src="https://debian-vn.github.io/images/umount.png" /&gt;&lt;/p&gt;
+&lt;h4&gt;Thành quả&lt;/h4&gt;
+&lt;p&gt;&lt;img alt="debian-boot" src="https://debian-vn.github.io/images/debian-boot.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="debian-login-test" src="https://debian-vn.github.io/images/debian-login-test.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Giáp Trần</dc:creator><pubDate>Sun, 28 Aug 2016 17:43:00 +0700</pubDate><guid isPermaLink="false">tag:debian-vn.github.io,2016-08-28:2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</guid><category>huong-dan</category></item><item><title>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title><link>https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html</link><description>&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.&lt;/p&gt;
 &lt;p&gt;Cuốn sách này dạy các yếu tố cần thiết cho bất cứ ai muốn trở thành một quản trị viên &lt;a href="https://www.debian.org"&gt;Debian GNU/Linux&lt;/a&gt; hiệu quả và độc lập.&lt;/p&gt;
 &lt;h2&gt;Tiến hành dịch như thế nào?&lt;/h2&gt;
 &lt;h4&gt;&lt;strong&gt;Kéo mã nguồn của sách về&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git clone https://github.com/Debian-VN/debian-handbook ~/debian-handbook
+&lt;div class="highlight"&gt;&lt;pre&gt;        git clone https://github.com/Debian-VN/debian-handbook ~/debian-handbook
         cd ~/debian-handbook
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Chúng ta thấy nội dung như sau:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+&lt;div class="highlight"&gt;&lt;pre&gt;.
 ├── ja-JP
 ├── vi-VN
 │   ├── 00a_preface.po
@@ -21,7 +205,7 @@
 
 &lt;p&gt;Và chỉ cần quan tâm các tập tin ở trong thư mục &lt;a href="https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN"&gt;vi-VN&lt;/a&gt; thôi.&lt;/p&gt;
 &lt;h4&gt;Mình sẽ dịch 1 đoạn trong phần &lt;em&gt;00a_preface&lt;/em&gt; của quyển sách này&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;TxGVNN&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;txgvnn&lt;/span&gt;&lt;span class="k"&gt;@gmail&lt;/span&gt;&lt;span class="nc"&gt;.com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;2016&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;TxGVNN&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;txgvnn&lt;/span&gt;&lt;span class="k"&gt;@gmail&lt;/span&gt;&lt;span class="nc"&gt;.com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;2016&lt;/span&gt;
 &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="err"&gt;ê&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;email&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="err"&gt;ă&lt;/span&gt;&lt;span class="nt"&gt;m-d&lt;/span&gt;&lt;span class="err"&gt;ị&lt;/span&gt;&lt;span class="nt"&gt;ch&lt;/span&gt;
 &lt;span class="nt"&gt;msgid&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class="nt"&gt;msgstr&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
@@ -49,7 +233,7 @@
 &lt;ul&gt;
 &lt;li&gt;Tạo commit thôi&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git add vi-VN/00a_preface.po
+&lt;div class="highlight"&gt;&lt;pre&gt;        git add vi-VN/00a_preface.po
         git commit -m &amp;#39;vi-VN: translate first line in 00a_preface&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -58,7 +242,7 @@
 &lt;ul&gt;
 &lt;li&gt;Đẩy lên github&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git push origin master
+&lt;div class="highlight"&gt;&lt;pre&gt;    git push origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -67,14 +251,14 @@
 &lt;ul&gt;
 &lt;li&gt;Cài đặt môi trường, tool để build&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        sudo apt-get install dblatex texlive-xetex publican publican-debian
+&lt;div class="highlight"&gt;&lt;pre&gt;        sudo apt-get install dblatex texlive-xetex publican publican-debian
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Build thôi&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        cd ~/debian-handbook
+&lt;div class="highlight"&gt;&lt;pre&gt;        cd ~/debian-handbook
         ./build/build-pdf --lang=&amp;quot;vi-VN&amp;quot;        #build only pdf
         ./build/build-html --lang=&amp;quot;vi-VN&amp;quot;       #build only html
 &lt;/pre&gt;&lt;/div&gt;
@@ -86,13 +270,13 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;p&gt;Bits sử dụng &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; để quản lý nội dung bằng markdown và tạo ra nội dung web.&lt;/p&gt;
 &lt;h2&gt;Bắt đầu dịch như thế nào?&lt;/h2&gt;
 &lt;h4&gt;&lt;strong&gt;Kéo mã nguồn của bits về&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git clone git://anonscm.debian.org/publicity/bits.git ~/bits
+&lt;div class="highlight"&gt;&lt;pre&gt;        git clone git://anonscm.debian.org/publicity/bits.git ~/bits
         cd ~/bits
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Chúng ta thấy nội dung như sau:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        content/
+&lt;div class="highlight"&gt;&lt;pre&gt;        content/
         ├── 2013
         .
         └── 2016
@@ -102,14 +286,14 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    Nội dung nào chưa có tập tin chứa &amp;quot;-vi&amp;quot; là chưa được dịch.
+&lt;div class="highlight"&gt;&lt;pre&gt;    Nội dung nào chưa có tập tin chứa &amp;quot;-vi&amp;quot; là chưa được dịch.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Mình lấy ví dụ 1 đoạn về dịch trang &lt;a href="https://bits.debian.org/2016/04/results-dpl-elections-2016.html"&gt;results-dpl-election.md&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;em&gt;Nội dung gốc:&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  Title: DPL elections 2016, congratulations Mehdi Dogguy!
+&lt;div class="highlight"&gt;&lt;pre&gt;  Title: DPL elections 2016, congratulations Mehdi Dogguy!
   Date: 2016-04-17 18:40
   Tags: dpl
   Slug: results-dpl-elections-2016
@@ -124,7 +308,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Bản dịch:&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  Title: Bầu cử lãnh đạo dự án Debian 2016, chúc mừng Mehdi Dogguy!
+&lt;div class="highlight"&gt;&lt;pre&gt;  Title: Bầu cử lãnh đạo dự án Debian 2016, chúc mừng Mehdi Dogguy!
   Date: 2016-04-17 18:40
   Tags: dpl
   Slug: results-dpl-elections-2016
@@ -146,7 +330,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;ul&gt;
 &lt;li&gt;Sinh web và bật server&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        make html &amp;amp;&amp;amp; make devserver
+&lt;div class="highlight"&gt;&lt;pre&gt;        make html &amp;amp;&amp;amp; make devserver
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -158,7 +342,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;p&gt;Tắt server&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        make stopserver
+&lt;div class="highlight"&gt;&lt;pre&gt;        make stopserver
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -166,7 +350,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;ul&gt;
 &lt;li&gt;Tạo commit thôi nào&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git checkout vietnamese
+&lt;div class="highlight"&gt;&lt;pre&gt;        git checkout vietnamese
         git add content/2016/results-dpl-election-vi.md
         git commit -m &amp;#39;Add results-dpl-election translatian for Vietnamese&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
@@ -176,7 +360,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;li&gt;Gửi đóng góp&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án dịch &lt;a href="mailto:debian-l10n-vietnamese@lists.debian.org"&gt;debian-l10n-vietnamese&lt;/a&gt; do anh Trần Ngọc Quân điều phối.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git format-patch origin/master --stdout &amp;gt; ban-dich-results-dpl-election.patch
+&lt;div class="highlight"&gt;&lt;pre&gt;        git format-patch origin/master --stdout &amp;gt; ban-dich-results-dpl-election.patch
 &lt;/pre&gt;&lt;/div&gt;
 
 
