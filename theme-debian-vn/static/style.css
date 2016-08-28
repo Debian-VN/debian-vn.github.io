@@ -5,7 +5,9 @@ body {
     /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
     font-size: 14px;
 }
-
+code, pre{
+  color: rgb(49, 19, 170);
+}
 p {
     padding: 10px;
 }
