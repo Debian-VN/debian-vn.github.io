@@ -9,10 +9,9 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 &lt;ol&gt;
 &lt;li&gt;Tạo file hệ thống vào phân vùng&lt;/li&gt;
 &lt;li&gt;Cài đặt kernel, initrd và bootloader&lt;/li&gt;
-&lt;li&gt;Cài các gói cấn thiết (sudo, kết nối mạng), thêm user
-Chú ý:&lt;/li&gt;
+&lt;li&gt;Cài các gói cấn thiết (sudo, kết nối mạng), thêm user&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Trong phần câu lệnh:&lt;/p&gt;
+&lt;p&gt;Chú ý: Trong phần câu lệnh:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Với $ dành cho user thường trên máy local&lt;/li&gt;
 &lt;li&gt;Còn # là quyền root sau khi đã chroot vào /mnt (Chroot là gì? Hồi sau sẽ rõ)&lt;/li&gt;
