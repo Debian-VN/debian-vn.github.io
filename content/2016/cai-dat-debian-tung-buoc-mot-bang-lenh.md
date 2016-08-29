@@ -42,7 +42,7 @@ Nếu cài vào phân vùng khác thì tương tự.
   pass: livecd
 ```
 *P/S: Đối với bản livecd mình đưa link trên*
-#### Chia phân vùng
+#### 1. Chia phân vùng
 
 - /dev/sda1 7GB phân vùng cho OS
 - /dev/sda2 1GB cho swap
@@ -64,7 +64,7 @@ Format swap
   $sudo mkswap /dev/sda2
 ```
 
-#### Mount /dev/sda1 vào /mnt
+#### 2. Mount /dev/sda1 vào /mnt
 
 Mục đích là cài đặt hệ thống file vào thư mục này
 
@@ -72,7 +72,7 @@ Mục đích là cài đặt hệ thống file vào thư mục này
   $sudo mount /dev/sda1 /mnt
 ```
 
-#### Cài đặt `debootstrap`
+#### 3. Cài đặt `debootstrap`
 
 ```
   $sudo apt-get install debootstrap -y
@@ -88,7 +88,7 @@ Nó là 1 công cụ rất tuyệt vời.
 
 Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là `pacstrap`
 
-#### Cài đặt hệ thống file cho Debian
+#### 4. Cài đặt hệ thống file cho Debian
 
 ```
   $sudo debootstrap stable /mnt http://debian.xtdv.net/debian
@@ -118,7 +118,7 @@ Vậy chúng ta cần:
 
 Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào `/mnt` và `chroot` để tiến hành cài đặt
 
-#### Mount các thư mục của hệ thống local vào /mnt
+#### 1. Mount các thư mục của hệ thống local vào /mnt
 ```
   $sudo mount -o bind /proc /mnt/proc
   $sudo mount -o bind /sys /mnt/sys
@@ -127,7 +127,7 @@ Vậy chúng ta cần:
   #
 ```
 ![mount]({filename}/images/mount.png)
-#### Cài đặt các gói
+#### 2. Cài đặt các gói
 ##### *Cài đặt kernel và initrd*
 
 Tìm gói chứa kernel và initrd
@@ -153,7 +153,7 @@ Kernel phiên bản 3.16. Tiến hành cài đặt
 
 ## III. Cấu hình hệ thống, cài đặt cái gói cần thiết
 
-#### Viết file hệ thống /etc/fstab
+#### 1. Viết file hệ thống /etc/fstab
 Sao phải viết file này?
 
 Grub boot hệ thống thì nó sẽ đọc /boot/grub/grub.cfg và boot ngon lành cơ mà.
@@ -161,19 +161,21 @@ Grub boot hệ thống thì nó sẽ đọc /boot/grub/grub.cfg và boot ngon l�
 Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly
 
 Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.
-##### *Lây UUID của phân vùng chưa OS (ở đây là /dev/sda1)*
+
+##### *Lây UUID của phân vùng chứa OS (ở đây là /dev/sda1)*
 ```
 #ls -la /dev/disk/by-uuid/
 ```
 ![ls-dev-disk-by-uuid]({filename}/images/ls-dev-disk-by-uuid.png)
 Chúng ta thấy được UUID của /dev/sda1 là `2c0f6023-c802-4640-a8ce-214d079b22c9`
-##### * Cấu hình vào /etc/fstab*
+
+##### *Cấu hình vào /etc/fstab*
 ```
 #cat > /etc/fstab << EOF
 UUID=2c0f6023-c802-4640-a8ce-214d079b22c9	/	ext4	defaults	0	0
 EOF
 ```
-#### Cài sudo, và tạo user mới (ví dụ user test)
+#### 2. Cài sudo, và tạo user mới (ví dụ user test)
 ```
 #apt-get install sudo -y
 useradd -s /bin/bash -m test
@@ -181,11 +183,11 @@ passwd test
 adduser test sudo
 ```
 
-#### Đặt password cho root (tùy chọn)
+#### 3. Đặt password cho root (tùy chọn)
 ```
   #passwd
 ```
-#### Cài các gói bạn cần.
+#### 4. Cài các gói bạn cần.
 
 Ở bước này (tức là đã mout proc,sys,dev vào mnt và chroot)
 
@@ -193,19 +195,19 @@ Bạn hoàn toàn có thể sử dụng cài đặt luôn các desktop enviromen
 
 VD: cài Gnome3, Mate, KDE, i3,...
 
-Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vô mạng được.
+Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vào mạng được mà cài cắm tiếp.
 
 
 ## Kết thúc
 Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.
 
 Cần umount `/mnt/{sys,proc,dev,}` và reboot lại máy để dùng nữa thôi.
-#### Thoát Chroot
+#### 1. Thoát Chroot
 ```
   #exit
   $
 ```
-#### Umount và reboot
+#### 2. Umount và reboot
 ```
   $sudo umount /mnt/proc /mnt/sys /mnt/dev /mnt
   $sudo reboot
@@ -213,7 +215,7 @@ Cần umount `/mnt/{sys,proc,dev,}` và reboot lại máy để dùng nữa thô
 ![umount]({filename}/images/umount.png)
 
 
-#### Thành quả
+#### 3. Thành quả
 ![debian-boot]({filename}/images/debian-boot.png)
 
 ![debian-login-test]({filename}/images/debian-login-test.png)
