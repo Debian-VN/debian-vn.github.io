@@ -69,7 +69,7 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 
 
 <p><em>P/S: Đối với bản livecd mình đưa link trên</em></p>
-<h4>Chia phân vùng</h4>
+<h4>1. Chia phân vùng</h4>
 <ul>
 <li>/dev/sda1 7GB phân vùng cho OS</li>
 <li>/dev/sda2 1GB cho swap</li>
@@ -89,13 +89,13 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 </pre></div>
 
 
-<h4>Mount /dev/sda1 vào /mnt</h4>
+<h4>2. Mount /dev/sda1 vào /mnt</h4>
 <p>Mục đích là cài đặt hệ thống file vào thư mục này</p>
 <div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount /dev/sda1 /mnt</span>
 </pre></div>
 
 
-<h4>Cài đặt <code>debootstrap</code></h4>
+<h4>3. Cài đặt <code>debootstrap</code></h4>
 <div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> apt-get install debootstrap -y</span>
 </pre></div>
 
@@ -105,7 +105,7 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 <p><em>Ví dụ:</em> tạo ra <a href="https://hub.docker.com/_/debian">base image: Debian</a> dùng cho Docker</p>
 <p>Nó là 1 công cụ rất tuyệt vời.</p>
 <p>Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là <code>pacstrap</code></p>
-<h4>Cài đặt hệ thống file cho Debian</h4>
+<h4>4. Cài đặt hệ thống file cho Debian</h4>
 <div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> debootstrap stable /mnt http://debian.xtdv.net/debian</span>
 </pre></div>
 
@@ -130,7 +130,7 @@ Vậy chúng ta cần:</p>
 <li>Bootloader (grub, lilo,..)</li>
 </ul>
 <p>Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào <code>/mnt</code> và <code>chroot</code> để tiến hành cài đặt</p>
-<h4>Mount các thư mục của hệ thống local vào /mnt</h4>
+<h4>1. Mount các thư mục của hệ thống local vào /mnt</h4>
 <div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount -o bind /proc /mnt/proc</span>
 <span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount -o bind /sys /mnt/sys</span>
 <span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> mount -o bind /dev /mnt/dev</span>
@@ -140,7 +140,7 @@ Vậy chúng ta cần:</p>
 
 
 <p><img alt="mount" src="https://debian-vn.github.io/images/mount.png" /></p>
-<h4>Cài đặt các gói</h4>
+<h4>2. Cài đặt các gói</h4>
 <h5><em>Cài đặt kernel và initrd</em></h5>
 <p>Tìm gói chứa kernel và initrd</p>
 <div class="highlight"><pre>  #apt-cache search linux-image
@@ -164,26 +164,26 @@ Vậy chúng ta cần:</p>
 
 <p><img alt="grub" src="https://debian-vn.github.io/images/grub.png" /></p>
 <h2>III. Cấu hình hệ thống, cài đặt cái gói cần thiết</h2>
-<h4>Viết file hệ thống /etc/fstab</h4>
+<h4>1. Viết file hệ thống /etc/fstab</h4>
 <p>Sao phải viết file này?</p>
 <p>Grub boot hệ thống thì nó sẽ đọc /boot/grub/grub.cfg và boot ngon lành cơ mà.</p>
 <p>Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly</p>
 <p>Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.</p>
-<h5><em>Lây UUID của phân vùng chưa OS (ở đây là /dev/sda1)</em></h5>
+<h5><em>Lây UUID của phân vùng chứa OS (ở đây là /dev/sda1)</em></h5>
 <div class="highlight"><pre>#ls -la /dev/disk/by-uuid/
 </pre></div>
 
 
 <p><img alt="ls-dev-disk-by-uuid" src="https://debian-vn.github.io/images/ls-dev-disk-by-uuid.png" />
 Chúng ta thấy được UUID của /dev/sda1 là <code>2c0f6023-c802-4640-a8ce-214d079b22c9</code></p>
-<h5>* Cấu hình vào /etc/fstab*</h5>
+<h5><em>Cấu hình vào /etc/fstab</em></h5>
 <div class="highlight"><pre>#cat &gt; /etc/fstab &lt;&lt; EOF
 UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0
 EOF
 </pre></div>
 
 
-<h4>Cài sudo, và tạo user mới (ví dụ user test)</h4>
+<h4>2. Cài sudo, và tạo user mới (ví dụ user test)</h4>
 <div class="highlight"><pre>#apt-get install sudo -y
 useradd -s /bin/bash -m test
 passwd test
@@ -191,33 +191,33 @@ adduser test sudo
 </pre></div>
 
 
-<h4>Đặt password cho root (tùy chọn)</h4>
+<h4>3. Đặt password cho root (tùy chọn)</h4>
 <div class="highlight"><pre>  #passwd
 </pre></div>
 
 
-<h4>Cài các gói bạn cần.</h4>
+<h4>4. Cài các gói bạn cần.</h4>
 <p>Ở bước này (tức là đã mout proc,sys,dev vào mnt và chroot)</p>
 <p>Bạn hoàn toàn có thể sử dụng cài đặt luôn các desktop enviroment, windown manager hay các gói khác.</p>
 <p>VD: cài Gnome3, Mate, KDE, i3,...</p>
-<p>Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vô mạng được.</p>
+<p>Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vào mạng được mà cài cắm tiếp.</p>
 <h2>Kết thúc</h2>
 <p>Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.</p>
 <p>Cần umount <code>/mnt/{sys,proc,dev,}</code> và reboot lại máy để dùng nữa thôi.</p>
-<h4>Thoát Chroot</h4>
+<h4>1. Thoát Chroot</h4>
 <div class="highlight"><pre>  #exit
   $
 </pre></div>
 
 
-<h4>Umount và reboot</h4>
+<h4>2. Umount và reboot</h4>
 <div class="highlight"><pre><span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> umount /mnt/proc /mnt/sys /mnt/dev /mnt</span>
 <span class="x">  </span><span class="p">$</span><span class="nv">sudo</span><span class="x"> reboot</span>
 </pre></div>
 
 
 <p><img alt="umount" src="https://debian-vn.github.io/images/umount.png" /></p>
-<h4>Thành quả</h4>
+<h4>3. Thành quả</h4>
 <p><img alt="debian-boot" src="https://debian-vn.github.io/images/debian-boot.png" /></p>
 <p><img alt="debian-login-test" src="https://debian-vn.github.io/images/debian-login-test.png" /></p></div>
 

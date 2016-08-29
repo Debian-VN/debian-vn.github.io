@@ -32,7 +32,7 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 
 
 &lt;p&gt;&lt;em&gt;P/S: Đối với bản livecd mình đưa link trên&lt;/em&gt;&lt;/p&gt;
-&lt;h4&gt;Chia phân vùng&lt;/h4&gt;
+&lt;h4&gt;1. Chia phân vùng&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;/dev/sda1 7GB phân vùng cho OS&lt;/li&gt;
 &lt;li&gt;/dev/sda2 1GB cho swap&lt;/li&gt;
@@ -52,13 +52,13 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Mount /dev/sda1 vào /mnt&lt;/h4&gt;
+&lt;h4&gt;2. Mount /dev/sda1 vào /mnt&lt;/h4&gt;
 &lt;p&gt;Mục đích là cài đặt hệ thống file vào thư mục này&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount /dev/sda1 /mnt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Cài đặt &lt;code&gt;debootstrap&lt;/code&gt;&lt;/h4&gt;
+&lt;h4&gt;3. Cài đặt &lt;code&gt;debootstrap&lt;/code&gt;&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; apt-get install debootstrap -y&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -68,7 +68,7 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 &lt;p&gt;&lt;em&gt;Ví dụ:&lt;/em&gt; tạo ra &lt;a href="https://hub.docker.com/_/debian"&gt;base image: Debian&lt;/a&gt; dùng cho Docker&lt;/p&gt;
 &lt;p&gt;Nó là 1 công cụ rất tuyệt vời.&lt;/p&gt;
 &lt;p&gt;Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là &lt;code&gt;pacstrap&lt;/code&gt;&lt;/p&gt;
-&lt;h4&gt;Cài đặt hệ thống file cho Debian&lt;/h4&gt;
+&lt;h4&gt;4. Cài đặt hệ thống file cho Debian&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; debootstrap stable /mnt http://debian.xtdv.net/debian&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -93,7 +93,7 @@ Vậy chúng ta cần:&lt;/p&gt;
 &lt;li&gt;Bootloader (grub, lilo,..)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào &lt;code&gt;/mnt&lt;/code&gt; và &lt;code&gt;chroot&lt;/code&gt; để tiến hành cài đặt&lt;/p&gt;
-&lt;h4&gt;Mount các thư mục của hệ thống local vào /mnt&lt;/h4&gt;
+&lt;h4&gt;1. Mount các thư mục của hệ thống local vào /mnt&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount -o bind /proc /mnt/proc&lt;/span&gt;
 &lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount -o bind /sys /mnt/sys&lt;/span&gt;
 &lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; mount -o bind /dev /mnt/dev&lt;/span&gt;
@@ -103,7 +103,7 @@ Vậy chúng ta cần:&lt;/p&gt;
 
 
 &lt;p&gt;&lt;img alt="mount" src="https://debian-vn.github.io/images/mount.png" /&gt;&lt;/p&gt;
-&lt;h4&gt;Cài đặt các gói&lt;/h4&gt;
+&lt;h4&gt;2. Cài đặt các gói&lt;/h4&gt;
 &lt;h5&gt;&lt;em&gt;Cài đặt kernel và initrd&lt;/em&gt;&lt;/h5&gt;
 &lt;p&gt;Tìm gói chứa kernel và initrd&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;  #apt-cache search linux-image
@@ -127,26 +127,26 @@ Vậy chúng ta cần:&lt;/p&gt;
 
 &lt;p&gt;&lt;img alt="grub" src="https://debian-vn.github.io/images/grub.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;III. Cấu hình hệ thống, cài đặt cái gói cần thiết&lt;/h2&gt;
-&lt;h4&gt;Viết file hệ thống /etc/fstab&lt;/h4&gt;
+&lt;h4&gt;1. Viết file hệ thống /etc/fstab&lt;/h4&gt;
 &lt;p&gt;Sao phải viết file này?&lt;/p&gt;
 &lt;p&gt;Grub boot hệ thống thì nó sẽ đọc /boot/grub/grub.cfg và boot ngon lành cơ mà.&lt;/p&gt;
 &lt;p&gt;Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly&lt;/p&gt;
 &lt;p&gt;Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.&lt;/p&gt;
-&lt;h5&gt;&lt;em&gt;Lây UUID của phân vùng chưa OS (ở đây là /dev/sda1)&lt;/em&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;em&gt;Lây UUID của phân vùng chứa OS (ở đây là /dev/sda1)&lt;/em&gt;&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;#ls -la /dev/disk/by-uuid/
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="ls-dev-disk-by-uuid" src="https://debian-vn.github.io/images/ls-dev-disk-by-uuid.png" /&gt;
 Chúng ta thấy được UUID của /dev/sda1 là &lt;code&gt;2c0f6023-c802-4640-a8ce-214d079b22c9&lt;/code&gt;&lt;/p&gt;
-&lt;h5&gt;* Cấu hình vào /etc/fstab*&lt;/h5&gt;
+&lt;h5&gt;&lt;em&gt;Cấu hình vào /etc/fstab&lt;/em&gt;&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;#cat &amp;gt; /etc/fstab &amp;lt;&amp;lt; EOF
 UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0
 EOF
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Cài sudo, và tạo user mới (ví dụ user test)&lt;/h4&gt;
+&lt;h4&gt;2. Cài sudo, và tạo user mới (ví dụ user test)&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;#apt-get install sudo -y
 useradd -s /bin/bash -m test
 passwd test
@@ -154,33 +154,33 @@ adduser test sudo
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Đặt password cho root (tùy chọn)&lt;/h4&gt;
+&lt;h4&gt;3. Đặt password cho root (tùy chọn)&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;  #passwd
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Cài các gói bạn cần.&lt;/h4&gt;
+&lt;h4&gt;4. Cài các gói bạn cần.&lt;/h4&gt;
 &lt;p&gt;Ở bước này (tức là đã mout proc,sys,dev vào mnt và chroot)&lt;/p&gt;
 &lt;p&gt;Bạn hoàn toàn có thể sử dụng cài đặt luôn các desktop enviroment, windown manager hay các gói khác.&lt;/p&gt;
 &lt;p&gt;VD: cài Gnome3, Mate, KDE, i3,...&lt;/p&gt;
-&lt;p&gt;Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vô mạng được.&lt;/p&gt;
+&lt;p&gt;Mình khuyết khích cài các gói liên quan tới connect mạng để tý nữa login vào OS có thể vào mạng được mà cài cắm tiếp.&lt;/p&gt;
 &lt;h2&gt;Kết thúc&lt;/h2&gt;
 &lt;p&gt;Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.&lt;/p&gt;
 &lt;p&gt;Cần umount &lt;code&gt;/mnt/{sys,proc,dev,}&lt;/code&gt; và reboot lại máy để dùng nữa thôi.&lt;/p&gt;
-&lt;h4&gt;Thoát Chroot&lt;/h4&gt;
+&lt;h4&gt;1. Thoát Chroot&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;  #exit
   $
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Umount và reboot&lt;/h4&gt;
+&lt;h4&gt;2. Umount và reboot&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; umount /mnt/proc /mnt/sys /mnt/dev /mnt&lt;/span&gt;
 &lt;span class="x"&gt;  &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;sudo&lt;/span&gt;&lt;span class="x"&gt; reboot&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="umount" src="https://debian-vn.github.io/images/umount.png" /&gt;&lt;/p&gt;
-&lt;h4&gt;Thành quả&lt;/h4&gt;
+&lt;h4&gt;3. Thành quả&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="debian-boot" src="https://debian-vn.github.io/images/debian-boot.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="debian-login-test" src="https://debian-vn.github.io/images/debian-login-test.png" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Giáp Trần</dc:creator><pubDate>Sun, 28 Aug 2016 17:43:00 +0700</pubDate><guid isPermaLink="false">tag:debian-vn.github.io,2016-08-28:2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</guid><category>huong-dan</category></item><item><title>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title><link>https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html</link><description>&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.&lt;/p&gt;
 &lt;p&gt;Cuốn sách này dạy các yếu tố cần thiết cho bất cứ ai muốn trở thành một quản trị viên &lt;a href="https://www.debian.org"&gt;Debian GNU/Linux&lt;/a&gt; hiệu quả và độc lập.&lt;/p&gt;
