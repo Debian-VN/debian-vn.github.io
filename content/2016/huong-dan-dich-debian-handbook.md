@@ -1,6 +1,6 @@
 Title: Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook
 Date: 2016-04-24 18:26
-Tags: huong-dan
+Tags: huong-dan, dong-gop
 Slug: huong-dan-dong-gop-ban-dich-debian-handbook
 Author: Giáp Trần
 Status: published
@@ -63,9 +63,15 @@ _Chú ý là commit thì bắt đầu bằng **vi-VN:** để các bạn nước
 ```
 	git push origin master
 ```
+- Travis sẽ tự động build ra PDF với mỗi commit được push lên
+
+	Bạn có thể xem log của travis để down về bản xem thử.
+
+	[![Build Status](https://travis-ci.org/Debian-VN/debian-handbook.svg?branch=master)](https://travis-ci.org/Debian-VN/debian-handbook)
+
 
 Như vậy là xong
-#### [Tuỳ chọn] Bạn muốn build thử pdf,html hay epub để xem.
+#### [Tuỳ chọn] Bạn muốn build thử pdf,html hay epub trên chính máy bạn.
 - Cài đặt môi trường, tool để build
 ```
 		sudo apt-get install dblatex texlive-xetex publican publican-debian

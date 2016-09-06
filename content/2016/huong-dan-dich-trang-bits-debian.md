@@ -1,6 +1,6 @@
 Title: Hướng dẫn dịch trang bits.debian.org
 Date: 2016-04-24 10:10
-Tags: huong-dan
+Tags: huong-dan, dong-gop
 Slug: huong-dan-dich-trang-bits-debian
 Author: Giáp Trần
 Status: published
@@ -70,16 +70,16 @@ Nhiều từ không rõ, không biết tra ở đâu [vi.wiktionary](http://vi.w
 
 #### Làm sao để chạy thử web, xem lại trình bày, dịch có chuẩn không
 
-- Sinh web và bật server
+- Khởi chạy web để kiểm thử
 
 ```
-		make html && make devserver
+		make devserver
 ```
 
 
 - Trang web đã hiện có tại [127.0.0.1:8000](http://127.0.0.1:8000)
 
-- Tắt server
+- Tắt web
 ```
 		make stopserver
 ```
@@ -100,7 +100,7 @@ Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án 
 ```
 Tạo email mới và đính kèm "ban-dich-results-dpl-election.path"
 gửi tới [debian-l10n-vietnamese@lists.debian.org](mailto:debian-l10n-vietnamese@lists.debian.org)
-với nội dung "gửi bản vá đóng góp bản dịch results-dpl-election".
+với nội dung "*gửi bản vá đóng góp bản dịch results-dpl-election*".
 
 - Hòm thư công khai tại:
 [https://lists.debian.org/debian-l10n-vietnamese/](https://lists.debian.org/debian-l10n-vietnamese/)

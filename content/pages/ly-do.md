@@ -21,7 +21,7 @@ Các tình nguyện viên dịch của việt nam hiện còn rất ít chưa th
 
 Vì vậy có bác nào có mong muốn, nhiệt huyết đóng góp các bản dịch cho các dự án này cùng với em không ạ.
 
-Yêu cầu rất đơn gỉan: chỉ cần biết dùng cvs or svn or git và biết dịch thôi.
+Yêu cầu rất đơn giản: chỉ cần biết dùng git (cvs,svn,.. ) và biết dịch thôi.
 
 Việc dịch mang lại nhiều lợi ích: Tinh thần cộng đồng, mã nguồn mở, ôn luyện tiếng anh, tăng hiểu biết về hoạt động của cộng đồng, hiểu biết về các gói,.. và giup ích cho những người dùng Linux bằng tiếng việt
 
