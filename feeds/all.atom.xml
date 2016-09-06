@@ -245,8 +245,15 @@ adduser test sudo
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Travis sẽ tự động build ra PDF với mỗi commit được push lên&lt;/p&gt;
+&lt;p&gt;Bạn có thể xem log của travis để down về bản xem thử.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://travis-ci.org/Debian-VN/debian-handbook"&gt;&lt;img alt="Build Status" src="https://travis-ci.org/Debian-VN/debian-handbook.svg?branch=master" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Như vậy là xong&lt;/p&gt;
-&lt;h4&gt;[Tuỳ chọn] Bạn muốn build thử pdf,html hay epub để xem.&lt;/h4&gt;
+&lt;h4&gt;[Tuỳ chọn] Bạn muốn build thử pdf,html hay epub trên chính máy bạn.&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Cài đặt môi trường, tool để build&lt;/li&gt;
 &lt;/ul&gt;
@@ -263,7 +270,7 @@ adduser test sudo
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Còn để build epub còn 1 số gói phụ thuộc nữa.&lt;/p&gt;</summary><category term="huong-dan"></category></entry><entry><title>Hướng dẫn dịch trang bits.debian.org</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html" rel="alternate"></link><published>2016-04-24T10:10:00+07:00</published><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:2016/04/huong-dan-dich-trang-bits-debian.html</id><summary type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang blog chính thức của dự án Debian.&lt;/p&gt;
+&lt;p&gt;Còn để build epub còn 1 số gói phụ thuộc nữa.&lt;/p&gt;</summary><category term="huong-dan"></category><category term="dong-gop"></category></entry><entry><title>Hướng dẫn dịch trang bits.debian.org</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html" rel="alternate"></link><published>2016-04-24T10:10:00+07:00</published><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:2016/04/huong-dan-dich-trang-bits-debian.html</id><summary type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang blog chính thức của dự án Debian.&lt;/p&gt;
 &lt;p&gt;Các tin tức quan trọng luôn được cập nhật ở &lt;a href="http://bits.debian.org"&gt;bits&lt;/a&gt;.
 Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn giản.&lt;/p&gt;
 &lt;p&gt;Bits sử dụng &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; để quản lý nội dung bằng markdown và tạo ra nội dung web.&lt;/p&gt;
@@ -327,9 +334,9 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;p&gt;Nhiều từ không rõ, không biết tra ở đâu &lt;a href="http://vi.wiktionary.org/"&gt;vi.wiktionary&lt;/a&gt; là tử điển mở do cộng đồng việt đóng góp&lt;/p&gt;
 &lt;h4&gt;Làm sao để chạy thử web, xem lại trình bày, dịch có chuẩn không&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Sinh web và bật server&lt;/li&gt;
+&lt;li&gt;Khởi chạy web để kiểm thử&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;        make html &amp;amp;&amp;amp; make devserver
+&lt;div class="highlight"&gt;&lt;pre&gt;        make devserver
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -338,7 +345,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;p&gt;Trang web đã hiện có tại &lt;a href="http://127.0.0.1:8000"&gt;127.0.0.1:8000&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Tắt server&lt;/p&gt;
+&lt;p&gt;Tắt web&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;        make stopserver
@@ -365,9 +372,9 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 
 &lt;p&gt;Tạo email mới và đính kèm "ban-dich-results-dpl-election.path"
 gửi tới &lt;a href="mailto:debian-l10n-vietnamese@lists.debian.org"&gt;debian-l10n-vietnamese@lists.debian.org&lt;/a&gt;
-với nội dung "gửi bản vá đóng góp bản dịch results-dpl-election".&lt;/p&gt;
+với nội dung "&lt;em&gt;gửi bản vá đóng góp bản dịch results-dpl-election&lt;/em&gt;".&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Hòm thư công khai tại:
 &lt;a href="https://lists.debian.org/debian-l10n-vietnamese/"&gt;https://lists.debian.org/debian-l10n-vietnamese/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Xin hết!&lt;/p&gt;</summary><category term="huong-dan"></category></entry></feed>
+&lt;p&gt;Xin hết!&lt;/p&gt;</summary><category term="huong-dan"></category><category term="dong-gop"></category></entry></feed>
