@@ -204,7 +204,7 @@ adduser test sudo
 
 &lt;p&gt;Và chỉ cần quan tâm các tập tin ở trong thư mục &lt;a href="https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN"&gt;vi-VN&lt;/a&gt; thôi.&lt;/p&gt;
 &lt;h4&gt;Mình sẽ dịch 1 đoạn trong phần &lt;em&gt;00a_preface&lt;/em&gt; của quyển sách này&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;TxGVNN&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;txgvnn&lt;/span&gt;&lt;span class="k"&gt;@gmail&lt;/span&gt;&lt;span class="nc"&gt;.com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;2016&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;Giap&lt;/span&gt; &lt;span class="nt"&gt;Tran&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;txgvnn&lt;/span&gt;&lt;span class="k"&gt;@gmail&lt;/span&gt;&lt;span class="nc"&gt;.com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;2016&lt;/span&gt;
 &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="err"&gt;ê&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;email&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="err"&gt;ă&lt;/span&gt;&lt;span class="nt"&gt;m-d&lt;/span&gt;&lt;span class="err"&gt;ị&lt;/span&gt;&lt;span class="nt"&gt;ch&lt;/span&gt;
 &lt;span class="nt"&gt;msgid&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class="nt"&gt;msgstr&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
@@ -257,7 +257,11 @@ adduser test sudo
 &lt;ul&gt;
 &lt;li&gt;Cài đặt môi trường, tool để build&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;        sudo apt-get install dblatex texlive-xetex publican publican-debian
+&lt;div class="highlight"&gt;&lt;pre&gt;        sudo apt-get install \
+        dblatex texlive texlive-xetex publican publican-debian \
+        curl lmodern texlive-lang-cyrillic ghostscript \
+        texlive-fonts-extra texlive-font-utils texlive-generic-recommended \
+        texlive-math-extra texlive-pstricks
 &lt;/pre&gt;&lt;/div&gt;
 
 

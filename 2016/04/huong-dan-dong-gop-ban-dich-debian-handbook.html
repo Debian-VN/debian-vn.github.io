@@ -54,7 +54,7 @@ with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a>
 
 <p>Và chỉ cần quan tâm các tập tin ở trong thư mục <a href="https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN">vi-VN</a> thôi.</p>
 <h4>Mình sẽ dịch 1 đoạn trong phần <em>00a_preface</em> của quyển sách này</h4>
-<div class="highlight"><pre><span class="err">#</span> <span class="nt">TxGVNN</span> <span class="o">&lt;</span><span class="nt">txgvnn</span><span class="k">@gmail</span><span class="nc">.com</span><span class="o">&gt;</span> <span class="nt">2016</span>
+<div class="highlight"><pre><span class="err">#</span> <span class="nt">Giap</span> <span class="nt">Tran</span> <span class="o">&lt;</span><span class="nt">txgvnn</span><span class="k">@gmail</span><span class="nc">.com</span><span class="o">&gt;</span> <span class="nt">2016</span>
 <span class="err">#</span> <span class="nt">T</span><span class="err">ê</span><span class="nt">n</span> <span class="o">&lt;</span><span class="nt">email</span><span class="o">&gt;</span> <span class="nt">n</span><span class="err">ă</span><span class="nt">m-d</span><span class="err">ị</span><span class="nt">ch</span>
 <span class="nt">msgid</span> <span class="s2">&quot;&quot;</span>
 <span class="nt">msgstr</span> <span class="s2">&quot;&quot;</span>
@@ -107,7 +107,11 @@ with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a>
 <ul>
 <li>Cài đặt môi trường, tool để build</li>
 </ul>
-<div class="highlight"><pre>        sudo apt-get install dblatex texlive-xetex publican publican-debian
+<div class="highlight"><pre>        sudo apt-get install \
+        dblatex texlive texlive-xetex publican publican-debian \
+        curl lmodern texlive-lang-cyrillic ghostscript \
+        texlive-fonts-extra texlive-font-utils texlive-generic-recommended \
+        texlive-math-extra texlive-pstricks
 </pre></div>
 
 
