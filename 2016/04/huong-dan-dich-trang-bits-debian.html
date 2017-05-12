@@ -38,13 +38,13 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <p>Bits sử dụng <a href="http://docs.getpelican.com/">Pelican</a> để quản lý nội dung bằng markdown và tạo ra nội dung web.</p>
 <h2>Bắt đầu dịch như thế nào?</h2>
 <h4><strong>Kéo mã nguồn của bits về</strong></h4>
-<div class="highlight"><pre>        git clone git://anonscm.debian.org/publicity/bits.git ~/bits
+<div class="highlight"><pre><span></span>        git clone git://anonscm.debian.org/publicity/bits.git ~/bits
         cd ~/bits
 </pre></div>
 
 
 <h4>Chúng ta thấy nội dung như sau:</h4>
-<div class="highlight"><pre>        content/
+<div class="highlight"><pre><span></span>        content/
         ├── 2013
         .
         └── 2016
@@ -54,14 +54,14 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 </pre></div>
 
 
-<div class="highlight"><pre>    Nội dung nào chưa có tập tin chứa &quot;-vi&quot; là chưa được dịch.
+<div class="highlight"><pre><span></span>    Nội dung nào chưa có tập tin chứa &quot;-vi&quot; là chưa được dịch.
 </pre></div>
 
 
 <h4>Mình lấy ví dụ 1 đoạn về dịch trang <a href="https://bits.debian.org/2016/04/results-dpl-elections-2016.html">results-dpl-election.md</a></h4>
 <p><em>Nội dung gốc:</em></p>
 <blockquote>
-<div class="highlight"><pre>  Title: DPL elections 2016, congratulations Mehdi Dogguy!
+<div class="highlight"><pre><span></span>  Title: DPL elections 2016, congratulations Mehdi Dogguy!
   Date: 2016-04-17 18:40
   Tags: dpl
   Slug: results-dpl-elections-2016
@@ -76,7 +76,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 </blockquote>
 <p><em>Bản dịch:</em></p>
 <blockquote>
-<div class="highlight"><pre>  Title: Bầu cử lãnh đạo dự án Debian 2016, chúc mừng Mehdi Dogguy!
+<div class="highlight"><pre><span></span>  Title: Bầu cử lãnh đạo dự án Debian 2016, chúc mừng Mehdi Dogguy!
   Date: 2016-04-17 18:40
   Tags: dpl
   Slug: results-dpl-elections-2016
@@ -98,7 +98,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <ul>
 <li>Khởi chạy web để kiểm thử</li>
 </ul>
-<div class="highlight"><pre>        make devserver
+<div class="highlight"><pre><span></span>        make devserver
 </pre></div>
 
 
@@ -110,7 +110,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <p>Tắt web</p>
 </li>
 </ul>
-<div class="highlight"><pre>        make stopserver
+<div class="highlight"><pre><span></span>        make stopserver
 </pre></div>
 
 
@@ -118,7 +118,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <ul>
 <li>Tạo commit thôi nào</li>
 </ul>
-<div class="highlight"><pre>        git checkout vietnamese
+<div class="highlight"><pre><span></span>        git checkout vietnamese
         git add content/2016/results-dpl-election-vi.md
         git commit -m &#39;Add results-dpl-election translatian for Vietnamese&#39;
 </pre></div>
@@ -128,7 +128,7 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 <li>Gửi đóng góp</li>
 </ul>
 <p>Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án dịch <a href="mailto:debian-l10n-vietnamese@lists.debian.org">debian-l10n-vietnamese</a> do anh Trần Ngọc Quân điều phối.</p>
-<div class="highlight"><pre>        git format-patch origin/master --stdout &gt; ban-dich-results-dpl-election.patch
+<div class="highlight"><pre><span></span>        git format-patch origin/master --stdout &gt; ban-dich-results-dpl-election.patch
 </pre></div>
 
 
@@ -155,8 +155,6 @@ với nội dung "<em>gửi bản vá đóng góp bản dịch results-dpl-elect
 
                 <li><a href="http://debian-vn.github.io">Home</a></li>
 
-                <li><a href="https://debian-vn.github.io/pages/about.html">Giới thiệu</a></li>
-                <li><a href="https://debian-vn.github.io/pages/why.html">Lý do</a></li>
                 <br />
                 <li><a href="https://debian-vn.github.io/archives.html">Archives</a>
                 <li><a href="https://debian-vn.github.io/feeds/atom.xml" rel="alternate">Atom feed</a></li>
