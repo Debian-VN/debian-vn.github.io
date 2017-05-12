@@ -10,10 +10,12 @@ Status: published
 Không phải next next (*trình cài đặt nhanh*) là xong sao?
 
 Bạn đã nghe một số distro với triết lý tinh chỉnh nhiều vào hệ thống,
-các distro này không cung cấp *trình cài đặt nhanh* mà muốn người phải cài đặt bằng tay (VD: Arch Linux)
+các distro này không cung cấp *trình cài đặt nhanh* mà muốn người phải cài đặt bằng tay (VD: Gentoo, Arch Linux)
 
 Bài hướng dẫn hôm nay trình bày các bước cài đặt Debian bằng tay với 1 bản livecd,
 mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơn bản chất của việc cài đặt.
+
+Bạn có thể xem tài liệu chính thức từ trang chủ [Debian: D.3. Cài đặt Debian GNU/Linux từ hệ thống UNIX/Linux](https://www.debian.org/releases/stable/amd64/apds03.html.vi) 
 
 Việc cài đặt gồm 3 bước chính:
 

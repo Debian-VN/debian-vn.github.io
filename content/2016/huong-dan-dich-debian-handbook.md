@@ -29,7 +29,7 @@ Cuốn sách này dạy các yếu tố cần thiết cho bất cứ ai muốn t
 Và chỉ cần quan tâm các tập tin ở trong thư mục [vi-VN](https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN) thôi.
 #### Mình sẽ dịch 1 đoạn trong phần _00a_preface_ của quyển sách này
 ```
-# TxGVNN <txgvnn@gmail.com> 2016
+# Giap Tran <txgvnn@gmail.com> 2016
 # Tên <email> năm-dịch
 msgid ""
 msgstr ""
@@ -74,7 +74,11 @@ Như vậy là xong
 #### [Tuỳ chọn] Bạn muốn build thử pdf,html hay epub trên chính máy bạn.
 - Cài đặt môi trường, tool để build
 ```
-		sudo apt-get install dblatex texlive-xetex publican publican-debian
+		sudo apt-get install \
+		dblatex texlive texlive-xetex publican publican-debian \
+		curl lmodern texlive-lang-cyrillic ghostscript \
+		texlive-fonts-extra texlive-font-utils texlive-generic-recommended \
+		texlive-math-extra texlive-pstricks
 ```
 - Build thôi
 ```
