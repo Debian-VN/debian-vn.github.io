@@ -8,9 +8,11 @@ Nhiệm vụ đơn giản, trước mắt nhằm xây dựng các tài liệu, h
 Tham gia cộng đồng cùng chúng tôi:
 
  * [Debian VN Github](http://github.com/Debian-VN)
- * [Debian VN Email](mailto:debian-vn@googlegroups.com)
+ * [Mailing dịch liệu (debian-l10n-vietnamese@lists.debian.org)](https://lists.debian.org/debian-l10n-vietnamese)
+ * [Mailing người dùng (debian-user-vietnamese@lists.debian.org)](https://lists.debian.org/debian-user-vietnamese)
+ * [Mailing báo commit từ github](mailto:debian-vn@googlegroups.com)
  * [Debian VN Facebook](https://www.facebook.com/groups/debian-vn/)
- * [\#debian-vn IRC](irc://irc.debian.org/debian-vn)
+ * [\#debian-vn IRC tại irc.oftc.net](https://webchat.oftc.net/#debian-vn)
 
 Blogs này sử dụng [Pelican][pelican]. Và giao diện được sao chép từ [Bits from Debian](https://bits.debian.org/)
 
