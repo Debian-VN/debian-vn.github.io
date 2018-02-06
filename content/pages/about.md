@@ -10,9 +10,9 @@ Tham gia cộng đồng cùng chúng tôi:
  * [Debian VN Github](http://github.com/Debian-VN)
  * [Mailing dịch liệu (debian-l10n-vietnamese@lists.debian.org)](https://lists.debian.org/debian-l10n-vietnamese)
  * [Mailing người dùng (debian-user-vietnamese@lists.debian.org)](https://lists.debian.org/debian-user-vietnamese)
+ * [\#debian-vn IRC tại irc.oftc.net](https://webchat.oftc.net/#debian-vn) 
+ * [Debian VN Facebook](https://www.facebook.com/groups/debian-vn/) 
  * [Mailing báo commit từ github](mailto:debian-vn@googlegroups.com)
- * [Debian VN Facebook](https://www.facebook.com/groups/debian-vn/)
- * [\#debian-vn IRC tại irc.oftc.net](https://webchat.oftc.net/#debian-vn)
 
 Blogs này sử dụng [Pelican][pelican]. Và giao diện được sao chép từ [Bits from Debian](https://bits.debian.org/)
 
