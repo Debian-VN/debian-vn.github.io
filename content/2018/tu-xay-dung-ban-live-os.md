@@ -225,10 +225,10 @@ Mình thực hiện `lb build` để build bản live của mình. Sau khi kết
 
 Copy 3 tệp tin này vào `/dev/sdc1` như sau:
 ```
-sh# mount /dev/sdb1 /mnt
+sh# mount /dev/sdc1 /mnt
 sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
-cp binary/live/initrd.img /mnt/live/initrd.debian.img
-cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
+sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img
+sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
 
 ```
 Tạo thông tin cho Debian live
