@@ -161,8 +161,8 @@ Bây giờ mình có thể boot live hệ điều hành này rồi.&lt;/p&gt;
 &lt;p&gt;Copy 3 tệp tin này vào &lt;code&gt;/dev/sdc1&lt;/code&gt; như sau:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mount /dev/sdb1 /mnt
 sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
-cp binary/live/initrd.img /mnt/live/initrd.debian.img
-cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
+sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img
+sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
 &lt;/pre&gt;&lt;/div&gt;
 
 
