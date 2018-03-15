@@ -33,7 +33,7 @@ content/
 #### Viết bài mới
 
 ```
-vi content/bai-viet-moi.md
+vi content/2016/bai-viet-moi.md
 ```
 
 #### Chạy thử và kiểm nghiệm
@@ -49,7 +49,7 @@ make stopserver
 ```
 
 #### Và đăng nội dụng mới lên github
-- Tạo html vào nhánh **master** (nhánh master ở thư mục output, chứ không checkout sang master) và đẩy lên
+- Tạo html vả đẩy html lên nhánh **master** (nhánh master ở thư mục output, chứ không checkout sang master)
 ```
 make html
 cd output
@@ -57,7 +57,7 @@ git add *
 git commit -m 'add new bai-viet-moi.html'
 git push origin master
 ```
-- Đẩy mardown tới nhánh **manager** lên
+- Đẩy markdown tới nhánh **manager** lên
 
 ```
 cd -
