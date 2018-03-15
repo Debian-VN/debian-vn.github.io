@@ -159,7 +159,7 @@ Bây giờ mình có thể boot live hệ điều hành này rồi.&lt;/p&gt;
 &lt;h3&gt;2. Thêm Debian live vào cùng&lt;/h3&gt;
 &lt;p&gt;Mình thực hiện &lt;code&gt;lb build&lt;/code&gt; để build bản live của mình. Sau khi kết thúc, trong thư mục &lt;code&gt;binary/live&lt;/code&gt; có 3 tệp tin quan trọng là &lt;code&gt;vmlinuz&lt;/code&gt;, &lt;code&gt;initrd.img&lt;/code&gt; và &lt;code&gt;filesystem.debian.squashfs&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Copy 3 tệp tin này vào &lt;code&gt;/dev/sdc1&lt;/code&gt; như sau:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mount /dev/sdb1 /mnt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mount /dev/sdc1 /mnt
 sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
 sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img
 sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
