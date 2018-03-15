@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Debian VN - Xấy dựng bản Live từ Debian cho riêng bạn</title>
+    <meta name="description" content="">
+    <meta name="author" content="Debian Việt Nam">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- Styles -->
+    <link href="https://debian-vn.github.io/theme/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <a href="https://debian-vn.github.io"><img align="left" class="logo" src="https://debian-vn.github.io/theme/images/openlogo-nd-75.png" alt="Debian VN" align="left" style="margin-top: 20px;"></a>
+        <p>Debian Việt Nam</p>
+    </div>
+
+    <hr class="nocss" />
+    <div id="content">
+    <div class='article' lang='vi'>
+        <div class="content-title">
+            <h1>Xấy dựng bản Live từ Debian cho riêng bạn</h1>
+Thu 15 March 2018
+
+by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Giáp Trần</a>
+
+
+with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a>         </div>
+
+        <div><p><strong>Live OS</strong> không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ không được lưu lại khi tắt hệ thống. Nó có thể khởi động trên bất kỳ máy tính nào khi cắm vào (tất nhiên phải cùng kiến trúc vi xử lý nha)</p>
+<p>Qua thời gian dùng <a href="https://github.com/TxGVNN/live-os/">TxGVNN/live-os</a> của chính mình một thời gian, hôm nay mình chia sẻ cách tạo ra bản live-os cho riêng các bạn từ kinh nghiệm tào lao của mình -_-</p>
+<h2>Sao phải dùng?</h2>
+<p>Tuỳ mục đính của bạn. Với mình, bản live chứa các công cụ mình cần để làm việc và giải trí, có thể cắm vào máy công ty, ở nhà và bạn bè để dùng 1 cách thoải mái.
+Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần nó để làm cái gì đó, với chiếc USB có chứa bản live-os, quá dễ dàng để ta làm điều đó bằng cách mượn máy tính nhưng không mượn hệ điều hành. Hơhơ =))</p>
+<p>Hay đôi khi là cứu cánh cho các máy tính GNU/Linux OS lỗi boot hoặc chuyển phân vùng các kiểu. Thậm chí là 1 bản chuyên cài Linux dạo :P</p>
+<p>Ngoài ra, chúng ta có các bản live cho các mục đích đặc biệt:</p>
+<ul>
+<li><a href="https://tails.boum.org">Tails - Privacy for anyone anywhere</a> Nghe tên đã rõ.</li>
+<li><a href="https://docs.kali.org/category/downloading">Kali Linux Live</a> Cho người cần công cụ từ Kali.</li>
+</ul>
+<p>Hiện mình đang sử dụng cả 2 OS này nữa để mutil-boot với bản live-os của mình.</p>
+<h2>Cần công cụ gì?</h2>
+<p>Debian cung cấp công cụ <a href="http://debian-live.alioth.debian.org/live-manual/stable/manual/html/live-manual.en.html">live-build</a></p>
+<p>Công cụ này là tập hợp các kịch bản giúp tạo ra một bản live từ cơ bản đến phức tạp bằng cách hỗ trợ rất tốt trong việc chinh tỉnh bản live theo ý bạn muốn. <em>Đó là lý do mình gọi là <strong>bản live-os cho riêng bạn</strong></em>. </p>
+<p>Các bản distro based Debian chắc vẫn sẽ kế thừa tools này (Ubuntu). Má thật, Debian làm tốt quá, không có cơ hội đóng góp (chém giooó)</p>
+<h3>Cài cắm công cụ</h3>
+<div class="highlight"><pre><span></span>sh# apt-get install live-build
+</pre></div>
+
+
+<p>Chúng ta có thể thấy <code>live-build</code> phụ thuộc vào <code>debootstrap</code>, công cụ chuẩn của Debian mà mình đã dùng trong bài viết <a href="/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html">Cài đặt Debian từng bước một bằng lệnh</a></p>
+<p>Như vậy bạn có thể hiểu ngay, <code>live-build</code> sử dụng <code>debootstrap</code> để tạo ra một hệ điều hành mới vào 1 thư mục nào đó, rồi thực hiện <code>chroot</code> vào trỏng để xử lý cài đặt và tinh chỉnh thêm, đại loại là thế.</p>
+<h2>I. Quá trình xây dựng cơ bản</h2>
+<p>Tạo 1 thư mục để làm việc ở đó.</p>
+<div class="highlight"><pre><span></span>    sh# mkdir ~/live-os &amp;&amp; cd ~/live-os
+</pre></div>
+
+
+<h3>1. Tạo cấu hình cơ bản</h3>
+<p><strong>Cách 1:</strong> Sinh cấu hình cơ bản mặc định (không khuyến khích)</p>
+<div class="highlight"><pre><span></span>    sh# lb config
+</pre></div>
+
+
+<p>Sau khi chạy lệnh này, chúng ta sẽ thấy ít nhất 2 thư mục là <code>auto</code>,<code>config</code> được tạo ra. </p>
+<ul>
+<li><code>auto</code> là thư mục chứa các script sẽ là được <code>lb</code> đọc để thực thi các tham số cấu hình thay vì mặc định</li>
+<li><code>config</code> là toàn bộ cấu hình mặc định.</li>
+</ul>
+<p><strong>Cách 2:</strong> Clone cấu hình cơ bản các loại từ nhóm phát triển <code>live-team</code> (quá khuyến khích)</p>
+<div class="highlight"><pre><span></span>    sh# git clone git://anonscm.debian.org/debian-live/live-images.git --branch debian /tmp/live-images
+</pre></div>
+
+
+<ul>
+<li>Gòm có các loại cấu hình như sau </li>
+</ul>
+<div class="highlight"><pre><span></span>    sh# ls /tmp/live-images/images/ -1
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>    cinnamon-desktop
+    gnome-desktop
+    kde-desktop
+    lxde-desktop
+    mate-desktop
+    standard
+    xfce-desktop
+</pre></div>
+
+
+<p>Ở đây mình sẽ lấy cái <code>standard</code> (chưa cài đặt GUI)</p>
+<div class="highlight"><pre><span></span>    sh# cp /tmp/live-images/images/standard/* ~/live-os/ -av
+</pre></div>
+
+
+<h3>2. Tạo tệp iso</h3>
+<p>Sau đó chúng ta chỉ việc chạy</p>
+<div class="highlight"><pre><span></span>    sh# lb build
+</pre></div>
+
+
+<p>Nó sẽ tự động thực hiện tất cả công đoạn và cuối cùng tạo ra các tệp tin dành cho live.</p>
+<p>Như file <code>filesystem.squash</code>, <code>vmlinuz</code>, <code>initrd.gz</code> hay <code>*.iso</code></p>
+<h3>3. Tạo boot vào USB</h3>
+<p>Giả sử <code>/dev/sdc</code> là đường dẫn của USB sau khi chúng ta cắm vô.
+Thực hiện sao chép dữ liệu từ iso sang USB.</p>
+<div class="highlight"><pre><span></span>    sh# dd if=&lt;file&gt;.iso of=/dev/sdc
+</pre></div>
+
+
+<h3>4. Boot hệ điều hành live</h3>
+<p>Cắm USB vào, bật máy tính và truy cập vào <code>Boot menu</code> trên máy tính, cuối cùng chọn boot từ USB.</p>
+<h2>II. Tinh chỉnh bản live cho riêng bạn</h2>
+<p>Ở bước 1, tạo cấu hình, chúng ta có nhiều cách để tinh chỉnh OS theo ý của mình.</p>
+<h4>1. <code>auto/config</code> là tệp cấu hình các tham số khi chúng ta thực hiện <code>lb config</code></h4>
+<p>Mọi người có thêm xem các tham số chi tiết bằng <code>man lb_config</code></p>
+<p>Ví dụ:
+Cấu hình với Debian phiên bản 9(stretch) trên cấu trúc <code>amd64</code> và mirror Vietnam cho tốc độ nhanh.</p>
+<div class="highlight"><pre><span></span><span class="nv">_ARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
+<span class="nv">_MIRROR</span><span class="o">=</span><span class="s2">&quot;http://debian.xtdv.net/debian&quot;</span>
+<span class="nv">_DIST</span><span class="o">=</span><span class="s2">&quot;stretch&quot;</span>
+
+lb config noauto <span class="se">\</span>
+    --verbose <span class="se">\</span>
+    --architecture <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_ARCH</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+    --distribution <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_DIST</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+    --apt-source-archives <span class="s2">&quot;false&quot;</span> <span class="se">\</span>
+    --archive-areas <span class="s2">&quot;main contrib non-free&quot;</span> <span class="se">\</span>
+    --linux-packages <span class="s2">&quot;linux-image linux-headers&quot;</span> <span class="se">\</span>
+    --mirror-binary <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_MIRROR</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+    --mirror-chroot <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_MIRROR</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+    --mirror-bootstrap <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_MIRROR</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+    <span class="s2">&quot;</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<h3>2. Cài đặt packages cần thiết và tuỳ chọn cho bạn</h3>
+<p>Bằng cách thêm danh sách gói mới vào tệp tin mới (đuôi <code>.list.chroot</code>) trong thư mục <code>config/package-lists/</code></p>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span>sh# head -n3 config/package-lists/txgvnn.list.chroot
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>cryptsetup
+i3
+xinit
+</pre></div>
+
+
+<h3>3. Cài đặt các cấu hình chi tiết cho môi trường, phần mềm</h3>
+<p>Mình nghĩ có 2 kiểu, <strong>cấu hình tĩnh</strong> (tức là cứng vào OS luôn) và <strong>cấu hình động</strong> (tức chỉ cấu hình lúc boot bản live lên)</p>
+<h4>- Đối với cấu hình tĩnh - Thường áp dụng cho cầu hình hệ thống</h4>
+<p>Chúng ta chỉ cần copy thằng vào <code>config/includes.chroot/</code> và xem đây là thư mục gốc (<code>/</code>) của bản live.</p>
+<p>Ví dụ: Mình muốn tắt cái tiếng beep như <em>beep</em> trong terminal.</p>
+<div class="highlight"><pre><span></span>sh# mkdir config/includes.chroot/etc/modprobe.d/ -p
+sh# echo &quot;blacklist pcspkr&quot; &gt; config/includes.chroot/etc/modprobe.d/nobeep.conf
+</pre></div>
+
+
+<h4>- Đối với cấu hình động - Thường áp dụng cho cầu hình người dùng</h4>
+<p>Chúng ta sẽ viết các script thực hiện việc cấu hình mỗi khi bản live được boot. Công việc này sẽ được thực hiện bởi <code>live-boot</code>.</p>
+<p><code>live-build</code> sẽ cài đặt <code>live-boot</code> (hỗ trợ boot bản live) và <code>live-config{-system}</code> (hỗ trợ các cấu hình cơ bản cho bản live). Các gói này được liệ kê tự động ở <code>config/package-lists/live.list.chroot</code>.</p>
+<p>Ví dụ để thêm cấu hình <code>i3</code> window manager cho mình. <a href="https://github.com/TxGVNN/live-os/blob/master/config/includes.chroot/lib/live/config/0075-i3-config">includes.chroot/lib/live/config/0075-i3-config</a></p>
+<p>Vì <code>live-boot</code> sẽ liệt kê các script theo thứ tự trong thư mục <code>/live/live/{boot,config}</code> nên các bạn hay chú ý đến số thứ tự sẽ tốt hơn cho việc cấu hình. Như cái nào config trước, cái nào sau.</p>
+<h3>4. Hook</h3>
+<p>Được xem là các kịch bản chỉnh sửa hệ thống khi nó đang trong quá trình tạo ra hệ thống.
+Bạn có thể xem các kịch bản sẽ được thực hiện ở <code>config/hooks/</code>. Đây là các hook mặc định từ <code>live-build</code>, bạn có thể thêm mới nếu bạn có ý tưởng gì đó.</p>
+<p>Ví dụ: Bản live của mình có cài tor, nhưng mình không muốn nó luôn khởi động khi boot. Vì thế mình đã tạo ra 1 hook nhằm disable nó. <a href="https://github.com/TxGVNN/live-os/blob/master/config/hooks/live/0100-update-rc.d.hook.chroot">live-os/config/hooks/live/0100-update-rc.d.hook.chroot</a></p>
+<h3>5. Còn nhiều cái nữa để biến ý tưởng vào bản live.</h3>
+<p>Chi tiết mọi người có thể đọc tại <a href="http://debian-live.alioth.debian.org/live-manual/stable/manual/html/live-manual.en.html">Live Systems Manual</a></p>
+<p>Bản thân mình còn sử dụng thêm 1 phân vùng nằm trên USB gọi là <code>persistence store</code> nhằm lưu trữ các dữ liệu cá nhân. Lý do là live-os sẽ xoá toàn bộ dữ liệu sinh ra trong quá trình sủ dụng sau khi tắt nó.</p>
+<p>Ngoài ra với phân vùng này mình sử dụng <code>cryptsetup</code> để mã hoá toàn bộ phân vùng, sẽ là tuyệt để lưu trữ dữ liệu cá nhân nhưng vẫn cho bạn bè, đồng nghiệp mượn bản <code>live</code> vô tư. Tính năng này có sẵn trong <code>Tails OS</code>, đây thật sự là bản live rất tốt.</p>
+<h2>III. Dual-boot hoặc mutil-boot cùng các bản live khác</h2>
+<p>Vấn đề này nảy sinh khi mình tham lam muốn có thể boot 3 bản live khác nhau trong 1 cái USB (16 GB) gồm: Debian, Tails OS và Kali.</p>
+<h3>1. Mình sử dụng chương trình <code>Tails Installer</code> (viết bằng <code>Python</code>) do <code>Tails</code> cung cấp.</h3>
+<p>Chương trình này sẽ chia USB thành 2 phân vùng như sau</p>
+<div class="highlight"><pre><span></span>    /dev/sdc         16   GB     # Tổng
+    |-/dev/sdc1      2.5  GB     # Tất cả OS và bootloader
+    |-/dev/sdc2      13.5 GB     # Phân vùng dữ liệu riêng, sẽ mã hoá bằng LUKS
+</pre></div>
+
+
+<p>Tức nó sẽ chia 1 phân vùng mặc định <code>2.5 GB</code> cho cả bản Live. Bạn có thể sửa giá trị này trong <code>/usr/lib/python2.7/dist-packages/tails_installer/config.py</code>. Mình sửa thành <code>3300 MB</code> để có thể chứa được 3 OS.</p>
+<p>Sau đó nó sẽ tạo boot cho <code>Tails OS</code> vào USB và toàn bộ hệ điều hành nằm ở <code>/dev/sdc1</code> 
+Bây giờ mình có thể boot live hệ điều hành này rồi.</p>
+<h3>2. Thêm Debian live vào cùng</h3>
+<p>Mình thực hiện <code>lb build</code> để build bản live của mình. Sau khi kết thúc, trong thư mục <code>binary/live</code> có 3 tệp tin quan trọng là <code>vmlinuz</code>, <code>initrd.img</code> và <code>filesystem.debian.squashfs</code></p>
+<p>Copy 3 tệp tin này vào <code>/dev/sdc1</code> như sau:</p>
+<div class="highlight"><pre><span></span>sh# mount /dev/sdb1 /mnt
+sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
+cp binary/live/initrd.img /mnt/live/initrd.debian.img
+cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
+</pre></div>
+
+
+<p>Tạo thông tin cho Debian live</p>
+<div class="highlight"><pre><span></span>sh# echo &quot;filesystem.debian.squashfs&quot; &gt; /mnt/live/Debian.module
+</pre></div>
+
+
+<p>Thêm thông tin boot cho Debian live</p>
+<p>Thêm vào 4 tệp tin (mình thấy chỉ cần 2 cái <code>live64.cfg</code> là đủ)</p>
+<div class="highlight"><pre><span></span>    - /mnt/EFI/BOOT/live{,64}.cfg      # 2 cho EFI boot (32 và 64)
+    - /mnt/syslinux/live{,64}.cfg      # 2 cho Legacy boot (32 và 64)
+</pre></div>
+
+
+<p>như sau:</p>
+<div class="highlight"><pre><span></span>label livedebian
+        menu label Debian
+        kernel /live/vmlinuz.debian
+        append initrd=/live/initrd.debian.img boot=live module=Debian timezone=Asia/Ho_Chi_Minh components splash quiet
+</pre></div>
+
+
+<p>Đối với <code>Kali live</code> thì tương tự.</p>
+<p>Sau đó </p>
+<div class="highlight"><pre><span></span>sh# umount /mnt
+</pre></div>
+
+
+<p>Và boot hưởng thành quả</p>
+<h3>? Nếu bạn muốn mutil-boot mà muống dùng Tails Installer để bắt đầu</h3>
+<p>Ví dụ các bạn dùng <code>dd</code> để tạo boot từ tệp iso. Mình vẫn nghĩ có thể làm theo cách trên.</p></div>
+
+        <hr>
+    </div>
+    </div>
+
+    <div id="rightcolumn">
+
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+                <ul class="nav-list">
+
+                <li><a href="http://debian-vn.github.io">Home</a></li>
+
+                <li><a href="https://debian-vn.github.io/pages/about.html">Giới thiệu</a></li>
+                <br />
+                <li><a href="https://debian-vn.github.io/archives.html">Archives</a>
+                <li><a href="https://debian-vn.github.io/feeds/atom.xml" rel="alternate">Atom feed</a></li>
+                <li><a href="https://debian-vn.github.io/feeds/feed.rss" rel="alternate">RSS feed</a></li>
+                </ul>
+            </div>
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>Tags</h1>
+                <ul class="nav-list">
+                  <li><a href="https://debian-vn.github.io/tag/dong-gop.html">dong-gop</a> (2)</li>
+                  <li><a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> (4)</li>
+                </ul>
+            </div>
+
+
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>More on Debian</h1>
+                <ul class="nav-list">
+                <li><a href="http://www.debian.org/News/">Debian Project News</a></li>
+                <li><a href="http://get.debian.net">Get Debian</a></li>
+                </ul>
+            </div>
+
+    </div>
+
+    <hr class="nocss" />
+    <div id="footer">
+        <p><a href="https://debian-vn.github.io">debian-vn.github.io</a> is the official blog of <a href="https://www.facebook.com/groups/426931777506013/"> Debian VN Community</a></p>
+    </div>
+
+</div>
+</body>
+</html>

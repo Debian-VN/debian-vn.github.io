@@ -1,5 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2016-08-28T17:43:00+07:00</updated><entry><title>Cài đặt Debian từng bước một bằng lệnh</title><link href="https://debian-vn.github.io/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html" rel="alternate"></link><published>2016-08-28T17:43:00+07:00</published><updated>2016-08-28T17:43:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-08-28:/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2018-03-15T00:00:00+07:00</updated><entry><title>Xấy dựng bản Live từ Debian cho riêng bạn</title><link href="https://debian-vn.github.io/2018/03/tu-xay-dung-ban-live-os.html" rel="alternate"></link><published>2018-03-15T00:00:00+07:00</published><updated>2018-03-15T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-03-15:/2018/03/tu-xay-dung-ban-live-os.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ không được lưu lại khi tắt hệ thống. Nó có thể khởi động trên bất kỳ máy tính nào khi cắm vào (tất nhiên phải cùng kiến trúc vi xử lý nha)&lt;/p&gt;
+&lt;p&gt;Qua thời gian dùng &lt;a href="https://github.com/TxGVNN/live-os/"&gt;TxGVNN/live-os&lt;/a&gt; của chính mình một thời gian, hôm nay mình chia sẻ cách tạo ra bản live-os cho riêng các bạn từ kinh nghiệm tào lao của mình -_-&lt;/p&gt;
+&lt;h2&gt;Sao phải dùng?&lt;/h2&gt;
+&lt;p&gt;Tuỳ mục đính của bạn. Với mình, bản live chứa các công cụ mình cần để làm việc và giải trí, có thể cắm vào máy công ty, ở nhà và bạn bè để dùng 1 cách thoải mái.
+Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần nó để làm cái gì đó, với chiếc USB có chứa bản live-os, quá dễ dàng để ta làm điều đó bằng cách mượn máy tính nhưng không mượn hệ điều hành. Hơhơ =))&lt;/p&gt;
+&lt;p&gt;Hay đôi khi là cứu cánh cho các máy tính GNU/Linux OS lỗi boot hoặc chuyển phân vùng các kiểu. Thậm chí là 1 bản chuyên cài Linux dạo :P&lt;/p&gt;
+&lt;p&gt;Ngoài ra, chúng ta có các bản live cho các mục đích đặc biệt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://tails.boum.org"&gt;Tails - Privacy for anyone anywhere&lt;/a&gt; Nghe tên đã rõ.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.kali.org/category/downloading"&gt;Kali Linux Live&lt;/a&gt; Cho người cần công cụ từ Kali.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hiện mình đang sử dụng cả 2 OS này nữa để mutil-boot với bản live-os của mình.&lt;/p&gt;
+&lt;h2&gt;Cần công cụ gì?&lt;/h2&gt;
+&lt;p&gt;Debian cung cấp công cụ &lt;a href="http://debian-live.alioth.debian.org/live-manual/stable/manual/html/live-manual.en.html"&gt;live-build&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Công cụ này là tập hợp các kịch bản giúp tạo ra một bản live từ cơ bản đến phức tạp bằng cách hỗ trợ rất tốt trong việc chinh tỉnh bản live theo ý bạn muốn. &lt;em&gt;Đó là lý do mình gọi là &lt;strong&gt;bản live-os cho riêng bạn&lt;/strong&gt;&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;Các bản distro based Debian chắc vẫn sẽ kế thừa tools này (Ubuntu). Má thật, Debian làm tốt quá, không có cơ hội đóng góp (chém giooó)&lt;/p&gt;
+&lt;h3&gt;Cài cắm công cụ&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# apt-get install live-build
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Chúng ta có thể thấy &lt;code&gt;live-build&lt;/code&gt; phụ thuộc vào &lt;code&gt;debootstrap&lt;/code&gt;, công cụ chuẩn của Debian mà mình đã dùng trong bài viết &lt;a href="/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html"&gt;Cài đặt Debian từng bước một bằng lệnh&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Như vậy bạn có thể hiểu ngay, &lt;code&gt;live-build&lt;/code&gt; sử dụng &lt;code&gt;debootstrap&lt;/code&gt; để tạo ra một hệ điều hành mới vào 1 thư mục nào đó, rồi thực hiện &lt;code&gt;chroot&lt;/code&gt; vào trỏng để xử lý cài đặt và tinh chỉnh thêm, đại loại là thế.&lt;/p&gt;
+&lt;h2&gt;I. Quá trình xây dựng cơ bản&lt;/h2&gt;
+&lt;p&gt;Tạo 1 thư mục để làm việc ở đó.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# mkdir ~/live-os &amp;amp;&amp;amp; cd ~/live-os
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1. Tạo cấu hình cơ bản&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Cách 1:&lt;/strong&gt; Sinh cấu hình cơ bản mặc định (không khuyến khích)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# lb config
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sau khi chạy lệnh này, chúng ta sẽ thấy ít nhất 2 thư mục là &lt;code&gt;auto&lt;/code&gt;,&lt;code&gt;config&lt;/code&gt; được tạo ra. &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;auto&lt;/code&gt; là thư mục chứa các script sẽ là được &lt;code&gt;lb&lt;/code&gt; đọc để thực thi các tham số cấu hình thay vì mặc định&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;config&lt;/code&gt; là toàn bộ cấu hình mặc định.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cách 2:&lt;/strong&gt; Clone cấu hình cơ bản các loại từ nhóm phát triển &lt;code&gt;live-team&lt;/code&gt; (quá khuyến khích)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# git clone git://anonscm.debian.org/debian-live/live-images.git --branch debian /tmp/live-images
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Gòm có các loại cấu hình như sau &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# ls /tmp/live-images/images/ -1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    cinnamon-desktop
+    gnome-desktop
+    kde-desktop
+    lxde-desktop
+    mate-desktop
+    standard
+    xfce-desktop
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ở đây mình sẽ lấy cái &lt;code&gt;standard&lt;/code&gt; (chưa cài đặt GUI)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# cp /tmp/live-images/images/standard/* ~/live-os/ -av
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. Tạo tệp iso&lt;/h3&gt;
+&lt;p&gt;Sau đó chúng ta chỉ việc chạy&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# lb build
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nó sẽ tự động thực hiện tất cả công đoạn và cuối cùng tạo ra các tệp tin dành cho live.&lt;/p&gt;
+&lt;p&gt;Như file &lt;code&gt;filesystem.squash&lt;/code&gt;, &lt;code&gt;vmlinuz&lt;/code&gt;, &lt;code&gt;initrd.gz&lt;/code&gt; hay &lt;code&gt;*.iso&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;3. Tạo boot vào USB&lt;/h3&gt;
+&lt;p&gt;Giả sử &lt;code&gt;/dev/sdc&lt;/code&gt; là đường dẫn của USB sau khi chúng ta cắm vô.
+Thực hiện sao chép dữ liệu từ iso sang USB.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# dd if=&amp;lt;file&amp;gt;.iso of=/dev/sdc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. Boot hệ điều hành live&lt;/h3&gt;
+&lt;p&gt;Cắm USB vào, bật máy tính và truy cập vào &lt;code&gt;Boot menu&lt;/code&gt; trên máy tính, cuối cùng chọn boot từ USB.&lt;/p&gt;
+&lt;h2&gt;II. Tinh chỉnh bản live cho riêng bạn&lt;/h2&gt;
+&lt;p&gt;Ở bước 1, tạo cấu hình, chúng ta có nhiều cách để tinh chỉnh OS theo ý của mình.&lt;/p&gt;
+&lt;h4&gt;1. &lt;code&gt;auto/config&lt;/code&gt; là tệp cấu hình các tham số khi chúng ta thực hiện &lt;code&gt;lb config&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;Mọi người có thêm xem các tham số chi tiết bằng &lt;code&gt;man lb_config&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ví dụ:
+Cấu hình với Debian phiên bản 9(stretch) trên cấu trúc &lt;code&gt;amd64&lt;/code&gt; và mirror Vietnam cho tốc độ nhanh.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;_ARCH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;amd64&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://debian.xtdv.net/debian&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;_DIST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;stretch&amp;quot;&lt;/span&gt;
+
+lb config noauto &lt;span class="se"&gt;\&lt;/span&gt;
+    --verbose &lt;span class="se"&gt;\&lt;/span&gt;
+    --architecture &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_ARCH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --distribution &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_DIST&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --apt-source-archives &lt;span class="s2"&gt;&amp;quot;false&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --archive-areas &lt;span class="s2"&gt;&amp;quot;main contrib non-free&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --linux-packages &lt;span class="s2"&gt;&amp;quot;linux-image linux-headers&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --mirror-binary &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --mirror-chroot &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    --mirror-bootstrap &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. Cài đặt packages cần thiết và tuỳ chọn cho bạn&lt;/h3&gt;
+&lt;p&gt;Bằng cách thêm danh sách gói mới vào tệp tin mới (đuôi &lt;code&gt;.list.chroot&lt;/code&gt;) trong thư mục &lt;code&gt;config/package-lists/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ví dụ:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# head -n3 config/package-lists/txgvnn.list.chroot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cryptsetup
+i3
+xinit
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3. Cài đặt các cấu hình chi tiết cho môi trường, phần mềm&lt;/h3&gt;
+&lt;p&gt;Mình nghĩ có 2 kiểu, &lt;strong&gt;cấu hình tĩnh&lt;/strong&gt; (tức là cứng vào OS luôn) và &lt;strong&gt;cấu hình động&lt;/strong&gt; (tức chỉ cấu hình lúc boot bản live lên)&lt;/p&gt;
+&lt;h4&gt;- Đối với cấu hình tĩnh - Thường áp dụng cho cầu hình hệ thống&lt;/h4&gt;
+&lt;p&gt;Chúng ta chỉ cần copy thằng vào &lt;code&gt;config/includes.chroot/&lt;/code&gt; và xem đây là thư mục gốc (&lt;code&gt;/&lt;/code&gt;) của bản live.&lt;/p&gt;
+&lt;p&gt;Ví dụ: Mình muốn tắt cái tiếng beep như &lt;em&gt;beep&lt;/em&gt; trong terminal.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mkdir config/includes.chroot/etc/modprobe.d/ -p
+sh# echo &amp;quot;blacklist pcspkr&amp;quot; &amp;gt; config/includes.chroot/etc/modprobe.d/nobeep.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;- Đối với cấu hình động - Thường áp dụng cho cầu hình người dùng&lt;/h4&gt;
+&lt;p&gt;Chúng ta sẽ viết các script thực hiện việc cấu hình mỗi khi bản live được boot. Công việc này sẽ được thực hiện bởi &lt;code&gt;live-boot&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;live-build&lt;/code&gt; sẽ cài đặt &lt;code&gt;live-boot&lt;/code&gt; (hỗ trợ boot bản live) và &lt;code&gt;live-config{-system}&lt;/code&gt; (hỗ trợ các cấu hình cơ bản cho bản live). Các gói này được liệ kê tự động ở &lt;code&gt;config/package-lists/live.list.chroot&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ví dụ để thêm cấu hình &lt;code&gt;i3&lt;/code&gt; window manager cho mình. &lt;a href="https://github.com/TxGVNN/live-os/blob/master/config/includes.chroot/lib/live/config/0075-i3-config"&gt;includes.chroot/lib/live/config/0075-i3-config&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Vì &lt;code&gt;live-boot&lt;/code&gt; sẽ liệt kê các script theo thứ tự trong thư mục &lt;code&gt;/live/live/{boot,config}&lt;/code&gt; nên các bạn hay chú ý đến số thứ tự sẽ tốt hơn cho việc cấu hình. Như cái nào config trước, cái nào sau.&lt;/p&gt;
+&lt;h3&gt;4. Hook&lt;/h3&gt;
+&lt;p&gt;Được xem là các kịch bản chỉnh sửa hệ thống khi nó đang trong quá trình tạo ra hệ thống.
+Bạn có thể xem các kịch bản sẽ được thực hiện ở &lt;code&gt;config/hooks/&lt;/code&gt;. Đây là các hook mặc định từ &lt;code&gt;live-build&lt;/code&gt;, bạn có thể thêm mới nếu bạn có ý tưởng gì đó.&lt;/p&gt;
+&lt;p&gt;Ví dụ: Bản live của mình có cài tor, nhưng mình không muốn nó luôn khởi động khi boot. Vì thế mình đã tạo ra 1 hook nhằm disable nó. &lt;a href="https://github.com/TxGVNN/live-os/blob/master/config/hooks/live/0100-update-rc.d.hook.chroot"&gt;live-os/config/hooks/live/0100-update-rc.d.hook.chroot&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;5. Còn nhiều cái nữa để biến ý tưởng vào bản live.&lt;/h3&gt;
+&lt;p&gt;Chi tiết mọi người có thể đọc tại &lt;a href="http://debian-live.alioth.debian.org/live-manual/stable/manual/html/live-manual.en.html"&gt;Live Systems Manual&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Bản thân mình còn sử dụng thêm 1 phân vùng nằm trên USB gọi là &lt;code&gt;persistence store&lt;/code&gt; nhằm lưu trữ các dữ liệu cá nhân. Lý do là live-os sẽ xoá toàn bộ dữ liệu sinh ra trong quá trình sủ dụng sau khi tắt nó.&lt;/p&gt;
+&lt;p&gt;Ngoài ra với phân vùng này mình sử dụng &lt;code&gt;cryptsetup&lt;/code&gt; để mã hoá toàn bộ phân vùng, sẽ là tuyệt để lưu trữ dữ liệu cá nhân nhưng vẫn cho bạn bè, đồng nghiệp mượn bản &lt;code&gt;live&lt;/code&gt; vô tư. Tính năng này có sẵn trong &lt;code&gt;Tails OS&lt;/code&gt;, đây thật sự là bản live rất tốt.&lt;/p&gt;
+&lt;h2&gt;III. Dual-boot hoặc mutil-boot cùng các bản live khác&lt;/h2&gt;
+&lt;p&gt;Vấn đề này nảy sinh khi mình tham lam muốn có thể boot 3 bản live khác nhau trong 1 cái USB (16 GB) gồm: Debian, Tails OS và Kali.&lt;/p&gt;
+&lt;h3&gt;1. Mình sử dụng chương trình &lt;code&gt;Tails Installer&lt;/code&gt; (viết bằng &lt;code&gt;Python&lt;/code&gt;) do &lt;code&gt;Tails&lt;/code&gt; cung cấp.&lt;/h3&gt;
+&lt;p&gt;Chương trình này sẽ chia USB thành 2 phân vùng như sau&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    /dev/sdc         16   GB     # Tổng
+    |-/dev/sdc1      2.5  GB     # Tất cả OS và bootloader
+    |-/dev/sdc2      13.5 GB     # Phân vùng dữ liệu riêng, sẽ mã hoá bằng LUKS
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tức nó sẽ chia 1 phân vùng mặc định &lt;code&gt;2.5 GB&lt;/code&gt; cho cả bản Live. Bạn có thể sửa giá trị này trong &lt;code&gt;/usr/lib/python2.7/dist-packages/tails_installer/config.py&lt;/code&gt;. Mình sửa thành &lt;code&gt;3300 MB&lt;/code&gt; để có thể chứa được 3 OS.&lt;/p&gt;
+&lt;p&gt;Sau đó nó sẽ tạo boot cho &lt;code&gt;Tails OS&lt;/code&gt; vào USB và toàn bộ hệ điều hành nằm ở &lt;code&gt;/dev/sdc1&lt;/code&gt; 
+Bây giờ mình có thể boot live hệ điều hành này rồi.&lt;/p&gt;
+&lt;h3&gt;2. Thêm Debian live vào cùng&lt;/h3&gt;
+&lt;p&gt;Mình thực hiện &lt;code&gt;lb build&lt;/code&gt; để build bản live của mình. Sau khi kết thúc, trong thư mục &lt;code&gt;binary/live&lt;/code&gt; có 3 tệp tin quan trọng là &lt;code&gt;vmlinuz&lt;/code&gt;, &lt;code&gt;initrd.img&lt;/code&gt; và &lt;code&gt;filesystem.debian.squashfs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Copy 3 tệp tin này vào &lt;code&gt;/dev/sdc1&lt;/code&gt; như sau:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mount /dev/sdb1 /mnt
+sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
+cp binary/live/initrd.img /mnt/live/initrd.debian.img
+cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tạo thông tin cho Debian live&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# echo &amp;quot;filesystem.debian.squashfs&amp;quot; &amp;gt; /mnt/live/Debian.module
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Thêm thông tin boot cho Debian live&lt;/p&gt;
+&lt;p&gt;Thêm vào 4 tệp tin (mình thấy chỉ cần 2 cái &lt;code&gt;live64.cfg&lt;/code&gt; là đủ)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    - /mnt/EFI/BOOT/live{,64}.cfg      # 2 cho EFI boot (32 và 64)
+    - /mnt/syslinux/live{,64}.cfg      # 2 cho Legacy boot (32 và 64)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;như sau:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;label livedebian
+        menu label Debian
+        kernel /live/vmlinuz.debian
+        append initrd=/live/initrd.debian.img boot=live module=Debian timezone=Asia/Ho_Chi_Minh components splash quiet
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Đối với &lt;code&gt;Kali live&lt;/code&gt; thì tương tự.&lt;/p&gt;
+&lt;p&gt;Sau đó &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# umount /mnt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và boot hưởng thành quả&lt;/p&gt;
+&lt;h3&gt;? Nếu bạn muốn mutil-boot mà muống dùng Tails Installer để bắt đầu&lt;/h3&gt;
+&lt;p&gt;Ví dụ các bạn dùng &lt;code&gt;dd&lt;/code&gt; để tạo boot từ tệp iso. Mình vẫn nghĩ có thể làm theo cách trên.&lt;/p&gt;</content><category term="huong-dan"></category></entry><entry><title>Cài đặt Debian từng bước một bằng lệnh</title><link href="https://debian-vn.github.io/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html" rel="alternate"></link><published>2016-08-28T17:43:00+07:00</published><updated>2016-08-28T17:43:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-08-28:/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Không phải next next (&lt;em&gt;trình cài đặt nhanh&lt;/em&gt;) là xong sao?&lt;/p&gt;
 &lt;p&gt;Bạn đã nghe một số distro với triết lý tinh chỉnh nhiều vào hệ thống,
 các distro này không cung cấp &lt;em&gt;trình …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
