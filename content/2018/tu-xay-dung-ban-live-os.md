@@ -1,4 +1,4 @@
-Title: Xấy dựng bản Live từ Debian cho riêng bạn
+Title: Xây dựng bản Live từ Debian cho riêng bạn
 Date: 2018-03-15
 Tags: huong-dan
 Slug: tu-xay-dung-ban-live-os
@@ -98,7 +98,7 @@ Sau đó chúng ta chỉ việc chạy
 
 Nó sẽ tự động thực hiện tất cả công đoạn và cuối cùng tạo ra các tệp tin dành cho live.
 
-Như file `filesystem.squash`, `vmlinuz`, `initrd.gz` hay `*.iso`
+Như file `filesystem.squashfs`, `vmlinuz`, `initrd.gz` hay `*.iso`
 
 
 ### 3. Tạo boot vào USB
