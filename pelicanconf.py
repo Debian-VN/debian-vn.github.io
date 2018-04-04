@@ -41,8 +41,9 @@ TRANSLATION_FEED_RSS = 'feeds/feed-%s.rss'
 
 MENUITEMS =  (('Home', 'http://debian-vn.github.io'),)
 
-SOCIAL = (('Debian Project News', 'http://www.debian.org/News/'),
-          ('Get Debian', 'http://get.debian.net'),)
+LINKS = (('Bits from Debian', 'https://bits.debian.org/'),
+          ('OS for Privacy','https://www.privacytools.io/#os'),)
+DOCS = (('Debian New Maintainers\' Guide','https://debian-vn.github.io/maint-guide'),)
 
 PATH = 'content'
 STATIC_PATHS = [

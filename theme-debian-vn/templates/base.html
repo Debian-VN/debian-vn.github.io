@@ -51,24 +51,22 @@
                 </ul>
             </div>
 
-
-            {% if tags %}
+            {% if DOCS %}
             <hr class="nocss" />
             <div class="lateral" style="padding: 8px 0;">
-            <h1>Tags</h1>
+            <h1>Tài liệu tiếng việt</h1>
                 <ul class="nav-list">
-                {% for ta, articles in tags|sort %}
-                  <li><a href="{{ SITEURL }}/{{ ta.url }}">{{ ta }}</a> ({{ articles|count }})</li>
+                {% for name, link in DOCS %}
+                <li><a href="{{ link }}">{{ name }}</a></li>
                 {% endfor %}
                 </ul>
             </div>
             {% endif %}
 
-
             {% if LINKS %}
             <hr class="nocss" />
             <div class="lateral" style="padding: 8px 0;">
-            <h1>Links</h1>
+            <h1>Liên kết</h1>
                 <ul class="nav-list">
                 {% for name, link in LINKS %}
                 <li><a href="{{ link }}">{{ name }}</a></li>
@@ -77,7 +75,6 @@
             </div>
             {% endif %}
 
-
             {% if SOCIAL %}
             <hr class="nocss" />
             <div class="lateral" style="padding: 8px 0;">
@@ -85,6 +82,18 @@
                 <ul class="nav-list">
                 {% for name, link in SOCIAL %}
                 <li><a href="{{ link }}">{{ name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if tags %}
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>Tags</h1>
+                <ul class="nav-list">
+                {% for ta, articles in tags|sort %}
+                  <li><a href="{{ SITEURL }}/{{ ta.url }}">{{ ta }}</a> ({{ articles|count }})</li>
                 {% endfor %}
                 </ul>
             </div>
