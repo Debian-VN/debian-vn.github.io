@@ -1,6 +1,6 @@
 Title: Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook
 Date: 2016-04-24 18:26
-Tags: huong-dan, dong-gop
+Tags: huong-dan, dong-gop, dich
 Slug: huong-dan-dong-gop-ban-dich-debian-handbook
 Author: Giáp Trần
 Status: published

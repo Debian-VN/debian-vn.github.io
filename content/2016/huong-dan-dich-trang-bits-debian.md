@@ -1,6 +1,6 @@
 Title: Hướng dẫn dịch trang bits.debian.org
 Date: 2016-04-24 10:10
-Tags: huong-dan, dong-gop
+Tags: huong-dan, dong-gop, dich
 Slug: huong-dan-dich-trang-bits-debian
 Author: Giáp Trần
 Status: published
