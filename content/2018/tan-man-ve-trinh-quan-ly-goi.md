@@ -1,6 +1,6 @@
 Title: Tản mạn về trình quản lý gói
 Date: 2018-04-28
-Tags: thu-thuat,apt,dpkg
+Tags: apt, dpkg, thu-thuat
 Slug: tan-man-ve-trinh-quan-ly-goi
 Author: Giáp Trần
 Status: draft
@@ -77,11 +77,11 @@ Vì thế nếu bạn không muốn cài đặt các chương trình trực ti�
 Tất nhiên bạn phải có khả năng xử lý các vấn đề xung quanh nếu gói đó yêu cầu các thư viện phụ thuộc, cấu hình gì đó, hoặc nó yêu cầu quyền root. Các gói đơn giản thì chỉ cần bung lụa ra là có thể chạy
 
 
-Nếu chương trình `dpkg` gặp lỗi hay hư hỏng, quá đơn giản để download `dpkg.deb` về và dùng lệnh giải nén `ar` để giải nén vào thăng `/`
+Nếu chương trình `dpkg` gặp lỗi hay hư hỏng, quá đơn giản để download `dpkg.deb` về và dùng lệnh giải nén `ar` để giải nén vào thẳng `/`. Đây là một điểm rất hay, `dpkg` chỉ phụ thuộc vào thư viện rất tối giản, mình nhớ không nhầm thì chỉ cần `busybox` là đủ
 
 ## Đôi điều với dpkg
 
-Dpkg quản lý mọi vấn đề về package ở trên máy bạn. Bao gồm cài đặt, cấu hình, gõ bỏ,... Tức là chỉ quản lý các gói đã cài, hoặc cài các gói mới bằng tệp `package.deb` chứ không biết gì về các kho phần mềm online.
+`dpkg` quản lý mọi vấn đề về package ở trên máy bạn. Bao gồm cài đặt, cấu hình, gõ bỏ,... Tức là chỉ quản lý các gói đã cài, hoặc cài các gói mới bằng tệp `package.deb` chứ không biết gì về các kho phần mềm online.
 
 
 ### 1. dpkg -l (--list)
@@ -152,7 +152,7 @@ x11-xserver-utils: /usr/bin/xrandr
 
 ### 3. dpkg -s (--status)
 
-Sau khi hắn cài xong `x11-xserver-utils` nhưng `xrandr` của hắn không chuyển VGA được (do chưa biết dùng :v), hắn quay sang hỏi mình dùng phiên bản gói nào.
+Sau khi hắn cài xong `x11-xserver-utils` nhưng `xrandr` của hắn không chuyển VGA được (do chưa biết dùng =]]] ), hắn quay sang hỏi mình dùng phiên bản gói nào.
 
 Mình gõ ngay
 
@@ -181,7 +181,7 @@ Server reports RandR version 1.5
 
 ## Đôi điều với apt
 
-Apt ngoài việc làm việc với dpkg để cài cắm, cấu hình, gõ bỏ gói trên máy bạn thì apt còn cần phải quan tâm đến các kho package online mà chúng ta thường thêm bớt ở `/etc/apt/source*`
+`apt` ngoài việc xử lý các công việc như dpkg để cài cắm, cấu hình, gõ bỏ gói trên máy bạn thì apt còn cần phải quan tâm đến các kho package online mà chúng ta thường thêm bớt ở `/etc/apt/source*`
 
 Như vậy để apt biết các gói nằm ở đâu thì cái này do ở bạn
 
@@ -306,7 +306,7 @@ dpkg -L dùng để list toàn bộ tệp trong 1 gói ĐÃ CÀI, đó mà lý d
 apt-file list aircrack-ng
 ```
 
-## Đôi điều và kho phần mềm
+## Đôi điều về kho phần mềm
 Việc sử dụng `apt-*` phụ thuộc vào kho phần mềm online mà bạn đang cài đặt. Các kho phần mềm trong `/etc/apt/source*`
 
 Ví dụ máy bạn nào chưa có kho phần mềm cuả docker thì apt-* không biêt gì về gói `docker-ce` chẳng hạn.
