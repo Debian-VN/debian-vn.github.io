@@ -1,5 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2018-03-15T00:00:00+07:00</updated><entry><title>Xây dựng bản Live từ Debian cho riêng bạn</title><link href="https://debian-vn.github.io/2018/03/tu-xay-dung-ban-live-os.html" rel="alternate"></link><published>2018-03-15T00:00:00+07:00</published><updated>2018-03-15T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-03-15:/2018/03/tu-xay-dung-ban-live-os.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ không được lưu lại khi tắt hệ thống. Nó có thể khởi động trên bất kỳ máy tính nào khi cắm vào (tất nhiên phải cùng kiến trúc vi xử lý nha)&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2018-04-28T00:00:00+07:00</updated><entry><title>Tản mạn về trình quản lý gói</title><link href="https://debian-vn.github.io/2018/04/tan-man-ve-trinh-quan-ly-goi.html" rel="alternate"></link><published>2018-04-28T00:00:00+07:00</published><updated>2018-04-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-04-28:/2018/04/tan-man-ve-trinh-quan-ly-goi.html</id><summary type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
+&lt;p&gt;Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
+&lt;p&gt;Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được đánh giá là trình quản lý gói mạnh mẽ, cũng là một trong những lý do mà các distro khác muốn base trên Debian. À mình chỉ tản mạn về cách mình hay sử dụng với góc nhìn của một sysadmin cũng như người dùng ưu tìm tòi. Còn nâng cao hay chi tiết hơn thì mình nghĩ tài liệu chính thức từ Debian đã viết rất đầy đủ&lt;/p&gt;
+&lt;h2&gt;Sơ qua các gói&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;dpkg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bao gồm các công cụ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L dpkg | grep bin/
+/usr/bin/dpkg
+/usr/bin/dpkg-deb
+/usr/bin/dpkg-divert
+/usr/bin/dpkg-maintscript-helper
+/usr/bin/dpkg-query
+/usr/bin/dpkg-split
+/usr/bin/dpkg-statoverride
+/usr/bin/dpkg-trigger
+/usr/bin/update-alternatives
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Viết tắt của &lt;code&gt;D&lt;/code&gt;ebian &lt;code&gt;P&lt;/code&gt;ac&lt;code&gt;K&lt;/code&gt;a&lt;code&gt;G&lt;/code&gt;e, nó sẽ quản lý tất cả các vấn đề liên quan tới package trên máy của bạn.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;apt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Bao gồm các công cụ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L apt | grep bin/
+/usr/bin/apt
+/usr/bin/apt-cache
+/usr/bin/apt-cdrom
+/usr/bin/apt-config
+/usr/bin/apt-get
+/usr/bin/apt-key
+/usr/bin/apt-mark
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Viết tắt của &lt;code&gt;A&lt;/code&gt;dvanced &lt;code&gt;P&lt;/code&gt;ackaging &lt;code&gt;T&lt;/code&gt;ool&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;apt-file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L apt-file | grep bin/
+/usr/bin/apt-file
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Không viêt tắt nữa, gói này cho phép chúng ta tìm kiếm các gói có trong repo bằng các đường dẫn tệp tệp&lt;/p&gt;
+&lt;p&gt;Còn có rất nhiều gói hỗ trợ về package như &lt;code&gt;aptitude&lt;/code&gt;,&lt;code&gt;software-properties-common&lt;/code&gt;,&lt;code&gt;apt-transport-https&lt;/code&gt;,...&lt;/p&gt;
+&lt;h2&gt;Đôi điều về định dạng *.deb&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ở góc nhìn tệp nén bình thưòng, chúng ta có thể giải nén bằng &lt;code&gt;ar&lt;/code&gt; (cung cấp bởi gói &lt;code&gt;binutils&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;ar t dpkg_1.18.24_amd64.deb
+debian-binary      # version của địng dạng gói *deb
+control.tar.gz     # Toàn bộ tệp nằm trong DEBIAN giúp hỗ trợ về cài đặt, gỡ bỏ gói và thông tin các phụ thuộc
+data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một thư mục / giả để caì vào / thật
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Mở bằng dpkg-deb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dpkg-deb  -R dpkg_1.18.24_amd64.deb tree
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Giải nén vào thư mục &lt;code&gt;tree&lt;/code&gt;, trong thự mục này tương tự nhưng data.tar.xz đã giải nén vào, và control.tar.gz thì giải nén vào thư mục con &lt;code&gt;tree/DEBIAN&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Dùng mà không cần cài trực tiếp&lt;/h3&gt;
+&lt;p&gt;Vì thế nếu bạn không muốn cài đặt các chương trình trực tiếp lên máy (hoặc không có quyền root), cách đơn giản là bạn download tệp deb về và giải nén bằng &lt;code&gt;dpkg-deb&lt;/code&gt; (ưu tiên hơn) vào một thư mục nào đó rồi dùng trực tiêp.&lt;/p&gt;
+&lt;p&gt;Tất nhiên bạn phải có khả năng xử lý các vấn đề xung quanh nếu gói đó yêu cầu các thư viện phụ thuộc, cấu hình gì đó, hoặc nó yêu cầu quyền root. Các gói đơn giản thì chỉ cần bung lụa ra là có thể chạy&lt;/p&gt;
+&lt;p&gt;Nếu chương trình &lt;code&gt;dpkg&lt;/code&gt; gặp lỗi hay hư hỏng, quá đơn giản để download &lt;code&gt;dpkg.deb&lt;/code&gt; về và có thể dùng &lt;code&gt;ar&lt;/code&gt; để giải nén vào thẳng &lt;code&gt;/&lt;/code&gt;. Đây là một điểm rất hay, &lt;code&gt;dpkg&lt;/code&gt; chỉ phụ thuộc vào thư viện rất tối giản, mình nhớ không nhầm thì chỉ cần &lt;code&gt;busybox&lt;/code&gt; là đủ. Bạn có thể kiểm tra bằng &lt;code&gt;apt-cache depends dpkg&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Đôi điều với dpkg&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;dpkg&lt;/code&gt; quản lý mọi vấn đề về package ở trên máy bạn. Bao gồm cài đặt, cấu hình, gõ bỏ,... Tức là chỉ quản lý các gói đã cài, hoặc cài các gói mới bằng tệp &lt;code&gt;package.deb&lt;/code&gt; chứ không biết gì về các kho phần mềm online.&lt;/p&gt;
+&lt;h3&gt;1. dpkg -l (--list)&lt;/h3&gt;
+&lt;p&gt;Lệt kê toàn bộ gói trên hệ thống&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mình hay dùng cái này để grep xem máy mình đã cài cắm cái gì rồi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ví dụ:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -l | grep dpkg
+ii  dpkg                                        1.18.24                                 amd64        Debian package management system
+ii  dpkg-dev                                    1.18.24                                 all          Debian package development tools
+ii  libdpkg-perl                                1.18.24                                 all          Dpkg perl modules
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Hoặc kiểm tra xem gói nào đã gỡ nhưng vẫn tồn tại cấu hình, tức đã &lt;code&gt;remove&lt;/code&gt; mà chưa &lt;code&gt;purge&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -l | awk &amp;#39;/^rc/&amp;#39;
+rc  dnssec-trigger                              0.13-6                                  amd64        reconfiguration tool to make DNSSEC work
+rc  irssi                                       1.0.2-1+deb9u3                          amd64        terminal based IRC client
+rc  resolvconf                                  1.79                                    all          name server information handler
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và có thể purge ngay &lt;code&gt;sudo dpkg -P $(dpkg -l | awk '/^rc/ {print $2}')&lt;/code&gt; hoặc &lt;code&gt;sudo apt-get purge $(dpkg -l | awk '/^rc/ {print $2}')&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;2. dpkg -L (--listfiles)&lt;/h3&gt;
+&lt;p&gt;Bạn có thể thấy ngay ở mục giới thiệu các gói mình sử dụng &lt;code&gt;dpkg -L&lt;/code&gt;. Dùng để lệt kê toàn bộ tệp tin có trong 1 gói.&lt;/p&gt;
+&lt;p&gt;Tính năng này giúp chúng ta xem xét trong 1 gói có những tệp thực thi, cấu hình, thư viện nào?&lt;/p&gt;
+&lt;p&gt;Ví dụ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L dpkg | grep var/
+/var/lib
+/var/lib/dpkg
+/var/lib/dpkg/alternatives
+/var/lib/dpkg/info
+/var/lib/dpkg/parts
+/var/lib/dpkg/updates
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lưu ý: Có những gói sinh thêm các tệp cấu hình trong quá trình cài đặt hay runtime, và nó không được liệt kê bởi &lt;code&gt;dpkg -L&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;3. dpkg -S (--search)&lt;/h3&gt;
+&lt;p&gt;Đồng nghiệp thấy mình đang dùng &lt;code&gt;xrandr&lt;/code&gt; (mình chuyển để chuyển VGA =)) ) liển hỏi cái cái lệnh &lt;code&gt;xrandr&lt;/code&gt; ở đâu.&lt;/p&gt;
+&lt;p&gt;Câu trả lời là &lt;code&gt;dpkg -S xrandr&lt;/code&gt; ra 1 đống liên quan tới &lt;code&gt;*xrandr&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -S xrandr
+bash-completion: /usr/share/bash-completion/completions/xrandr
+libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2
+libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2/changelog.gz
+x11-xserver-utils: /usr/bin/xrandr
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nên cách tốt nhất là mình gõ ngay &lt;code&gt;dpkg -S `which xrandr`&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -S `which xrandr`
+x11-xserver-utils: /usr/bin/xrandr
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3. dpkg -s (--status)&lt;/h3&gt;
+&lt;p&gt;Sau khi hắn cài xong &lt;code&gt;x11-xserver-utils&lt;/code&gt; nhưng &lt;code&gt;xrandr&lt;/code&gt; của hắn không chuyển VGA được (do chưa biết dùng =]]] ), hắn quay sang hỏi mình dùng phiên bản gói nào.&lt;/p&gt;
+&lt;p&gt;Mình gõ ngay&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -s x11-xserver-utils
+Package: x11-xserver-utils
+Status: install ok installed
+Priority: optional
+Section: x11
+Installed-Size: 516
+Maintainer: Debian X Strike Force &amp;lt;debian-x@lists.debian.org&amp;gt;
+Architecture: amd64
+Source: x11-xserver-utils (7.7+7)
+Version: 7.7+7+b1
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lưu ý: đây chỉ là version gói thôi nhá, thường nó tương đương với version của công cụ đối với các gói chỉ cung cấp một công cụ duy nhất (thường thôi nhé).&lt;/p&gt;
+&lt;p&gt;Ví dụ như&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;xrandr --version
+xrandr program version       1.5.0
+Server reports RandR version 1.5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Đôi điều với apt&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;apt&lt;/code&gt; ngoài việc xử lý các công việc như dpkg để cài cắm, cấu hình, gõ bỏ gói trên máy bạn thì apt còn cần phải quan tâm đến các kho package online mà chúng ta thường thêm bớt ở &lt;code&gt;/etc/apt/source*&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Như vậy để apt biết các gói nằm ở đâu thì cái này do ở bạn&lt;/p&gt;
+&lt;p&gt;Apt cung cấp rất nhiều công công để thực hiện các bước khác nhau. Mình hay sử dụng &lt;code&gt;apt-key&lt;/code&gt;,&lt;code&gt;apt-get&lt;/code&gt;, &lt;code&gt;apt-cache&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;1. apt-cache policy&lt;/h3&gt;
+&lt;p&gt;Lệnh này check xem 1 gói đang có những phiên bản ở các kho nào&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-cache policy base-files
+base-files:
+  Installed: 9.9+deb9u4
+  Candidate: 10.0.0-1.1
+  Version table:
+     10.0.0-1.1 500
+        500 https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages
+ *** 9.9+deb9u4 500
+        500 http://deb.debian.org/debian stretch/main amd64 Packages
+        100 /var/lib/dpkg/status
+     9.9+deb9u2 500
+        500 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Trên máy mình base-files đang có 3 phiên bản cung cấp bởi 3 kho khác nhau, vào chỉ có phiên bản &lt;code&gt;9.9+deb9u4&lt;/code&gt; là đang được cài đặt&lt;/p&gt;
+&lt;h3&gt;2. apt-cache madison&lt;/h3&gt;
+&lt;p&gt;Lệnh này chỉ liệt kê các thông tin về phiên bản, kho của tên gói hoặc gói nguồn.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-cache madison base-files
+base-files | 10.0.0-1.1 | https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages
+base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main amd64 Packages
+base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main amd64 Packages
+base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main Sources
+base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main Sources
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Hiển thị thêm 2 gói nguồn từ &lt;code&gt;stretch/main&lt;/code&gt; và &lt;code&gt;stretch-updates/main&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;3. apt-cache depends&lt;/h3&gt;
+&lt;p&gt;Lệnh này mình hay sử dụng để xem 1 gói nó phụ thuộc vào các gói nào, qua đó có chút mường tượng ra cách hoạt động và độ phức tạp của nó&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-cache depends htop
+htop
+  Depends: libc6
+  Depends: libncursesw5
+  Depends: libtinfo5
+  Suggests: lsof
+  Suggests: strace
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. apt-get changelog&lt;/h3&gt;
+&lt;p&gt;Debian bản stable rất ít khi cập nhật phần mềm theo upstream mà chỉ cập nhật các bản vá là chính, vì thế mà mình hay tò mò đã có gì thay đổi khi update 1 gói.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;changelog&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;
+&lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.4.8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;stretch&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;urgency&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;medium&lt;/span&gt;
+
+  &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="n"&gt;Balint&lt;/span&gt; &lt;span class="n"&gt;Reczey&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Gracefully&lt;/span&gt; &lt;span class="n"&gt;terminate&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;stopping&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;daily&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;upgrade&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;LP&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;1690980&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;5. apt-get source&lt;/h3&gt;
+&lt;p&gt;Tò mò qua changelog vẫn chưa đủ, thi thoảng mình kéo cả mã nguồn của nó về để cập nhật những gì&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get source ibus-unikey
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Với cách kéo mã nguồn này thì bạn chỉ có thể xem sự thay đổi so vơí upstream thôi, vì Debian sẽ lưu trữ nhưng bản vá so với phiên bản upstream vào trong thư mục &lt;code&gt;debian/patches&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lưu ý: Để làm việc với các mã nguồn của gói thì trong /etc/apt/source* phải cấu hình thêm &lt;code&gt;deb-src&lt;/code&gt;. Ví dụ&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;deb-src&lt;/span&gt; &lt;span class="s"&gt;http://deb.debian.org/debian/&lt;/span&gt; &lt;span class="kp"&gt;stretch&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;6. apt-cache showsrc&lt;/h3&gt;
+&lt;p&gt;Vì thế mà câu lệnh này giúp chúng ta lấy mã nguồn được maintain ở đâu.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-get source apt
+Reading package lists... Done
+NOTICE: &amp;#39;apt&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at:
+https://anonscm.debian.org/git/apt/apt.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Đôi điều với apt-file&lt;/h2&gt;
+&lt;p&gt;Nhắc tới &lt;code&gt;apt-cache&lt;/code&gt; thì câu lệnh đầu tiên đánh ra mình phải liệt kê là &lt;code&gt;apt-cache search&lt;/code&gt;, nhưng cái này tìm chán lắm. Không đáp ứng được nhu cầu của mình nên mình đã tìm hiểu và biết thêm về &lt;code&gt;apt-file&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Sau khi cài gói &lt;code&gt;apt-file&lt;/code&gt;, nó yêu cầu mình phải cập nhật để nó có thông tin mà tìm kiếm bằng &lt;code&gt;apt-file update&lt;/code&gt; kiểu như &lt;code&gt;apt-get update&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;apt-file search&lt;/h3&gt;
+&lt;p&gt;Đồng nghiệp đang ngồi xem &lt;code&gt;hack wifi với aircrack&lt;/code&gt;. Nhìn thấy youtuber gõ &lt;code&gt;airmon-ng start balabốnla&lt;/code&gt;, thấy vậy hắn gõ ngay  &lt;code&gt;apt-get install airmon-ng&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dongnghiep#apt-get install airmon-ng
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package airmon-ng
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Đây là lúc mà siêu nhân sysadmin ra tay, mình gõ ngay trên máy mình&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-file search bin/airmon-ng
+aircrack-ng: /usr/sbin/airmon-ng
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Rồi bảo hắn "tools này thuộc gói aircrack-ng", hắn liền gõ ngay &lt;code&gt;apt-get install aircrack-ng&lt;/code&gt; không cần mình nói gì thêm&lt;/p&gt;
+&lt;h3&gt;apt-file list&lt;/h3&gt;
+&lt;p&gt;dpkg -L dùng để list toàn bộ tệp trong 1 gói ĐÃ CÀI, đó mà lý do chúng ta cần cái chức năng này để liệt kê các tệp có trong gói mà ta cài hay chưa nó không quan tâm&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-file list aircrack-ng
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Đôi điều về kho phần mềm&lt;/h2&gt;
+&lt;p&gt;Việc sử dụng &lt;code&gt;apt-*&lt;/code&gt; phụ thuộc vào kho phần mềm online mà bạn đang cài đặt. Các kho phần mềm trong &lt;code&gt;/etc/apt/source*&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Ví dụ máy bạn nào chưa có kho phần mềm cuả docker thì apt-* không biêt gì về gói &lt;code&gt;docker-ce&lt;/code&gt; chẳng hạn.&lt;/p&gt;
+&lt;p&gt;Ngoài ra Ubuntu cung cấp thêm các kho PPA riêng cho nguời dùng, ngưòi sử dụng chỉ cần gõ &lt;code&gt;add-apt-repository&lt;/code&gt;, kho ppa có ưu điểm cung cấp thêm nhiều kho phần mềm khác nhau cho người dùng. Nhưng cũng có nhược điểm là các kho ppa mang tính cá nhân cao, thường không có đảm bảo về mã nguồn. Nên phải dùng PPA tin cậy&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-file search bin/add-apt-repository
+software-properties-common: /usr/bin/add-apt-repository
+&lt;/pre&gt;&lt;/div&gt;</content><category term="apt"></category><category term="dpkg"></category><category term="thu-thuat"></category></entry><entry><title>Xây dựng bản Live từ Debian cho riêng bạn</title><link href="https://debian-vn.github.io/2018/03/tu-xay-dung-ban-live-os.html" rel="alternate"></link><published>2018-03-15T00:00:00+07:00</published><updated>2018-03-15T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-03-15:/2018/03/tu-xay-dung-ban-live-os.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ không được lưu lại khi tắt hệ thống. Nó có thể khởi động trên bất kỳ máy tính nào khi cắm vào (tất nhiên phải cùng kiến trúc vi xử lý nha)&lt;/p&gt;
 &lt;p&gt;Qua thời gian dùng &lt;a href="https://github.com/TxGVNN/live-os/"&gt;TxGVNN/live-os&lt;/a&gt; của chính mình một thời gian, hôm nay mình chia sẻ cách tạo ra bản live-os cho riêng các bạn từ kinh nghiệm tào lao của mình -_-&lt;/p&gt;
 &lt;h2&gt;Sao phải dùng?&lt;/h2&gt;
 &lt;p&gt;Tuỳ mục đính của bạn. Với mình, bản live chứa các công cụ mình cần để làm việc và giải trí, có thể cắm vào máy công ty, ở nhà và bạn bè để dùng 1 cách thoải mái.
