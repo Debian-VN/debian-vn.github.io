@@ -3,11 +3,11 @@ Date: 2018-04-28
 Tags: apt, dpkg, thu-thuat
 Slug: tan-man-ve-trinh-quan-ly-goi
 Author: Giáp Trần
-Status: draft
+Status: published
 
 Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về `Triết lý`, `Kiến trúc` và `Trình quản lý gói` của Distro đó.
 
-Bài viết hôm này mình sẽ chia sẻ về trình quản lý gói của Debian, được đánh giá là trình quản lý gói mạn mẽ. À mình chỉ tản mạn về cách mình hay sử dụng với góc nhìn của một sysadmin cũng như người dùng ưu tìm tòi. Còn nâng cao thì mình nghĩ tài liệu chính thức từ Debian đã viết rất đầy đủ
+Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được đánh giá là trình quản lý gói mạnh mẽ, cũng là một trong những lý do mà các distro khác muốn base trên Debian. À mình chỉ tản mạn về cách mình hay sử dụng với góc nhìn của một sysadmin cũng như người dùng ưu tìm tòi. Còn nâng cao hay chi tiết hơn thì mình nghĩ tài liệu chính thức từ Debian đã viết rất đầy đủ
 
 ## Sơ qua các gói
 
@@ -15,7 +15,7 @@ Bài viết hôm này mình sẽ chia sẻ về trình quản lý gói của Deb
 
 Bao gồm các công cụ
 ```
-└>dpkg -L dpkg |grep bin/
+└>dpkg -L dpkg | grep bin/
 /usr/bin/dpkg
 /usr/bin/dpkg-deb
 /usr/bin/dpkg-divert
@@ -26,7 +26,7 @@ Bao gồm các công cụ
 /usr/bin/dpkg-trigger
 /usr/bin/update-alternatives
 ```
-Viết tắt của `D`ebian `P`ac`K`a`G`e, nó sẽ quản lý tất cả các vấn đề liên quan tới package trên máy của bạn
+Viết tắt của `D`ebian `P`ac`K`a`G`e, nó sẽ quản lý tất cả các vấn đề liên quan tới package trên máy của bạn.
 
 - apt
 
@@ -52,7 +52,6 @@ Viết tắt của `A`dvanced `P`ackaging `T`ool
 
 Không viêt tắt nữa, gói này cho phép chúng ta tìm kiếm các gói có trong repo bằng các đường dẫn tệp tệp
 
-
 Còn có rất nhiều gói hỗ trợ về package như `aptitude`,`software-properties-common`,`apt-transport-https`,...
 
 ## Đôi điều về định dạng *.deb
@@ -77,7 +76,7 @@ Vì thế nếu bạn không muốn cài đặt các chương trình trực ti�
 Tất nhiên bạn phải có khả năng xử lý các vấn đề xung quanh nếu gói đó yêu cầu các thư viện phụ thuộc, cấu hình gì đó, hoặc nó yêu cầu quyền root. Các gói đơn giản thì chỉ cần bung lụa ra là có thể chạy
 
 
-Nếu chương trình `dpkg` gặp lỗi hay hư hỏng, quá đơn giản để download `dpkg.deb` về và dùng lệnh giải nén `ar` để giải nén vào thẳng `/`. Đây là một điểm rất hay, `dpkg` chỉ phụ thuộc vào thư viện rất tối giản, mình nhớ không nhầm thì chỉ cần `busybox` là đủ
+Nếu chương trình `dpkg` gặp lỗi hay hư hỏng, quá đơn giản để download `dpkg.deb` về và có thể dùng `ar` để giải nén vào thẳng `/`. Đây là một điểm rất hay, `dpkg` chỉ phụ thuộc vào thư viện rất tối giản, mình nhớ không nhầm thì chỉ cần `busybox` là đủ. Bạn có thể kiểm tra bằng `apt-cache depends dpkg`
 
 ## Đôi điều với dpkg
 
