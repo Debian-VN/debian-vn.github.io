@@ -310,7 +310,7 @@ Việc sử dụng `apt-*` phụ thuộc vào kho phần mềm online mà bạn 
 
 Ví dụ máy bạn nào chưa có kho phần mềm cuả docker thì apt-* không biêt gì về gói `docker-ce` chẳng hạn.
 
-Ngoài ra Ubuntu cung cấp thêm các kho PPA riêng cho nguời dùng, ngưòi sử dụng chỉ cần gõ `add-apt-repository`, kho ppa có ưu điểm cung cấp thêm nhiều kho phần mềm khác nhau cho người dùng. Nhưng cũng có nhược điểm là các kho ppa mang tính cá nhân cao, thường không có đảm bảo về mã nguồn. Nên phải dùng PPA tin cậy
+Ngoài ra Ubuntu cung cấp thêm các kho PPA riêng cho nguời dùng, ngưòi sử dụng chỉ cần gõ `add-apt-repository`, kho ppa có ưu điểm cung cấp thêm nhiều kho phần mềm khác nhau cho người dùng. Nhưng cũng có nhược điểm là các kho ppa mang tính cá nhân cao, thường không có đảm bảo về mã nguồn. Nên phải tìm hiểu kho PPA tin cậy trước khi sử dụng
 
 ```
 └>apt-file search bin/add-apt-repository
