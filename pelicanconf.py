@@ -42,7 +42,8 @@ TRANSLATION_FEED_RSS = 'feeds/feed-%s.rss'
 MENUITEMS =  (('Home', 'http://debian-vn.github.io'),)
 
 LINKS = (('Bits from Debian', 'https://bits.debian.org/'),
-          ('OS for Privacy','https://www.privacytools.io/#os'),)
+          ('OS for Privacy','https://www.privacytools.io/#os'),
+          ('#debian-vn IRC','https://webchat.oftc.net/?channels=%23debian-vn'))
 DOCS = (('Debian New Maintainers\' Guide','https://debian-vn.github.io/maint-guide'),)
 
 PATH = 'content'

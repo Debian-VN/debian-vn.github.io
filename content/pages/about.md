@@ -8,7 +8,7 @@ Debian nổi tiếng về triết lý Unix và phần mềm tự do, và đượ
 
 Một dự án không có sự can thiệp, chèo lái bởi mục đích sinh lời từ bất kỳ công ty nào.
 
-#### Kế ước Xã hội 
+#### Kế ước Xã hội
 ```
 "SOCIAL CONTRACT" VỚI CỘNG ĐỒNG PHẦN MỀM TỰ DO
 
@@ -28,12 +28,12 @@ Nhiệm vụ đơn giản, trước mắt nhằm xây dựng các tài liệu, h
 
 Tham gia cộng đồng cùng chúng tôi:
 
- * [Debian VN Github](http://github.com/Debian-VN)
- * [Mailing dịch liệu (debian-l10n-vietnamese@lists.debian.org)](https://lists.debian.org/debian-l10n-vietnamese)
- * [Mailing người dùng (debian-user-vietnamese@lists.debian.org)](https://lists.debian.org/debian-user-vietnamese)
- * [\#debian-vn IRC tại irc.oftc.net](https://webchat.oftc.net/#debian-vn) 
- * [Debian VN Facebook](https://www.facebook.com/groups/debian-vn/) 
- * [Mailing báo commit từ github](mailto:debian-vn@googlegroups.com)
+* [Debian VN Github](http://github.com/Debian-VN)
+* [Mailing dịch liệu (debian-l10n-vietnamese@lists.debian.org)](https://lists.debian.org/debian-l10n-vietnamese)
+* [Mailing người dùng (debian-user-vietnamese@lists.debian.org)](https://lists.debian.org/debian-user-vietnamese)
+* [\#debian-vn IRC tại irc.oftc.net](https://webchat.oftc.net/?channels=%23debian-vn)
+* [Debian VN Facebook](https://www.facebook.com/groups/debian-vn/)
+* [Mailing báo commit từ github](mailto:debian-vn@googlegroups.com)
 
 Blogs này sử dụng [Pelican][pelican]. Và giao diện được sao chép từ [Bits from Debian](https://bits.debian.org/)
 
