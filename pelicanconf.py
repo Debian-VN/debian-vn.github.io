@@ -44,7 +44,8 @@ MENUITEMS =  (('Home', 'http://debian-vn.github.io'),)
 LINKS = (('Bits from Debian', 'https://bits.debian.org/'),
           ('OS for Privacy','https://www.privacytools.io/#os'),
           ('#debian-vn IRC','https://webchat.oftc.net/?channels=%23debian-vn'))
-DOCS = (('Debian New Maintainers\' Guide','https://debian-vn.github.io/maint-guide'),)
+DOCS = (('Debian New Maintainers\' Guide','https://debian-vn.github.io/maint-guide'),
+        ('Installation Guide','https://www.debian.org/releases/stable/amd64/index.html.vi'))
 
 PATH = 'content'
 STATIC_PATHS = [
