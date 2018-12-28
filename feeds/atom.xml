@@ -1,5 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2018-04-28T00:00:00+07:00</updated><entry><title>Tản mạn về trình quản lý gói</title><link href="https://debian-vn.github.io/2018/04/tan-man-ve-trinh-quan-ly-goi.html" rel="alternate"></link><published>2018-04-28T00:00:00+07:00</published><updated>2018-04-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-04-28:/2018/04/tan-man-ve-trinh-quan-ly-goi.html</id><summary type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2018-12-28T00:00:00+07:00</updated><entry><title>An toàn và bảo mật với DNS</title><link href="https://debian-vn.github.io/2018/12/an-toan-va-bao-mat-voi-dns.html" rel="alternate"></link><published>2018-12-28T00:00:00+07:00</published><updated>2018-12-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-12-28:/2018/12/an-toan-va-bao-mat-voi-dns.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Trong bài này mình …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Trong bài này mình sẽ hướng dẫn thiết lập 2 tính năng cho hệ thống Debian giúp những truy vấn DNS của máy tính được &lt;em&gt;An toàn với DNSsec&lt;/em&gt; và &lt;em&gt;Bảo mật với DNScrypt&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions"&gt;DNSSEC&lt;/a&gt; ra đời nhằm đảm bảo các câu trả lời DNS là chính xác, còn &lt;a href="https://dnscrypt.info/implementations/"&gt;DNSCRYPT&lt;/a&gt; thì mã hoá các kết nối DNS thông thường bằng cách kết hợp các công nghệ khác như DNS over HTTP, DNS over TLS...&lt;/p&gt;
+&lt;h2&gt;I. Sao phải dùng?&lt;/h2&gt;
+&lt;h3&gt;DNSSEC&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tránh bị khai thác vào giao thức DNS như trả về địa chỉ sai cho truy vấn DNS. Mặc dù HTTPS là đảm bảo bạn được cảnh báo nhưng có người vẫn cố tình truy cập thế mới là vấn đề.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;DNSCRYPT&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tránh bị nghe lén, theo dõi các truy vấn tên miền của bạn từ người xấu, nhà cung cấp dịch vụ mạng. Chắc cũng phần nào thôi, vì nếu bọn xấu cao tay hơn thì theo dõi theo địa chỉ IP, lúc đó bạn cần phải tay cao hơn. &lt;a href="https://www.eff.org/pages/tor-and-https"&gt;Tor chăng?&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;II. Thiết lập từng dịch vụ&lt;/h2&gt;
+&lt;h3&gt;DNSSEC&lt;/h3&gt;
+&lt;p&gt;Debian cung cấp gói &lt;code&gt;unbound&lt;/code&gt;, theo như mô tả thì&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# apt-cache show unbound
+...
+Description-en: validating, recursive, caching DNS resolver
+ Unbound is a recursive-only caching DNS server which can perform DNSSEC
+ validation of results...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sau khi cài xong với &lt;code&gt;apt-get install unbound&lt;/code&gt; chúng ta sẽ có 2 service là&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;systemctl status unbound&lt;/code&gt; chạy chương trình unbound, nó sẽ tạo ra DNS server tại địa chỉ &lt;code&gt;127.0.0.1:53&lt;/code&gt; cho bạn.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;systemctl status unbound-resolvconf&lt;/code&gt; với mục đích cập nhật &lt;code&gt;/etc/resolv.conf&lt;/code&gt; một cách tự động.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Kiểm thử&lt;/h4&gt;
+&lt;p&gt;Để kiểm tra xem DNSSEC đã hoạt động hay chưa, thử truy vấn thông tin dnssec từ địa chỉ &lt;em&gt;dnssec.cz&lt;/em&gt;.
+Nếu cờ &lt;code&gt;ad&lt;/code&gt; xuất hiện là đã truy vấn DNSSEC thành công, hãy tìm hiểu các cờ nhé.&lt;/p&gt;
+&lt;p&gt;Chúng ta sẽ so sánh một chút.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;# TRUY VẤN VỚI DNS Server được cấp phát tự động&lt;/span&gt;
+&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="mf"&gt;@192.168.0.1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dnssec&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;dnssec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;192.168.0.1&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;192.168.0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="cp"&gt;# TRUY VẤN VỚI Unbound&lt;/span&gt;
+&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="mf"&gt;@127.0.0.1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dnssec&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;dnssec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;qr&lt;/span&gt; &lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;ra&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nl"&gt;QUERY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ANSWER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;AUTHORITY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ADDITIONAL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="cp"&gt;# TRUY VẤN VỚI Google&lt;/span&gt;
+&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="mf"&gt;@8.8.8.8&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dnssec&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;dnssec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;qr&lt;/span&gt; &lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;ra&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nl"&gt;QUERY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ANSWER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;AUTHORITY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ADDITIONAL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;8.8.8.8&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;8.8.8.8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="cp"&gt;# TRUY VẤN VỚI Cloudflare&lt;/span&gt;
+&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="mf"&gt;@1.1.1.1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dnssec&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;dnssec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;qr&lt;/span&gt; &lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;ra&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nl"&gt;QUERY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ANSWER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;AUTHORITY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ADDITIONAL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.1.1.1&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.1.1.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Như bạn có thể thấy, kết quả trả về từ máy chủ nhà cung cấp không hỗ trợ DNSSEC. Còn Google và Cloudflare có hỗ trợ DNSSEC, nên đơn giản bạn có thể sử dụng 2 nhà cung cấp này.&lt;/p&gt;
+&lt;p&gt;Nhưng phần tiếp theo mình cài cắm DNSCRYPT và sẽ là tuyệt nếu tích hợp với Unbound&lt;/p&gt;
+&lt;h3&gt;DNSCRYPT&lt;/h3&gt;
+&lt;p&gt;Debian cung cấp gói &lt;code&gt;dnscrypt-proxy&lt;/code&gt;, tương tự chúng ta có:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# apt-cache show dnscrypt-proxy
+...
+Description-en: Tool for securing communications between a client and a DNS resolver
+ dnscrypt-proxy provides local service which can be used directly as your local
+ resolver or as a DNS forwarder, encrypting and authenticating requests using
+ the DNSCrypt protocol and passing them to an upstream server...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sau khi cài xong &lt;code&gt;apt-get install dnscrypt-proxy&lt;/code&gt; chúng ta sẽ có 2 service là&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;systemctl status dnscrypt-proxy&lt;/code&gt; để chạy chương trình dnscrypt-proxy, nó sẽ tạo ra DNS server tại địa chỉ &lt;code&gt;127.0.2.1:53&lt;/code&gt; cho bạn. Và không xung đột địa chỉ vơí Unbound (127.0.0.1)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;systemctl status dnscrypt-proxy-resolvconf&lt;/code&gt; với mục đích cập nhật &lt;code&gt;/etc/resolv.conf&lt;/code&gt; một cách tự động.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Đặc điểm của DNScrypt là bạn phải chọn một máy chủ cung cấp dịch vụ này, danh sách này có ở &lt;code&gt;/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv&lt;/code&gt;.
+Bạn có thể chọn 1 trong số đó và cấu hình vào &lt;code&gt;/etc/dnscrypt-proxy/dnscrypt-proxy.conf&lt;/code&gt;, nó sẽ trông như thế này.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ResolverName ipredator
+Daemonize no
+LocalAddress 127.0.2.1:53
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Có 1 điểm khá bất tiện, là đôi khi máy chủ DNScrypt không truy cập được. Nên bạn phải tìm và đổi sang máy chủ khác bằng tay. Vì thế bạn nên viết 1 kịch bản có thể tìm và thay tự động cho bạn.&lt;/p&gt;
+&lt;p&gt;Ví dụ như &lt;code&gt;/usr/local/bin/dnscrypt-update&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;  &lt;span class="nb"&gt;set&lt;/span&gt; -x
+
+&lt;span class="nv"&gt;FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;LOG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;mktemp -t .dnsproxy.XXXX&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;total&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt; wc -l&amp;lt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$FILE&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+
+msg&lt;span class="o"&gt;(){&lt;/span&gt; &lt;span class="nb"&gt;printf&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;%s: %s\n&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &amp;gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$LOG&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt; ! grep Proxying &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$LOG&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$((&lt;/span&gt; RANDOM &lt;span class="o"&gt;%=&lt;/span&gt; total &lt;span class="k"&gt;))&lt;/span&gt;
+    &lt;span class="nv"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;cut -f1 -d&lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt; &amp;lt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$FILE&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$select&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;q;d&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+    msg &lt;span class="s2"&gt;&amp;quot;I&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Try &lt;/span&gt;&lt;span class="nv"&gt;$choice&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    dnscrypt-proxy --resolver-name&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$choice&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; --local-address&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.3.1:53 &amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$LOG&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;
+    &lt;span class="nv"&gt;PID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$!&lt;/span&gt;
+    sleep &lt;span class="m"&gt;10&lt;/span&gt;
+    &lt;span class="nb"&gt;kill&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$PID&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+
+msg &lt;span class="s2"&gt;&amp;quot;I&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Choose &lt;/span&gt;&lt;span class="nv"&gt;$choice&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+sed -i &lt;span class="s1"&gt;&amp;#39;s/ResolverName.*/ResolverName &amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$choice&lt;/span&gt;&lt;span class="s2"&gt;/&amp;quot;&lt;/span&gt; /etc/dnscrypt-proxy/dnscrypt-proxy.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Testing&lt;/h4&gt;
+&lt;p&gt;Để có thể dễ dàng quan sát, hãy đảm bảo không có ứng dụng nào đang hoạt động mà cần kết nối mạng.&lt;/p&gt;
+&lt;p&gt;Ví dụ mình đang sử dụng wifi với interface là &lt;code&gt;wpl3s0&lt;/code&gt;, chúng ta sẽ sử dụng tcpdump để theo dõi kết nối vào cổng UDP/53 như sau&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;sudo tcpdump -n -i wlp3s0 udp port 53
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on wlp3s0, link-type EN10MB (Ethernet), capture size 262144 bytes
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;1. Thử nghiệm với lệnh &lt;code&gt;192.168.0.1&lt;/code&gt;&lt;/h5&gt;
+&lt;p&gt;Kết quả lệnh:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nslookup gnu.org 192.168.0.1
+Server:         192.168.0.1
+Address:        192.168.0.1#53
+
+Non-authoritative answer:
+Name:   gnu.org
+Address: 208.118.235.148
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và từ tcpdump&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;... IP 192.168.0.186.38101 &amp;gt; 192.168.0.1.53: 55790+ A? gnu.org. (28)
+... IP 192.168.0.1.53 &amp;gt; 192.168.0.186.38101: 55790 1/0/0 A 208.118.235.148 (41)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;2. Thử nghiệm với &lt;code&gt;1.1.1.1&lt;/code&gt;&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;nslookup gnu.org 1.1.1.1
+Server:         1.1.1.1
+Address:        1.1.1.1#53
+
+Non-authoritative answer:
+Name:   gnu.org
+Address: 208.118.235.148
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và từ tcpdump&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;... IP 192.168.0.186.40491 &amp;gt; 1.1.1.1.53: 58978+ A? gnu.org. (28)
+... IP 1.1.1.1.53 &amp;gt; 192.168.0.186.40491: 58978 1/0/0 A 208.118.235.148 (41)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;3. Thử nghiệm với &lt;code&gt;127.0.2.1&lt;/code&gt;&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;nslookup gnu.org 127.0.2.1
+Server:         127.0.2.1
+Address:        127.0.2.1#53
+
+Non-authoritative answer:
+Name:   gnu.org
+Address: 208.118.235.148
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và từ tcpdump là rỗng. Bởi vì dnscrypt-proxy đã truy vấn tới máy chủ đã cấu hình không qua giao thức UDP/53 như thông thường. Hãy tìm hiểu thêm chi tiết nhé.&lt;/p&gt;
+&lt;h2&gt;III. Tích hợp DNSsec và DNScrypt&lt;/h2&gt;
+&lt;p&gt;Như vậy chúng ta đã có 2 dịch vụ DNS lắng nghe ở hai địa chỉ&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;127.0.0.1#53&lt;/code&gt; Giải quyết bài toán an toàn (DNSsec)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;127.0.2.1#53&lt;/code&gt; Giải quyết bài toán bảo mật (DNScrypt)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Máy tính sẽ sử dụng địa chỉ được cấu hình trong &lt;code&gt;/etc/resolv.conf&lt;/code&gt; để truy vấn tên miền.&lt;/p&gt;
+&lt;p&gt;Chúng ta sẽ cấu hình để truy vấn DNSsec sẽ đi qua DNScrypt bằng cách tạo tệp &lt;code&gt;/etc/unbound/unbound.conf.d/dnscrypt.conf&lt;/code&gt; với nội dung:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;not&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;
+&lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;zone&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nl"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;127.0.2.1&lt;/span&gt;&lt;span class="mi"&gt;@53&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Và không cho dnscrypt cập nhật vào &lt;code&gt;/etc/resolv.conf&lt;/code&gt; bằng cách &lt;code&gt;systemctl stop dnscrypt-proxy-resolvconf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Kết quả&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;cat /etc/resolv.conf
+# Generated by resolvconf
+nameserver 127.0.0.1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Như vậy là hệ thống của bạn mỗi lần kết nối mạng và phân giải tên miền một cách an toàn và bảo mật hơn với DNSsec và DNScrypt. Hãy tìm hiểu 2 từ khoá trên để hiểu rõ hơn về chúng.&lt;/p&gt;</content><category term="huong-dan"></category></entry><entry><title>Tản mạn về trình quản lý gói</title><link href="https://debian-vn.github.io/2018/04/tan-man-ve-trinh-quan-ly-goi.html" rel="alternate"></link><published>2018-04-28T00:00:00+07:00</published><updated>2018-04-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-04-28:/2018/04/tan-man-ve-trinh-quan-ly-goi.html</id><summary type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
 &lt;p&gt;Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
 &lt;p&gt;Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được đánh giá là trình quản lý gói mạnh mẽ, cũng là một trong những lý do mà các distro khác muốn base trên Debian. À mình chỉ tản mạn về cách mình hay sử dụng với góc nhìn của một sysadmin cũng như người dùng ưu tìm tòi. Còn nâng cao hay chi tiết hơn thì mình nghĩ tài liệu chính thức từ Debian đã viết rất đầy đủ&lt;/p&gt;
 &lt;h2&gt;Sơ qua các gói&lt;/h2&gt;
