@@ -1,5 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2018-12-28T00:00:00+07:00</updated><entry><title>An toàn và bảo mật với DNS</title><link href="https://debian-vn.github.io/2018/12/an-toan-va-bao-mat-voi-dns.html" rel="alternate"></link><published>2018-12-28T00:00:00+07:00</published><updated>2018-12-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-12-28:/2018/12/an-toan-va-bao-mat-voi-dns.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2019-04-16T00:00:00+07:00</updated><entry><title>Tôi đang dùng trình duyệt như thế nào?</title><link href="https://debian-vn.github.io/2019/04/toi-dung-trinh-duyet-nhu-the-nao.html" rel="alternate"></link><published>2019-04-16T00:00:00+07:00</published><updated>2019-04-16T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2019-04-16:/2019/04/toi-dung-trinh-duyet-nhu-the-nao.html</id><summary type="html">&lt;p&gt;Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser). &lt;/p&gt;
+&lt;p&gt;Bài này nó lên quan điểm cá nhân nên mình chỉ để cập tới 2 browser mà mình đang dùng là &lt;code&gt;Firefox&lt;/code&gt; và &lt;code&gt;Chromium&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;I. Mình dùng khác gì mọi người, sao tận 2 cái?&lt;/h2&gt;
+&lt;p&gt;Mình dùng để làm việc và đọc tin tức, không khác mọi người.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Firefox&lt;/code&gt; là trình duyệt yêu thích và là mặc định của mình, còn &lt;code&gt;Chromium&lt;/code&gt; vẫn dùng khá nhiều o.O ?&lt;/p&gt;
+&lt;h2&gt;II. Chia sẻ gì trong bày này.&lt;/h2&gt;
+&lt;p&gt;Điểm hay mà mình muốn chia sẻ hôm nay, chỉ là sự tối ưu về mặt làm việc. (Có thể nó không hay với bạn)&lt;/p&gt;
+&lt;p&gt;Ngày nay chúng ta làm rất nhiều việc trên browser nên đôi khi mình thấy 1 bạn nào đó mở hơn chục tabs trên 1 cái trình duyệt. Có vài bạn biết sắp xếp hơn bằng cách tạo ra các profile khác nhau như Ngân hàng, Làm việc, Mạng xã hôị, Hội nguời cùng khổ,...&lt;/p&gt;
+&lt;p&gt;Đấy cái chính hôm nay là mình chia sẻ việc tạo ra các profile linh động dùng trên các Distro Linux bằng lệnh thuận tiện.&lt;/p&gt;
+&lt;h3&gt;Firefox&lt;/h3&gt;
+&lt;p&gt;Mình gọi script là &lt;code&gt;w2&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash                                                       &lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; -x
+
+&lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$#&lt;/span&gt; -gt &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--private-window&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+firefox -P &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$OPTS&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Với &lt;code&gt;w2&lt;/code&gt; chúng ta có thể gọi Firefox ra với một profile nhanh chóng&lt;/p&gt;
+&lt;p&gt;Ví dụ:
+&lt;img alt="w2" src="https://debian-vn.github.io/images/w2.png"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;w2 bank&lt;/code&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Mở Firefox ra với profile là &lt;code&gt;bank&lt;/code&gt;, nếu chưa có thì chúng ta sẽ tạo 1 lần&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w2 bank .&lt;/code&gt; &amp;nbsp; Mở ẩn danh của &lt;code&gt;bank&lt;/code&gt; profile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Điểm hay của Firefox:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bạn có thể cấu hình proxy riêng cho mỗi profile trực tiếp trên chính trình duyệt. Chromium thì phải qua dòng lệnh với tham số cụ thể.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Chromium&lt;/h3&gt;
+&lt;p&gt;Mình gọi script là &lt;code&gt;w3&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; -x
+
+&lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+
+_help&lt;span class="o"&gt;(){&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Usage: w3 [-p] [-c] [-d] PROFILE&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Profiles:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profiles&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; opt in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-&lt;span class="o"&gt;]&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; in
+            p&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PRIVATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+            c&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;CREATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+            d&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;DELETE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+            -&lt;span class="o"&gt;)&lt;/span&gt;
+                &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; in
+                    create&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;CREATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+                    private&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PRIVATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+                    delete&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;DELETE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+                &lt;span class="k"&gt;esac&lt;/span&gt;&lt;span class="p"&gt;;;&lt;/span&gt;
+        &lt;span class="k"&gt;esac&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="nv"&gt;args_string&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$IFS$opt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+
+&lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="nv"&gt;$args_string&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[0]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$PRIVATE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--incognito&amp;quot;&lt;/span&gt;
+
+&lt;span class="nv"&gt;profiles&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; dir in &lt;span class="nv"&gt;$HOME&lt;/span&gt;/.config/chromium/profile*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;basename &lt;span class="nv"&gt;$dir&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;profiles&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="p"&gt;##*profile.&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$profiles&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="nv"&gt;profiles&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &lt;/span&gt;&lt;span class="nv"&gt;$profiles&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$profile_name&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    _help
+    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# If --delete is set&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$DELETE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$profiles&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; *&lt;span class="s2"&gt;&amp;quot; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+        rm -rf &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.config/chromium/profile.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# If --create is not set, check the exist before start&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; ! &lt;span class="nv"&gt;$CREATE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; ! &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$profiles&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; *&lt;span class="s2"&gt;&amp;quot; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+        _help
+        &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Start one is default&lt;/span&gt;
+chromium --args --profile-directory&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;profile.&lt;/span&gt;&lt;span class="nv"&gt;$profile_name&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$OPTS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Với &lt;code&gt;w3&lt;/code&gt; chúng ta có thể tạo mới, mở ra hoặc xoá một profile&lt;/p&gt;
+&lt;p&gt;Ví dụ:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="w3" src="https://debian-vn.github.io/images/w3.png"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;w3 bank -c&lt;/code&gt; &amp;nbsp;&amp;nbsp; Tạo profile mới tên là bank&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w3 bank&lt;/code&gt;    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Mở profile là bank&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w3 bank -p&lt;/code&gt; &amp;nbsp;&amp;nbsp; Mở profile  là bank ở chế độ ẩn danh&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w3 bank -d&lt;/code&gt; &amp;nbsp;&amp;nbsp; Xoá profile với tên là bank&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Điểm hay của Chromium:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chỉ cần truyền đối số thẳng mà không cần tạo bẳng tay (đó là lý do mình cần viêt thêm tuỳ chọn &lt;code&gt;-c&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Temp profile của Chromium&lt;/h3&gt;
+&lt;p&gt;Đây thật sự là một tính năng tuyệt vời.
+Ví dụ bạn cần test một ứng dụng chat nhóm với 3,4 người tham gia cùng 1 lúc. Đây chính là lúc bạn cần nhiều profile trình duyệt để độc lập về session (phiên làm việc)&lt;/p&gt;
+&lt;p&gt;Chúng ta có thể dùng &lt;code&gt;w2&lt;/code&gt; và &lt;code&gt;w3&lt;/code&gt; để tạo ra nhiều profile nhưng điều đó là không hay vì chúng ta chỉ sử dụng tạm thời.&lt;/p&gt;
+&lt;p&gt;Chromium cung cấp tuỳ chọn &lt;code&gt;--temp-profile&lt;/code&gt; để có thể mở ra một profile hoàn toàn mới, và được xoá khi tắt browser.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;chromium --temp-profile&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;chromium --temp-profile --incognito&lt;/code&gt; &amp;nbsp;&amp;nbsp; Mình thật sự dùng cái này, vì cái icon không xoay xoay gân tốn thời gian =))&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Và Chrome của Google cũng cung cấp tính năng không khác gì Chromium nhé.&lt;/p&gt;
+&lt;h2&gt;III. Tổng kết&lt;/h2&gt;
+&lt;p&gt;Mỗi người sẽ có kiểu dùng của mỗi người, đây là cách mà mình dùng browser. Thành thật thì nó sẽ không nhanh cho những ai không thích dùng lệnh. Hiện tại mình đang dùng &lt;code&gt;dmenu&lt;/code&gt; (chính xác là &lt;code&gt;i3-dmenu-desktop&lt;/code&gt;) để gọi ứng dụng nên nó thật sự rất hiệu qủa.&lt;/p&gt;</content><category term="chia-se"></category></entry><entry><title>An toàn và bảo mật với DNS</title><link href="https://debian-vn.github.io/2018/12/an-toan-va-bao-mat-voi-dns.html" rel="alternate"></link><published>2018-12-28T00:00:00+07:00</published><updated>2018-12-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-12-28:/2018/12/an-toan-va-bao-mat-voi-dns.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Trong bài này mình …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Trong bài này mình sẽ hướng dẫn thiết lập 2 tính năng cho hệ thống Debian giúp những truy vấn DNS của máy tính được &lt;em&gt;An toàn với DNSsec&lt;/em&gt; và &lt;em&gt;Bảo mật với DNScrypt&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions"&gt;DNSSEC&lt;/a&gt; ra đời nhằm đảm bảo các câu trả lời DNS là chính xác, còn &lt;a href="https://dnscrypt.info/implementations/"&gt;DNSCRYPT&lt;/a&gt; thì mã hoá các kết nối DNS thông thường bằng cách kết hợp các công nghệ khác như DNS over HTTP, DNS over TLS...&lt;/p&gt;

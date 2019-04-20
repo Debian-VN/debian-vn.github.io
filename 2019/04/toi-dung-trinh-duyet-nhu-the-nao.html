@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Debian VN - Tôi đang dùng trình duyệt như thế nào?</title>
+    <meta name="description" content="">
+    <meta name="author" content="Debian Việt Nam">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!-- Styles -->
+    <link href="https://debian-vn.github.io/theme/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="wrapper">
+  <div id="header">
+    <a href="https://github.com/debian-vn/debian-vn.github.io">
+      <img style="position: absolute; top: 0; right: 0; border: 0;" alt="Fork me on GitHub" src="https://debian-vn.github.io/theme/images/forkme.png">
+    </a>
+    <a href="https://debian-vn.github.io"><img align="left" class="logo" src="https://debian-vn.github.io/theme/images/openlogo-nd-75.png" alt="Debian VN" align="left" style="margin-top: 20px;"></a>
+    <p>Debian Việt Nam</p>
+  </div>
+
+    <hr class="nocss" />
+    <div id="content">
+    <div class='article' lang='vi'>
+        <div class="content-title">
+            <h1>Tôi đang dùng trình duyệt như thế nào?</h1>
+Tue 16 April 2019
+
+by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Giáp Trần</a>
+
+
+with tags <a href="https://debian-vn.github.io/tag/chia-se.html">chia-se</a>         </div>
+
+        <div><p>Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser). </p>
+<p>Bài này nó lên quan điểm cá nhân nên mình chỉ để cập tới 2 browser mà mình đang dùng là <code>Firefox</code> và <code>Chromium</code>.</p>
+<h2>I. Mình dùng khác gì mọi người, sao tận 2 cái?</h2>
+<p>Mình dùng để làm việc và đọc tin tức, không khác mọi người.</p>
+<p><code>Firefox</code> là trình duyệt yêu thích và là mặc định của mình, còn <code>Chromium</code> vẫn dùng khá nhiều o.O ?</p>
+<h2>II. Chia sẻ gì trong bày này.</h2>
+<p>Điểm hay mà mình muốn chia sẻ hôm nay, chỉ là sự tối ưu về mặt làm việc. (Có thể nó không hay với bạn)</p>
+<p>Ngày nay chúng ta làm rất nhiều việc trên browser nên đôi khi mình thấy 1 bạn nào đó mở hơn chục tabs trên 1 cái trình duyệt. Có vài bạn biết sắp xếp hơn bằng cách tạo ra các profile khác nhau như Ngân hàng, Làm việc, Mạng xã hôị, Hội nguời cùng khổ,...</p>
+<p>Đấy cái chính hôm nay là mình chia sẻ việc tạo ra các profile linh động dùng trên các Distro Linux bằng lệnh thuận tiện.</p>
+<h3>Firefox</h3>
+<p>Mình gọi script là <code>w2</code></p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash                                                       </span>
+<span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEBUG</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span> -eq <span class="m">1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">set</span> -x
+
+<span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -gt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;--private-window&quot;</span>
+<span class="k">fi</span>
+firefox -P <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="nv">$OPTS</span>
+</pre></div>
+
+
+<p>Với <code>w2</code> chúng ta có thể gọi Firefox ra với một profile nhanh chóng</p>
+<p>Ví dụ:
+<img alt="w2" src="https://debian-vn.github.io/images/w2.png"></p>
+<ul>
+<li><code>w2 bank</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mở Firefox ra với profile là <code>bank</code>, nếu chưa có thì chúng ta sẽ tạo 1 lần</li>
+<li><code>w2 bank .</code> &nbsp; Mở ẩn danh của <code>bank</code> profile</li>
+</ul>
+<p>Điểm hay của Firefox:</p>
+<ul>
+<li>Bạn có thể cấu hình proxy riêng cho mỗi profile trực tiếp trên chính trình duyệt. Chromium thì phải qua dòng lệnh với tham số cụ thể.</li>
+</ul>
+<h3>Chromium</h3>
+<p>Mình gọi script là <code>w3</code></p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEBUG</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span> -eq <span class="m">1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">set</span> -x
+
+<span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+
+_help<span class="o">(){</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Usage: w3 [-p] [-c] [-d] PROFILE&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Profiles:</span><span class="si">${</span><span class="nv">profiles</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="k">for</span> opt in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$opt</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="o">[</span>-<span class="o">]</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">case</span> <span class="si">${</span><span class="nv">opt</span><span class="p">:</span><span class="nv">1</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> in
+            p<span class="o">)</span> <span class="nv">PRIVATE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+            c<span class="o">)</span> <span class="nv">CREATE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+            d<span class="o">)</span> <span class="nv">DELETE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+            -<span class="o">)</span>
+                <span class="k">case</span> <span class="si">${</span><span class="nv">opt</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span> in
+                    create<span class="o">)</span> <span class="nv">CREATE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+                    private<span class="o">)</span> <span class="nv">PRIVATE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+                    delete<span class="o">)</span> <span class="nv">DELETE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+                <span class="k">esac</span><span class="p">;;</span>
+        <span class="k">esac</span>
+    <span class="k">else</span>
+        <span class="nv">args_string</span><span class="o">+=</span><span class="s2">&quot;</span><span class="nv">$IFS$opt</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+<span class="k">done</span>
+
+<span class="nv">args</span><span class="o">=(</span><span class="nv">$args_string</span><span class="o">)</span>
+<span class="nv">profile_name</span><span class="o">=</span><span class="si">${</span><span class="nv">args</span><span class="p">[0]</span><span class="si">}</span>
+
+<span class="o">[</span> <span class="nv">$PRIVATE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;--incognito&quot;</span>
+
+<span class="nv">profiles</span><span class="o">=</span><span class="s2">&quot; &quot;</span>
+<span class="k">for</span> dir in <span class="nv">$HOME</span>/.config/chromium/profile*<span class="p">;</span> <span class="k">do</span>
+    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$dir</span><span class="k">)</span>
+    <span class="nv">profiles</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">name</span><span class="p">##*profile.</span><span class="si">}</span><span class="s2"> </span><span class="nv">$profiles</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+<span class="nv">profiles</span><span class="o">=</span><span class="s2">&quot; </span><span class="nv">$profiles</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$profile_name</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    _help
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="c1"># If --delete is set</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$DELETE</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$profiles</span><span class="s2">&quot;</span> <span class="o">==</span> *<span class="s2">&quot; </span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2"> &quot;</span>* <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+        rm -rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.config/chromium/profile.</span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+    <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">fi</span>
+
+<span class="c1"># If --create is not set, check the exist before start</span>
+<span class="k">if</span> <span class="o">[</span> ! <span class="nv">$CREATE</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="k">if</span> <span class="o">[[</span> ! <span class="s2">&quot;</span><span class="nv">$profiles</span><span class="s2">&quot;</span> <span class="o">==</span> *<span class="s2">&quot; </span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2"> &quot;</span>* <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
+        _help
+        <span class="nb">exit</span> <span class="m">1</span>
+    <span class="k">fi</span>
+<span class="k">fi</span>
+
+<span class="c1"># Start one is default</span>
+chromium --args --profile-directory<span class="o">=</span><span class="s2">&quot;profile.</span><span class="nv">$profile_name</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$OPTS</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>Với <code>w3</code> chúng ta có thể tạo mới, mở ra hoặc xoá một profile</p>
+<p>Ví dụ:</p>
+<p><img alt="w3" src="https://debian-vn.github.io/images/w3.png"></p>
+<ul>
+<li><code>w3 bank -c</code> &nbsp;&nbsp; Tạo profile mới tên là bank</li>
+<li><code>w3 bank</code>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mở profile là bank</li>
+<li><code>w3 bank -p</code> &nbsp;&nbsp; Mở profile  là bank ở chế độ ẩn danh</li>
+<li><code>w3 bank -d</code> &nbsp;&nbsp; Xoá profile với tên là bank</li>
+</ul>
+<p>Điểm hay của Chromium:</p>
+<ul>
+<li>Chỉ cần truyền đối số thẳng mà không cần tạo bẳng tay (đó là lý do mình cần viêt thêm tuỳ chọn <code>-c</code>)</li>
+</ul>
+<h3>Temp profile của Chromium</h3>
+<p>Đây thật sự là một tính năng tuyệt vời.
+Ví dụ bạn cần test một ứng dụng chat nhóm với 3,4 người tham gia cùng 1 lúc. Đây chính là lúc bạn cần nhiều profile trình duyệt để độc lập về session (phiên làm việc)</p>
+<p>Chúng ta có thể dùng <code>w2</code> và <code>w3</code> để tạo ra nhiều profile nhưng điều đó là không hay vì chúng ta chỉ sử dụng tạm thời.</p>
+<p>Chromium cung cấp tuỳ chọn <code>--temp-profile</code> để có thể mở ra một profile hoàn toàn mới, và được xoá khi tắt browser.</p>
+<ul>
+<li>
+<p><code>chromium --temp-profile</code></p>
+</li>
+<li>
+<p><code>chromium --temp-profile --incognito</code> &nbsp;&nbsp; Mình thật sự dùng cái này, vì cái icon không xoay xoay gân tốn thời gian =))</p>
+</li>
+</ul>
+<p>Và Chrome của Google cũng cung cấp tính năng không khác gì Chromium nhé.</p>
+<h2>III. Tổng kết</h2>
+<p>Mỗi người sẽ có kiểu dùng của mỗi người, đây là cách mà mình dùng browser. Thành thật thì nó sẽ không nhanh cho những ai không thích dùng lệnh. Hiện tại mình đang dùng <code>dmenu</code> (chính xác là <code>i3-dmenu-desktop</code>) để gọi ứng dụng nên nó thật sự rất hiệu qủa.</p></div>
+
+        <hr>
+    </div>
+    </div>
+
+    <div id="rightcolumn">
+
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+                <ul class="nav-list">
+
+                <li><a href="http://debian-vn.github.io">Home</a></li>
+
+                <li><a href="https://debian-vn.github.io/pages/about.html">Giới thiệu</a></li>
+                <br />
+                <li><a href="https://debian-vn.github.io/archives.html">Archives</a>
+                <li><a href="https://debian-vn.github.io/feeds/atom.xml" rel="alternate">Atom feed</a></li>
+                <li><a href="https://debian-vn.github.io/feeds/feed.rss" rel="alternate">RSS feed</a></li>
+                </ul>
+            </div>
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>Tài liệu tiếng việt</h1>
+                <ul class="nav-list">
+                <li><a href="https://debian-vn.github.io/maint-guide">Debian New Maintainers' Guide</a></li>
+                <li><a href="https://www.debian.org/releases/stable/amd64/index.html.vi">Installation Guide</a></li>
+                </ul>
+            </div>
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>Liên kết</h1>
+                <ul class="nav-list">
+                <li><a href="https://bits.debian.org/">Bits from Debian</a></li>
+                <li><a href="https://www.privacytools.io/#os">OS for Privacy</a></li>
+                <li><a href="https://webchat.oftc.net/?channels=%23debian-vn">#debian-vn IRC</a></li>
+                </ul>
+            </div>
+
+
+            <hr class="nocss" />
+            <div class="lateral" style="padding: 8px 0;">
+            <h1>Tags</h1>
+                <ul class="nav-list">
+                  <li><a href="https://debian-vn.github.io/tag/apt.html">apt</a> (1)</li>
+                  <li><a href="https://debian-vn.github.io/tag/chia-se.html">chia-se</a> (1)</li>
+                  <li><a href="https://debian-vn.github.io/tag/dich.html">dich</a> (2)</li>
+                  <li><a href="https://debian-vn.github.io/tag/dong-gop.html">dong-gop</a> (2)</li>
+                  <li><a href="https://debian-vn.github.io/tag/dpkg.html">dpkg</a> (1)</li>
+                  <li><a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a> (5)</li>
+                  <li><a href="https://debian-vn.github.io/tag/thu-thuat.html">thu-thuat</a> (1)</li>
+                </ul>
+            </div>
+
+    </div>
+
+    <hr class="nocss" />
+    <div id="footer">
+        <p><a href="https://debian-vn.github.io">debian-vn.github.io</a> is the official blog of <a href="https://www.facebook.com/groups/426931777506013/"> Debian VN Community</a></p>
+    </div>
+
+</div>
+</body>
+</html>
