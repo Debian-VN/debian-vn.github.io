@@ -35,8 +35,8 @@ CATEGORY_FEED_RSS = None
 TAG_FEED_ATOM = None
 TAG_FEED_RSS = None
 TRANSLATION_FEED = None
-TRANSLATION_FEED_ATOM = 'feeds/atom-%s.xml'
-TRANSLATION_FEED_RSS = 'feeds/feed-%s.rss'
+TRANSLATION_FEED_ATOM = 'feeds/atom-{lang}.xml'
+TRANSLATION_FEED_RSS = 'feeds/feed-{lang}.rss'
 
 
 MENUITEMS =  (('Home', 'http://debian-vn.github.io'),)
