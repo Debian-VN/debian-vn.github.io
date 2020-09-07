@@ -5,7 +5,7 @@ Slug: toi-dung-trinh-duyet-nhu-the-nao
 Author: Giáp Trần
 Status: published
 
-Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser). 
+Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser).
 
 Bài này nó lên quan điểm cá nhân nên mình chỉ để cập tới 2 browser mà mình đang dùng là `Firefox` và `Chromium`.
 
@@ -27,14 +27,29 @@ Ngày nay chúng ta làm rất nhiều việc trên browser nên đôi khi mình
 Mình gọi script là `w2`
 
 ```bash
-#!/bin/bash                                                       
+#!/bin/bash
 [ "${DEBUG:-0}" -eq 1 ] && set -x
 
 OPTS=""
-if [ $# -gt 1 ]; then
-    OPTS="--private-window"
-fi
-firefox -P "$1" $OPTS
+for opt in "$@"; do
+    if [[ "$opt" == [-]* ]]; then
+        case ${opt:1:1} in
+            p) PRIVATE=0 ;;
+            -)
+                case ${opt:2} in
+                    private) PRIVATE=0 ;;
+                esac;;
+        esac
+    else
+        args_string+="$IFS$opt"
+    fi
+done
+args=($args_string)
+profile_name=${args[0]}
+
+[ $PRIVATE ] && OPTS="--private-window"
+
+firefox -P "$profile_name" $OPTS
 ```
 
 Với `w2` chúng ta có thể gọi Firefox ra với một profile nhanh chóng
@@ -55,15 +70,16 @@ Mình gọi script là `w3`
 
 ```bash
 #!/bin/bash
-[ "${DEBUG:-0}" -eq 1 ] && set -x
+[ "${DEBUG:-0}" -eq 0 ] || set -x
 
 OPTS=""
 
 _help(){
     echo "Usage: w3 [-p] [-c] [-d] PROFILE"
     echo "Profiles:${profiles}"
-}
+    pgrep dunst >/dev/null 2>&1 && notify-send -u low "Chromium profiles" "Usage: w3 [-p] [-c] PROFILE\n\nProfiles:${profiles}"
 
+}
 for opt in "$@"; do
     if [[ "$opt" == [-]* ]]; then
         case ${opt:1:1} in
@@ -84,6 +100,7 @@ done
 
 args=($args_string)
 profile_name=${args[0]}
+url=${args[1]}
 
 [ $PRIVATE ] && OPTS="--incognito"
 
@@ -99,7 +116,6 @@ if [ -z "$profile_name" ]; then
     exit 1
 fi
 
-# If --delete is set
 if [ $DELETE ]; then
     if [[ "$profiles" == *" ${profile_name} "* ]];then
         rm -rf "${HOME}/.config/chromium/profile.${profile_name}"
@@ -107,7 +123,6 @@ if [ $DELETE ]; then
     exit 0
 fi
 
-# If --create is not set, check the exist before start
 if [ ! $CREATE ]; then
     if [[ ! "$profiles" == *" ${profile_name} "* ]];then
         _help
@@ -115,8 +130,8 @@ if [ ! $CREATE ]; then
     fi
 fi
 
-# Start one is default
-chromium --args --profile-directory="profile.$profile_name" "$OPTS"
+chromium --user-data-dir="${HOME}/.config/chromium/profile.${profile_name}" --profile-directory="profile.$profile_name" "$OPTS" --app="$url"
+
 ```
 
 Với `w3` chúng ta có thể tạo mới, mở ra hoặc xoá một profile

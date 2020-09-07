@@ -15,12 +15,12 @@ Sử dụng công cụ  [Pelican](http://docs.getpelican.com/)
 
 ## Cài đặt các gói phụ thuộc
 ```
-$sudo pip install pelican markdown
+pip install pelican markdown
 ```
 ## Sao chép nguồn về
 ```
-$git clone --recursive --branch generate git@github.com:Debian-VN/debian-vn.github.io.git
-$cd  ~/debian-vn-github.io
+git clone --recursive --branch generate git@github.com:Debian-VN/debian-vn.github.io.git
+cd  ~/debian-vn-github.io
 ```
 ## Viết bài, chạy thử và phát hành
 ```
