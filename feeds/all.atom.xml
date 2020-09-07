@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/all.atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2019-04-16T00:00:00+07:00</updated><entry><title>Tôi đang dùng trình duyệt như thế nào?</title><link href="https://debian-vn.github.io/2019/04/toi-dung-trinh-duyet-nhu-the-nao.html" rel="alternate"></link><published>2019-04-16T00:00:00+07:00</published><updated>2019-04-16T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2019-04-16:/2019/04/toi-dung-trinh-duyet-nhu-the-nao.html</id><summary type="html">&lt;p&gt;Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser). &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Debian VN</title><link href="https://debian-vn.github.io/" rel="alternate"></link><link href="https://debian-vn.github.io/feeds/all.atom.xml" rel="self"></link><id>https://debian-vn.github.io/</id><updated>2019-04-16T00:00:00+07:00</updated><entry><title>Tôi đang dùng trình duyệt như thế nào?</title><link href="https://debian-vn.github.io/2019/04/toi-dung-trinh-duyet-nhu-the-nao.html" rel="alternate"></link><published>2019-04-16T00:00:00+07:00</published><updated>2019-04-16T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2019-04-16:/2019/04/toi-dung-trinh-duyet-nhu-the-nao.html</id><summary type="html">&lt;p&gt;Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser).&lt;/p&gt;
 &lt;p&gt;Bài này nó lên quan điểm cá nhân nên mình chỉ để cập tới 2 browser mà mình đang dùng là &lt;code&gt;Firefox&lt;/code&gt; và &lt;code&gt;Chromium&lt;/code&gt;.&lt;/p&gt;
 &lt;h2&gt;I. Mình dùng khác gì mọi người, sao tận 2 cái?&lt;/h2&gt;
 &lt;p&gt;Mình dùng để làm việc và đọc tin tức, không khác mọi người.&lt;/p&gt;
@@ -10,15 +10,30 @@
 &lt;p&gt;Đấy cái chính hôm nay là mình chia sẻ việc tạo ra các profile linh động dùng trên các Distro Linux bằng lệnh thuận tiện.&lt;/p&gt;
 &lt;h3&gt;Firefox&lt;/h3&gt;
 &lt;p&gt;Mình gọi script là &lt;code&gt;w2&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash                                                       &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; -x
 
 &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$#&lt;/span&gt; -gt &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--private-window&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;fi&lt;/span&gt;
-firefox -P &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$OPTS&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; opt in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-&lt;span class="o"&gt;]&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; in
+            p&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PRIVATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+            -&lt;span class="o"&gt;)&lt;/span&gt;
+                &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;2&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; in
+                    private&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;PRIVATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;;&lt;/span&gt;
+                &lt;span class="k"&gt;esac&lt;/span&gt;&lt;span class="p"&gt;;;&lt;/span&gt;
+        &lt;span class="k"&gt;esac&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="nv"&gt;args_string&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$IFS$opt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="nv"&gt;$args_string&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[0]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$PRIVATE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--private-window&amp;quot;&lt;/span&gt;
+
+firefox -P &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$profile_name&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$OPTS&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Với &lt;code&gt;w2&lt;/code&gt; chúng ta có thể gọi Firefox ra với một profile nhanh chóng&lt;/p&gt;
@@ -34,16 +49,17 @@ firefox -P &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Chromium&lt;/h3&gt;
 &lt;p&gt;Mình gọi script là &lt;code&gt;w3&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; -x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt; -x
 
 &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
 
 _help&lt;span class="o"&gt;(){&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Usage: w3 [-p] [-c] [-d] PROFILE&amp;quot;&lt;/span&gt;
     &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Profiles:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profiles&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="o"&gt;}&lt;/span&gt;
+    pgrep dunst &amp;gt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; notify-send -u low &lt;span class="s2"&gt;&amp;quot;Chromium profiles&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Usage: w3 [-p] [-c] PROFILE\n\nProfiles:&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profiles&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 
+&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; opt in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$opt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;-&lt;span class="o"&gt;]&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
         &lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;opt&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; in
@@ -64,6 +80,7 @@ _help&lt;span class="o"&gt;(){&lt;/span&gt;
 
 &lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="nv"&gt;$args_string&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[0]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="nv"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[1]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
 
 &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$PRIVATE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;OPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--incognito&amp;quot;&lt;/span&gt;
 
@@ -79,7 +96,6 @@ _help&lt;span class="o"&gt;(){&lt;/span&gt;
     &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
-&lt;span class="c1"&gt;# If --delete is set&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$DELETE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$profiles&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; *&lt;span class="s2"&gt;&amp;quot; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
         rm -rf &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.config/chromium/profile.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
@@ -87,7 +103,6 @@ _help&lt;span class="o"&gt;(){&lt;/span&gt;
     &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
-&lt;span class="c1"&gt;# If --create is not set, check the exist before start&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; ! &lt;span class="nv"&gt;$CREATE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; ! &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$profiles&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; *&lt;span class="s2"&gt;&amp;quot; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;quot;&lt;/span&gt;* &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
         _help
@@ -95,9 +110,8 @@ _help&lt;span class="o"&gt;(){&lt;/span&gt;
     &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
-&lt;span class="c1"&gt;# Start one is default&lt;/span&gt;
-chromium --args --profile-directory&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;profile.&lt;/span&gt;&lt;span class="nv"&gt;$profile_name&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$OPTS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+chromium --user-data-dir&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.config/chromium/profile.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;profile_name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; --profile-directory&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;profile.&lt;/span&gt;&lt;span class="nv"&gt;$profile_name&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$OPTS&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; --app&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$url&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Với &lt;code&gt;w3&lt;/code&gt; chúng ta có thể tạo mới, mở ra hoặc xoá một profile&lt;/p&gt;
@@ -128,7 +142,7 @@ Ví dụ bạn cần test một ứng dụng chat nhóm với 3,4 người tham 
 &lt;/ul&gt;
 &lt;p&gt;Và Chrome của Google cũng cung cấp tính năng không khác gì Chromium nhé.&lt;/p&gt;
 &lt;h2&gt;III. Tổng kết&lt;/h2&gt;
-&lt;p&gt;Mỗi người sẽ có kiểu dùng của mỗi người, đây là cách mà mình dùng browser. Thành thật thì nó sẽ không nhanh cho những ai không thích dùng lệnh. Hiện tại mình đang dùng &lt;code&gt;dmenu&lt;/code&gt; (chính xác là &lt;code&gt;i3-dmenu-desktop&lt;/code&gt;) để gọi ứng dụng nên nó thật sự rất hiệu qủa.&lt;/p&gt;</content><category term="chia-se"></category></entry><entry><title>An toàn và bảo mật với DNS</title><link href="https://debian-vn.github.io/2018/12/an-toan-va-bao-mat-voi-dns.html" rel="alternate"></link><published>2018-12-28T00:00:00+07:00</published><updated>2018-12-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-12-28:/2018/12/an-toan-va-bao-mat-voi-dns.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Mỗi người sẽ có kiểu dùng của mỗi người, đây là cách mà mình dùng browser. Thành thật thì nó sẽ không nhanh cho những ai không thích dùng lệnh. Hiện tại mình đang dùng &lt;code&gt;dmenu&lt;/code&gt; (chính xác là &lt;code&gt;i3-dmenu-desktop&lt;/code&gt;) để gọi ứng dụng nên nó thật sự rất hiệu qủa.&lt;/p&gt;</content><category term="2019"></category><category term="chia-se"></category></entry><entry><title>An toàn và bảo mật với DNS</title><link href="https://debian-vn.github.io/2018/12/an-toan-va-bao-mat-voi-dns.html" rel="alternate"></link><published>2018-12-28T00:00:00+07:00</published><updated>2018-12-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-12-28:/2018/12/an-toan-va-bao-mat-voi-dns.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Trong bài này mình …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;DNS&lt;/strong&gt; (viết tắt trong tiếng Anh của Domain Name System - Hệ thống tên miền) là một hệ thống cho phép thiết lập tương ứng giữa địa chỉ IP và tên miền trên Internet. (Nguồn &lt;a href="https://vi.wikipedia.org/wiki/Domain_Name_System"&gt;vi.wikipedia&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Trong bài này mình sẽ hướng dẫn thiết lập 2 tính năng cho hệ thống Debian giúp những truy vấn DNS của máy tính được &lt;em&gt;An toàn với DNSsec&lt;/em&gt; và &lt;em&gt;Bảo mật với DNScrypt&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions"&gt;DNSSEC&lt;/a&gt; ra đời nhằm đảm bảo các câu trả lời DNS là chính xác, còn &lt;a href="https://dnscrypt.info/implementations/"&gt;DNSCRYPT&lt;/a&gt; thì mã hoá các kết nối DNS thông thường bằng cách kết hợp các công nghệ khác như DNS over HTTP, DNS over TLS...&lt;/p&gt;
@@ -144,12 +158,12 @@ Ví dụ bạn cần test một ứng dụng chat nhóm với 3,4 người tham 
 &lt;h2&gt;II. Thiết lập từng dịch vụ&lt;/h2&gt;
 &lt;h3&gt;DNSSEC&lt;/h3&gt;
 &lt;p&gt;Debian cung cấp gói &lt;code&gt;unbound&lt;/code&gt;, theo như mô tả thì&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# apt-cache show unbound
-...
-Description-en: validating, recursive, caching DNS resolver
- Unbound is a recursive-only caching DNS server which can perform DNSSEC
- validation of results...
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# apt-cache show unbound&lt;/span&gt;
+&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="c"&gt;Description-en: validating, recursive, caching DNS resolver&lt;/span&gt;
+&lt;span class="c"&gt; Unbound is a recursive-only caching DNS server which can perform DNSSEC&lt;/span&gt;
+&lt;span class="c"&gt; validation of results...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Sau khi cài xong với &lt;code&gt;apt-get install unbound&lt;/code&gt; chúng ta sẽ có 2 service là&lt;/p&gt;
@@ -161,7 +175,7 @@ Description-en: validating, recursive, caching DNS resolver
 &lt;p&gt;Để kiểm tra xem DNSSEC đã hoạt động hay chưa, thử truy vấn thông tin dnssec từ địa chỉ &lt;em&gt;dnssec.cz&lt;/em&gt;.
 Nếu cờ &lt;code&gt;ad&lt;/code&gt; xuất hiện là đã truy vấn DNSSEC thành công, hãy tìm hiểu các cờ nhé.&lt;/p&gt;
 &lt;p&gt;Chúng ta sẽ so sánh một chút.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;# TRUY VẤN VỚI DNS Server được cấp phát tự động&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;# TRUY VẤN VỚI DNS Server được cấp phát tự động&lt;/span&gt;
 &lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="mf"&gt;@192.168.0.1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dnssec&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;dnssec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;
 &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;192.168.0.1&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;192.168.0.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -179,20 +193,20 @@ Nếu cờ &lt;code&gt;ad&lt;/code&gt; xuất hiện là đã truy vấn DNSSEC 
 &lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dig&lt;/span&gt; &lt;span class="mf"&gt;@1.1.1.1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dnssec&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;dnssec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cz&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;check&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;
 &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;flags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;qr&lt;/span&gt; &lt;span class="n"&gt;rd&lt;/span&gt; &lt;span class="n"&gt;ra&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nl"&gt;QUERY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ANSWER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;AUTHORITY&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nl"&gt;ADDITIONAL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="p"&gt;;;&lt;/span&gt; &lt;span class="nl"&gt;SERVER&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.1.1.1&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.1.1.1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Như bạn có thể thấy, kết quả trả về từ máy chủ nhà cung cấp không hỗ trợ DNSSEC. Còn Google và Cloudflare có hỗ trợ DNSSEC, nên đơn giản bạn có thể sử dụng 2 nhà cung cấp này.&lt;/p&gt;
 &lt;p&gt;Nhưng phần tiếp theo mình cài cắm DNSCRYPT và sẽ là tuyệt nếu tích hợp với Unbound&lt;/p&gt;
 &lt;h3&gt;DNSCRYPT&lt;/h3&gt;
 &lt;p&gt;Debian cung cấp gói &lt;code&gt;dnscrypt-proxy&lt;/code&gt;, tương tự chúng ta có:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# apt-cache show dnscrypt-proxy
-...
-Description-en: Tool for securing communications between a client and a DNS resolver
- dnscrypt-proxy provides local service which can be used directly as your local
- resolver or as a DNS forwarder, encrypting and authenticating requests using
- the DNSCrypt protocol and passing them to an upstream server...
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# apt-cache show dnscrypt-proxy&lt;/span&gt;
+&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="c"&gt;Description-en: Tool for securing communications between a client and a DNS resolver&lt;/span&gt;
+&lt;span class="c"&gt; dnscrypt-proxy provides local service which can be used directly as your local&lt;/span&gt;
+&lt;span class="c"&gt; resolver or as a DNS forwarder, encrypting and authenticating requests using&lt;/span&gt;
+&lt;span class="c"&gt; the DNSCrypt protocol and passing them to an upstream server...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Sau khi cài xong &lt;code&gt;apt-get install dnscrypt-proxy&lt;/code&gt; chúng ta sẽ có 2 service là&lt;/p&gt;
@@ -202,15 +216,15 @@ Description-en: Tool for securing communications between a client and a DNS reso
 &lt;/ul&gt;
 &lt;p&gt;Đặc điểm của DNScrypt là bạn phải chọn một máy chủ cung cấp dịch vụ này, danh sách này có ở &lt;code&gt;/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv&lt;/code&gt;.
 Bạn có thể chọn 1 trong số đó và cấu hình vào &lt;code&gt;/etc/dnscrypt-proxy/dnscrypt-proxy.conf&lt;/code&gt;, nó sẽ trông như thế này.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ResolverName ipredator
-Daemonize no
-LocalAddress 127.0.2.1:53
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;ResolverName ipredator&lt;/span&gt;
+&lt;span class="err"&gt;Daemonize no&lt;/span&gt;
+&lt;span class="err"&gt;LocalAddress 127.0.2.1:53&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Có 1 điểm khá bất tiện, là đôi khi máy chủ DNScrypt không truy cập được. Nên bạn phải tìm và đổi sang máy chủ khác bằng tay. Vì thế bạn nên viết 1 kịch bản có thể tìm và thay tự động cho bạn.&lt;/p&gt;
 &lt;p&gt;Ví dụ như &lt;code&gt;/usr/local/bin/dnscrypt-update&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DEBUG&lt;/span&gt;&lt;span class="k"&gt;:-&lt;/span&gt;&lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -eq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;  &lt;span class="nb"&gt;set&lt;/span&gt; -x
 
 &lt;span class="nv"&gt;FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv&amp;quot;&lt;/span&gt;
@@ -232,62 +246,62 @@ msg&lt;span class="o"&gt;(){&lt;/span&gt; &lt;span class="nb"&gt;printf&lt;/span
 
 msg &lt;span class="s2"&gt;&amp;quot;I&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Choose &lt;/span&gt;&lt;span class="nv"&gt;$choice&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 sed -i &lt;span class="s1"&gt;&amp;#39;s/ResolverName.*/ResolverName &amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$choice&lt;/span&gt;&lt;span class="s2"&gt;/&amp;quot;&lt;/span&gt; /etc/dnscrypt-proxy/dnscrypt-proxy.conf
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Testing&lt;/h4&gt;
 &lt;p&gt;Để có thể dễ dàng quan sát, hãy đảm bảo không có ứng dụng nào đang hoạt động mà cần kết nối mạng.&lt;/p&gt;
 &lt;p&gt;Ví dụ mình đang sử dụng wifi với interface là &lt;code&gt;wpl3s0&lt;/code&gt;, chúng ta sẽ sử dụng tcpdump để theo dõi kết nối vào cổng UDP/53 như sau&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;sudo tcpdump -n -i wlp3s0 udp port 53
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
-listening on wlp3s0, link-type EN10MB (Ethernet), capture size 262144 bytes
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;sudo tcpdump -n -i wlp3s0 udp port 53&lt;/span&gt;
+&lt;span class="c"&gt;tcpdump: verbose output suppressed, use -v or -vv for full protocol decode&lt;/span&gt;
+&lt;span class="err"&gt;listening on wlp3s0, link-type EN10MB (Ethernet), capture size 262144 bytes&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;1. Thử nghiệm với lệnh &lt;code&gt;192.168.0.1&lt;/code&gt;&lt;/h5&gt;
 &lt;p&gt;Kết quả lệnh:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nslookup gnu.org 192.168.0.1
-Server:         192.168.0.1
-Address:        192.168.0.1#53
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt; &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;         &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;        &lt;span class="mi"&gt;192&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;168&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;
 
-Non-authoritative answer:
-Name:   gnu.org
-Address: 208.118.235.148
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="n"&gt;Non&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;authoritative&lt;/span&gt; &lt;span class="n"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;208&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;118&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;235&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;148&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và từ tcpdump&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;... IP 192.168.0.186.38101 &amp;gt; 192.168.0.1.53: 55790+ A? gnu.org. (28)
-... IP 192.168.0.1.53 &amp;gt; 192.168.0.186.38101: 55790 1/0/0 A 208.118.235.148 (41)
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;... IP 192.168.0.186.38101 &amp;gt; 192.168.0.1.53: 55790+ A? gnu.org. (28)&lt;/span&gt;
+&lt;span class="err"&gt;... IP 192.168.0.1.53 &amp;gt; 192.168.0.186.38101: 55790 1/0/0 A 208.118.235.148 (41)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;2. Thử nghiệm với &lt;code&gt;1.1.1.1&lt;/code&gt;&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;nslookup gnu.org 1.1.1.1
-Server:         1.1.1.1
-Address:        1.1.1.1#53
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;         &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;        &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;
 
-Non-authoritative answer:
-Name:   gnu.org
-Address: 208.118.235.148
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="n"&gt;Non&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;authoritative&lt;/span&gt; &lt;span class="n"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;208&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;118&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;235&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;148&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và từ tcpdump&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;... IP 192.168.0.186.40491 &amp;gt; 1.1.1.1.53: 58978+ A? gnu.org. (28)
-... IP 1.1.1.1.53 &amp;gt; 192.168.0.186.40491: 58978 1/0/0 A 208.118.235.148 (41)
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;... IP 192.168.0.186.40491 &amp;gt; 1.1.1.1.53: 58978+ A? gnu.org. (28)&lt;/span&gt;
+&lt;span class="err"&gt;... IP 1.1.1.1.53 &amp;gt; 192.168.0.186.40491: 58978 1/0/0 A 208.118.235.148 (41)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;3. Thử nghiệm với &lt;code&gt;127.0.2.1&lt;/code&gt;&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;nslookup gnu.org 127.0.2.1
-Server:         127.0.2.1
-Address:        127.0.2.1#53
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;nslookup&lt;/span&gt; &lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt; &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;         &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;        &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;
 
-Non-authoritative answer:
-Name:   gnu.org
-Address: 208.118.235.148
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="n"&gt;Non&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;authoritative&lt;/span&gt; &lt;span class="n"&gt;answer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="n"&gt;gnu&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="n"&gt;Address&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;208&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;118&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;235&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;148&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và từ tcpdump là rỗng. Bởi vì dnscrypt-proxy đã truy vấn tới máy chủ đã cấu hình không qua giao thức UDP/53 như thông thường. Hãy tìm hiểu thêm chi tiết nhé.&lt;/p&gt;
@@ -299,23 +313,23 @@ Address: 208.118.235.148
 &lt;/ul&gt;
 &lt;p&gt;Máy tính sẽ sử dụng địa chỉ được cấu hình trong &lt;code&gt;/etc/resolv.conf&lt;/code&gt; để truy vấn tên miền.&lt;/p&gt;
 &lt;p&gt;Chúng ta sẽ cấu hình để truy vấn DNSsec sẽ đi qua DNScrypt bằng cách tạo tệp &lt;code&gt;/etc/unbound/unbound.conf.d/dnscrypt.conf&lt;/code&gt; với nội dung:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nl"&gt;server&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;not&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;localhost&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;
 &lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;zone&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="nl"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;
         &lt;span class="n"&gt;forward&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;addr&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;127.0.2.1&lt;/span&gt;&lt;span class="mi"&gt;@53&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và không cho dnscrypt cập nhật vào &lt;code&gt;/etc/resolv.conf&lt;/code&gt; bằng cách &lt;code&gt;systemctl stop dnscrypt-proxy-resolvconf&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Kết quả&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;cat /etc/resolv.conf
-# Generated by resolvconf
-nameserver 127.0.0.1
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;cat /etc/resolv.conf&lt;/span&gt;
+&lt;span class="err"&gt;# Generated by resolvconf&lt;/span&gt;
+&lt;span class="err"&gt;nameserver 127.0.0.1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Như vậy là hệ thống của bạn mỗi lần kết nối mạng và phân giải tên miền một cách an toàn và bảo mật hơn với DNSsec và DNScrypt. Hãy tìm hiểu 2 từ khoá trên để hiểu rõ hơn về chúng.&lt;/p&gt;</content><category term="huong-dan"></category></entry><entry><title>Tản mạn về trình quản lý gói</title><link href="https://debian-vn.github.io/2018/04/tan-man-ve-trinh-quan-ly-goi.html" rel="alternate"></link><published>2018-04-28T00:00:00+07:00</published><updated>2018-04-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-04-28:/2018/04/tan-man-ve-trinh-quan-ly-goi.html</id><summary type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
+&lt;p&gt;Như vậy là hệ thống của bạn mỗi lần kết nối mạng và phân giải tên miền một cách an toàn và bảo mật hơn với DNSsec và DNScrypt. Hãy tìm hiểu 2 từ khoá trên để hiểu rõ hơn về chúng.&lt;/p&gt;</content><category term="2018"></category><category term="huong-dan"></category></entry><entry><title>Tản mạn về trình quản lý gói</title><link href="https://debian-vn.github.io/2018/04/tan-man-ve-trinh-quan-ly-goi.html" rel="alternate"></link><published>2018-04-28T00:00:00+07:00</published><updated>2018-04-28T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-04-28:/2018/04/tan-man-ve-trinh-quan-ly-goi.html</id><summary type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
 &lt;p&gt;Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nhắc đến một bản Distro, có lẽ người ta sẽ quan tâm về &lt;code&gt;Triết lý&lt;/code&gt;, &lt;code&gt;Kiến trúc&lt;/code&gt; và &lt;code&gt;Trình quản lý gói&lt;/code&gt; của Distro đó.&lt;/p&gt;
 &lt;p&gt;Bài viết này mình sẽ chia sẻ về trình quản lý gói của Debian, được đánh giá là trình quản lý gói mạnh mẽ, cũng là một trong những lý do mà các distro khác muốn base trên Debian. À mình chỉ tản mạn về cách mình hay sử dụng với góc nhìn của một sysadmin cũng như người dùng ưu tìm tòi. Còn nâng cao hay chi tiết hơn thì mình nghĩ tài liệu chính thức từ Debian đã viết rất đầy đủ&lt;/p&gt;
 &lt;h2&gt;Sơ qua các gói&lt;/h2&gt;
@@ -323,17 +337,17 @@ nameserver 127.0.0.1
 &lt;li&gt;dpkg&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Bao gồm các công cụ&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L dpkg | grep bin/
-/usr/bin/dpkg
-/usr/bin/dpkg-deb
-/usr/bin/dpkg-divert
-/usr/bin/dpkg-maintscript-helper
-/usr/bin/dpkg-query
-/usr/bin/dpkg-split
-/usr/bin/dpkg-statoverride
-/usr/bin/dpkg-trigger
-/usr/bin/update-alternatives
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -L dpkg | grep bin/&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-deb&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-divert&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-maintscript-helper&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-query&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-split&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-statoverride&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/dpkg-trigger&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/update-alternatives&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Viết tắt của &lt;code&gt;D&lt;/code&gt;ebian &lt;code&gt;P&lt;/code&gt;ac&lt;code&gt;K&lt;/code&gt;a&lt;code&gt;G&lt;/code&gt;e, nó sẽ quản lý tất cả các vấn đề liên quan tới package trên máy của bạn.&lt;/p&gt;
@@ -341,24 +355,24 @@ nameserver 127.0.0.1
 &lt;li&gt;apt&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Bao gồm các công cụ&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L apt | grep bin/
-/usr/bin/apt
-/usr/bin/apt-cache
-/usr/bin/apt-cdrom
-/usr/bin/apt-config
-/usr/bin/apt-get
-/usr/bin/apt-key
-/usr/bin/apt-mark
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -L apt | grep bin/&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-cache&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-cdrom&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-config&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-get&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-key&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-mark&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Viết tắt của &lt;code&gt;A&lt;/code&gt;dvanced &lt;code&gt;P&lt;/code&gt;ackaging &lt;code&gt;T&lt;/code&gt;ool&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;apt-file&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L apt-file | grep bin/
-/usr/bin/apt-file
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -L apt-file | grep bin/&lt;/span&gt;
+&lt;span class="err"&gt;/usr/bin/apt-file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Không viêt tắt nữa, gói này cho phép chúng ta tìm kiếm các gói có trong repo bằng các đường dẫn tệp tệp&lt;/p&gt;
@@ -367,18 +381,18 @@ nameserver 127.0.0.1
 &lt;ul&gt;
 &lt;li&gt;Ở góc nhìn tệp nén bình thưòng, chúng ta có thể giải nén bằng &lt;code&gt;ar&lt;/code&gt; (cung cấp bởi gói &lt;code&gt;binutils&lt;/code&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;ar t dpkg_1.18.24_amd64.deb
-debian-binary      # version của địng dạng gói *deb
-control.tar.gz     # Toàn bộ tệp nằm trong DEBIAN giúp hỗ trợ về cài đặt, gỡ bỏ gói và thông tin các phụ thuộc
-data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một thư mục / giả để caì vào / thật
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;ar t dpkg_1.18.24_amd64.deb&lt;/span&gt;
+&lt;span class="err"&gt;debian-binary      # version của địng dạng gói *deb&lt;/span&gt;
+&lt;span class="err"&gt;control.tar.gz     # Toàn bộ tệp nằm trong DEBIAN giúp hỗ trợ về cài đặt, gỡ bỏ gói và thông tin các phụ thuộc&lt;/span&gt;
+&lt;span class="err"&gt;data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một thư mục / giả để caì vào / thật&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Mở bằng dpkg-deb&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dpkg-deb  -R dpkg_1.18.24_amd64.deb tree
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;dpkg-deb  -R dpkg_1.18.24_amd64.deb tree&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Giải nén vào thư mục &lt;code&gt;tree&lt;/code&gt;, trong thự mục này tương tự nhưng data.tar.xz đã giải nén vào, và control.tar.gz thì giải nén vào thư mục con &lt;code&gt;tree/DEBIAN&lt;/code&gt;&lt;/p&gt;
@@ -394,21 +408,21 @@ data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một th�
 &lt;li&gt;mình hay dùng cái này để grep xem máy mình đã cài cắm cái gì rồi&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ví dụ:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -l | grep dpkg
-ii  dpkg                                        1.18.24                                 amd64        Debian package management system
-ii  dpkg-dev                                    1.18.24                                 all          Debian package development tools
-ii  libdpkg-perl                                1.18.24                                 all          Dpkg perl modules
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -l | grep dpkg&lt;/span&gt;
+&lt;span class="err"&gt;ii  dpkg                                        1.18.24                                 amd64        Debian package management system&lt;/span&gt;
+&lt;span class="err"&gt;ii  dpkg-dev                                    1.18.24                                 all          Debian package development tools&lt;/span&gt;
+&lt;span class="err"&gt;ii  libdpkg-perl                                1.18.24                                 all          Dpkg perl modules&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Hoặc kiểm tra xem gói nào đã gỡ nhưng vẫn tồn tại cấu hình, tức đã &lt;code&gt;remove&lt;/code&gt; mà chưa &lt;code&gt;purge&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -l | awk &amp;#39;/^rc/&amp;#39;
-rc  dnssec-trigger                              0.13-6                                  amd64        reconfiguration tool to make DNSSEC work
-rc  irssi                                       1.0.2-1+deb9u3                          amd64        terminal based IRC client
-rc  resolvconf                                  1.79                                    all          name server information handler
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -l | awk &amp;#39;/^rc/&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;rc  dnssec-trigger                              0.13-6                                  amd64        reconfiguration tool to make DNSSEC work&lt;/span&gt;
+&lt;span class="err"&gt;rc  irssi                                       1.0.2-1+deb9u3                          amd64        terminal based IRC client&lt;/span&gt;
+&lt;span class="err"&gt;rc  resolvconf                                  1.79                                    all          name server information handler&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và có thể purge ngay &lt;code&gt;sudo dpkg -P $(dpkg -l | awk '/^rc/ {print $2}')&lt;/code&gt; hoặc &lt;code&gt;sudo apt-get purge $(dpkg -l | awk '/^rc/ {print $2}')&lt;/code&gt;&lt;/p&gt;
@@ -416,57 +430,57 @@ rc  resolvconf                                  1.79                            
 &lt;p&gt;Bạn có thể thấy ngay ở mục giới thiệu các gói mình sử dụng &lt;code&gt;dpkg -L&lt;/code&gt;. Dùng để lệt kê toàn bộ tệp tin có trong 1 gói.&lt;/p&gt;
 &lt;p&gt;Tính năng này giúp chúng ta xem xét trong 1 gói có những tệp thực thi, cấu hình, thư viện nào?&lt;/p&gt;
 &lt;p&gt;Ví dụ&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -L dpkg | grep var/
-/var/lib
-/var/lib/dpkg
-/var/lib/dpkg/alternatives
-/var/lib/dpkg/info
-/var/lib/dpkg/parts
-/var/lib/dpkg/updates
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -L dpkg | grep var/&lt;/span&gt;
+&lt;span class="err"&gt;/var/lib&lt;/span&gt;
+&lt;span class="err"&gt;/var/lib/dpkg&lt;/span&gt;
+&lt;span class="err"&gt;/var/lib/dpkg/alternatives&lt;/span&gt;
+&lt;span class="err"&gt;/var/lib/dpkg/info&lt;/span&gt;
+&lt;span class="err"&gt;/var/lib/dpkg/parts&lt;/span&gt;
+&lt;span class="err"&gt;/var/lib/dpkg/updates&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Lưu ý: Có những gói sinh thêm các tệp cấu hình trong quá trình cài đặt hay runtime, và nó không được liệt kê bởi &lt;code&gt;dpkg -L&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;3. dpkg -S (--search)&lt;/h3&gt;
 &lt;p&gt;Đồng nghiệp thấy mình đang dùng &lt;code&gt;xrandr&lt;/code&gt; (mình chuyển để chuyển VGA =)) ) liển hỏi cái cái lệnh &lt;code&gt;xrandr&lt;/code&gt; ở đâu.&lt;/p&gt;
 &lt;p&gt;Câu trả lời là &lt;code&gt;dpkg -S xrandr&lt;/code&gt; ra 1 đống liên quan tới &lt;code&gt;*xrandr&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -S xrandr
-bash-completion: /usr/share/bash-completion/completions/xrandr
-libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2
-libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2/changelog.gz
-x11-xserver-utils: /usr/bin/xrandr
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -S xrandr&lt;/span&gt;
+&lt;span class="c"&gt;bash-completion: /usr/share/bash-completion/completions/xrandr&lt;/span&gt;
+&lt;span class="c"&gt;libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2&lt;/span&gt;
+&lt;span class="c"&gt;libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2/changelog.gz&lt;/span&gt;
+&lt;span class="c"&gt;x11-xserver-utils: /usr/bin/xrandr&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Nên cách tốt nhất là mình gõ ngay &lt;code&gt;dpkg -S `which xrandr`&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -S `which xrandr`
-x11-xserver-utils: /usr/bin/xrandr
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -S `which xrandr`&lt;/span&gt;
+&lt;span class="c"&gt;x11-xserver-utils: /usr/bin/xrandr&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;3. dpkg -s (--status)&lt;/h3&gt;
 &lt;p&gt;Sau khi hắn cài xong &lt;code&gt;x11-xserver-utils&lt;/code&gt; nhưng &lt;code&gt;xrandr&lt;/code&gt; của hắn không chuyển VGA được (do chưa biết dùng =]]] ), hắn quay sang hỏi mình dùng phiên bản gói nào.&lt;/p&gt;
 &lt;p&gt;Mình gõ ngay&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;dpkg -s x11-xserver-utils
-Package: x11-xserver-utils
-Status: install ok installed
-Priority: optional
-Section: x11
-Installed-Size: 516
-Maintainer: Debian X Strike Force &amp;lt;debian-x@lists.debian.org&amp;gt;
-Architecture: amd64
-Source: x11-xserver-utils (7.7+7)
-Version: 7.7+7+b1
-...
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;dpkg -s x11-xserver-utils&lt;/span&gt;
+&lt;span class="c"&gt;Package: x11-xserver-utils&lt;/span&gt;
+&lt;span class="c"&gt;Status: install ok installed&lt;/span&gt;
+&lt;span class="c"&gt;Priority: optional&lt;/span&gt;
+&lt;span class="c"&gt;Section: x11&lt;/span&gt;
+&lt;span class="c"&gt;Installed-Size: 516&lt;/span&gt;
+&lt;span class="c"&gt;Maintainer: Debian X Strike Force &amp;lt;debian-x@lists.debian.org&amp;gt;&lt;/span&gt;
+&lt;span class="c"&gt;Architecture: amd64&lt;/span&gt;
+&lt;span class="c"&gt;Source: x11-xserver-utils (7.7+7)&lt;/span&gt;
+&lt;span class="c"&gt;Version: 7.7+7+b1&lt;/span&gt;
+&lt;span class="err"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Lưu ý: đây chỉ là version gói thôi nhá, thường nó tương đương với version của công cụ đối với các gói chỉ cung cấp một công cụ duy nhất (thường thôi nhé).&lt;/p&gt;
 &lt;p&gt;Ví dụ như&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;xrandr --version
-xrandr program version       1.5.0
-Server reports RandR version 1.5
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;xrandr --version&lt;/span&gt;
+&lt;span class="err"&gt;xrandr program version       1.5.0&lt;/span&gt;
+&lt;span class="err"&gt;Server reports RandR version 1.5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Đôi điều với apt&lt;/h2&gt;
@@ -475,76 +489,76 @@ Server reports RandR version 1.5
 &lt;p&gt;Apt cung cấp rất nhiều công công để thực hiện các bước khác nhau. Mình hay sử dụng &lt;code&gt;apt-key&lt;/code&gt;,&lt;code&gt;apt-get&lt;/code&gt;, &lt;code&gt;apt-cache&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;1. apt-cache policy&lt;/h3&gt;
 &lt;p&gt;Lệnh này check xem 1 gói đang có những phiên bản ở các kho nào&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-cache policy base-files
-base-files:
-  Installed: 9.9+deb9u4
-  Candidate: 10.0.0-1.1
-  Version table:
-     10.0.0-1.1 500
-        500 https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages
- *** 9.9+deb9u4 500
-        500 http://deb.debian.org/debian stretch/main amd64 Packages
-        100 /var/lib/dpkg/status
-     9.9+deb9u2 500
-        500 http://deb.debian.org/debian stretch-updates/main amd64 Packages
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;apt-cache policy base-files&lt;/span&gt;
+&lt;span class="c"&gt;base-files:&lt;/span&gt;
+&lt;span class="c"&gt;  Installed: 9.9+deb9u4&lt;/span&gt;
+&lt;span class="c"&gt;  Candidate: 10.0.0-1.1&lt;/span&gt;
+&lt;span class="c"&gt;  Version table:&lt;/span&gt;
+&lt;span class="c"&gt;     10.0.0-1.1 500&lt;/span&gt;
+&lt;span class="c"&gt;        500 https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages&lt;/span&gt;
+&lt;span class="c"&gt; *** 9.9+deb9u4 500&lt;/span&gt;
+&lt;span class="c"&gt;        500 http://deb.debian.org/debian stretch/main amd64 Packages&lt;/span&gt;
+&lt;span class="c"&gt;        100 /var/lib/dpkg/status&lt;/span&gt;
+&lt;span class="c"&gt;     9.9+deb9u2 500&lt;/span&gt;
+&lt;span class="c"&gt;        500 http://deb.debian.org/debian stretch-updates/main amd64 Packages&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Trên máy mình base-files đang có 3 phiên bản cung cấp bởi 3 kho khác nhau, vào chỉ có phiên bản &lt;code&gt;9.9+deb9u4&lt;/code&gt; là đang được cài đặt&lt;/p&gt;
 &lt;h3&gt;2. apt-cache madison&lt;/h3&gt;
 &lt;p&gt;Lệnh này chỉ liệt kê các thông tin về phiên bản, kho của tên gói hoặc gói nguồn.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-cache madison base-files
-base-files | 10.0.0-1.1 | https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages
-base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main amd64 Packages
-base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main amd64 Packages
-base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main Sources
-base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main Sources
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;apt-cache madison base-files&lt;/span&gt;
+&lt;span class="err"&gt;base-files | 10.0.0-1.1 | https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages&lt;/span&gt;
+&lt;span class="err"&gt;base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main amd64 Packages&lt;/span&gt;
+&lt;span class="err"&gt;base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main amd64 Packages&lt;/span&gt;
+&lt;span class="err"&gt;base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main Sources&lt;/span&gt;
+&lt;span class="err"&gt;base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main Sources&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Hiển thị thêm 2 gói nguồn từ &lt;code&gt;stretch/main&lt;/code&gt; và &lt;code&gt;stretch-updates/main&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;3. apt-cache depends&lt;/h3&gt;
 &lt;p&gt;Lệnh này mình hay sử dụng để xem 1 gói nó phụ thuộc vào các gói nào, qua đó có chút mường tượng ra cách hoạt động và độ phức tạp của nó&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-cache depends htop
-htop
-  Depends: libc6
-  Depends: libncursesw5
-  Depends: libtinfo5
-  Suggests: lsof
-  Suggests: strace
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;apt-cache depends htop&lt;/span&gt;
+&lt;span class="err"&gt;htop&lt;/span&gt;
+&lt;span class="err"&gt;  Depends: libc6&lt;/span&gt;
+&lt;span class="err"&gt;  Depends: libncursesw5&lt;/span&gt;
+&lt;span class="err"&gt;  Depends: libtinfo5&lt;/span&gt;
+&lt;span class="err"&gt;  Suggests: lsof&lt;/span&gt;
+&lt;span class="err"&gt;  Suggests: strace&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;4. apt-get changelog&lt;/h3&gt;
 &lt;p&gt;Debian bản stable rất ít khi cập nhật phần mềm theo upstream mà chỉ cập nhật các bản vá là chính, vì thế mà mình hay tò mò đã có gì thay đổi khi update 1 gói.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;changelog&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;changelog&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;
 &lt;span class="n"&gt;apt&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.4.8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;stretch&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;urgency&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;medium&lt;/span&gt;
 
   &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="n"&gt;Balint&lt;/span&gt; &lt;span class="n"&gt;Reczey&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
   &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Gracefully&lt;/span&gt; &lt;span class="n"&gt;terminate&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;stopping&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;daily&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;upgrade&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nl"&gt;LP&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;1690980&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;...&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;5. apt-get source&lt;/h3&gt;
 &lt;p&gt;Tò mò qua changelog vẫn chưa đủ, thi thoảng mình kéo cả mã nguồn của nó về để cập nhật những gì&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get source ibus-unikey
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;apt-get source ibus-unikey&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Với cách kéo mã nguồn này thì bạn chỉ có thể xem sự thay đổi so vơí upstream thôi, vì Debian sẽ lưu trữ nhưng bản vá so với phiên bản upstream vào trong thư mục &lt;code&gt;debian/patches&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Lưu ý: Để làm việc với các mã nguồn của gói thì trong /etc/apt/source* phải cấu hình thêm &lt;code&gt;deb-src&lt;/code&gt;. Ví dụ&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;deb-src&lt;/span&gt; &lt;span class="s"&gt;http://deb.debian.org/debian/&lt;/span&gt; &lt;span class="kp"&gt;stretch&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;deb-src&lt;/span&gt; &lt;span class="s"&gt;http://deb.debian.org/debian/&lt;/span&gt; &lt;span class="kp"&gt;stretch&lt;/span&gt; &lt;span class="kp"&gt;main&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;6. apt-cache showsrc&lt;/h3&gt;
 &lt;p&gt;Vì thế mà câu lệnh này giúp chúng ta lấy mã nguồn được maintain ở đâu.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-get source apt
-Reading package lists... Done
-NOTICE: &amp;#39;apt&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at:
-https://anonscm.debian.org/git/apt/apt.git
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;apt-get source apt&lt;/span&gt;
+&lt;span class="err"&gt;Reading package lists... Done&lt;/span&gt;
+&lt;span class="c"&gt;NOTICE: &amp;#39;apt&amp;#39; packaging is maintained in the &amp;#39;Git&amp;#39; version control system at:&lt;/span&gt;
+&lt;span class="c"&gt;https://anonscm.debian.org/git/apt/apt.git&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Đôi điều với apt-file&lt;/h2&gt;
@@ -552,34 +566,34 @@ https://anonscm.debian.org/git/apt/apt.git
 &lt;p&gt;Sau khi cài gói &lt;code&gt;apt-file&lt;/code&gt;, nó yêu cầu mình phải cập nhật để nó có thông tin mà tìm kiếm bằng &lt;code&gt;apt-file update&lt;/code&gt; kiểu như &lt;code&gt;apt-get update&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;apt-file search&lt;/h3&gt;
 &lt;p&gt;Đồng nghiệp đang ngồi xem &lt;code&gt;hack wifi với aircrack&lt;/code&gt;. Nhìn thấy youtuber gõ &lt;code&gt;airmon-ng start balabốnla&lt;/code&gt;, thấy vậy hắn gõ ngay  &lt;code&gt;apt-get install airmon-ng&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dongnghiep#apt-get install airmon-ng
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-E: Unable to locate package airmon-ng
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;dongnghiep#apt-get install airmon-ng&lt;/span&gt;
+&lt;span class="err"&gt;Reading package lists... Done&lt;/span&gt;
+&lt;span class="err"&gt;Building dependency tree&lt;/span&gt;
+&lt;span class="err"&gt;Reading state information... Done&lt;/span&gt;
+&lt;span class="c"&gt;E: Unable to locate package airmon-ng&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Đây là lúc mà siêu nhân sysadmin ra tay, mình gõ ngay trên máy mình&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-file search bin/airmon-ng
-aircrack-ng: /usr/sbin/airmon-ng
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;apt-file search bin/airmon-ng&lt;/span&gt;
+&lt;span class="c"&gt;aircrack-ng: /usr/sbin/airmon-ng&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Rồi bảo hắn "tools này thuộc gói aircrack-ng", hắn liền gõ ngay &lt;code&gt;apt-get install aircrack-ng&lt;/code&gt; không cần mình nói gì thêm&lt;/p&gt;
 &lt;h3&gt;apt-file list&lt;/h3&gt;
 &lt;p&gt;dpkg -L dùng để list toàn bộ tệp trong 1 gói ĐÃ CÀI, đó mà lý do chúng ta cần cái chức năng này để liệt kê các tệp có trong gói mà ta cài hay chưa nó không quan tâm&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-file list aircrack-ng
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;apt-file list aircrack-ng&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Đôi điều về kho phần mềm&lt;/h2&gt;
 &lt;p&gt;Việc sử dụng &lt;code&gt;apt-*&lt;/code&gt; phụ thuộc vào kho phần mềm online mà bạn đang cài đặt. Các kho phần mềm trong &lt;code&gt;/etc/apt/source*&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Ví dụ máy bạn nào chưa có kho phần mềm cuả docker thì apt-* không biêt gì về gói &lt;code&gt;docker-ce&lt;/code&gt; chẳng hạn.&lt;/p&gt;
 &lt;p&gt;Ngoài ra Ubuntu cung cấp thêm các kho PPA riêng cho nguời dùng, ngưòi sử dụng chỉ cần gõ &lt;code&gt;add-apt-repository&lt;/code&gt;, kho ppa có ưu điểm cung cấp thêm nhiều kho phần mềm khác nhau cho người dùng. Nhưng cũng có nhược điểm là các kho ppa mang tính cá nhân cao, thường không có đảm bảo về mã nguồn. Nên phải tìm hiểu kho PPA tin cậy trước khi sử dụng&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;└&amp;gt;apt-file search bin/add-apt-repository
-software-properties-common: /usr/bin/add-apt-repository
-&lt;/pre&gt;&lt;/div&gt;</content><category term="apt"></category><category term="dpkg"></category><category term="thu-thuat"></category></entry><entry><title>Xây dựng bản Live từ Debian cho riêng bạn</title><link href="https://debian-vn.github.io/2018/03/tu-xay-dung-ban-live-os.html" rel="alternate"></link><published>2018-03-15T00:00:00+07:00</published><updated>2018-03-15T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-03-15:/2018/03/tu-xay-dung-ban-live-os.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ không được lưu lại khi tắt hệ thống. Nó có thể khởi động trên bất kỳ máy tính nào khi cắm vào (tất nhiên phải cùng kiến trúc vi xử lý nha)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;└&amp;gt;apt-file search bin/add-apt-repository&lt;/span&gt;
+&lt;span class="c"&gt;software-properties-common: /usr/bin/add-apt-repository&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="2018"></category><category term="apt"></category><category term="dpkg"></category><category term="thu-thuat"></category></entry><entry><title>Xây dựng bản Live từ Debian cho riêng bạn</title><link href="https://debian-vn.github.io/2018/03/tu-xay-dung-ban-live-os.html" rel="alternate"></link><published>2018-03-15T00:00:00+07:00</published><updated>2018-03-15T00:00:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2018-03-15:/2018/03/tu-xay-dung-ban-live-os.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Live OS&lt;/strong&gt; không khác gì một hệ điều hành thông thường, nhưng nó thường được dùng tạm thời là chính, và được cài đặt trong chiếc USB nhỏ gọn. Mọi dữ liệu sinh ra trong quá trình sử dụng sẽ không được lưu lại khi tắt hệ thống. Nó có thể khởi động trên bất kỳ máy tính nào khi cắm vào (tất nhiên phải cùng kiến trúc vi xử lý nha)&lt;/p&gt;
 &lt;p&gt;Qua thời gian dùng &lt;a href="https://github.com/TxGVNN/live-os/"&gt;TxGVNN/live-os&lt;/a&gt; của chính mình một thời gian, hôm nay mình chia sẻ cách tạo ra bản live-os cho riêng các bạn từ kinh nghiệm tào lao của mình -_-&lt;/p&gt;
 &lt;h2&gt;Sao phải dùng?&lt;/h2&gt;
 &lt;p&gt;Tuỳ mục đính của bạn. Với mình, bản live chứa các công cụ mình cần để làm việc và giải trí, có thể cắm vào máy công ty, ở nhà và bạn bè để dùng 1 cách thoải mái.
@@ -596,22 +610,22 @@ Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần n�
 &lt;p&gt;Công cụ này là tập hợp các kịch bản giúp tạo ra một bản live từ cơ bản đến phức tạp bằng cách hỗ trợ rất tốt trong việc chinh tỉnh bản live theo ý bạn muốn. &lt;em&gt;Đó là lý do mình gọi là &lt;strong&gt;bản live-os cho riêng bạn&lt;/strong&gt;&lt;/em&gt;. &lt;/p&gt;
 &lt;p&gt;Các bản distro based Debian chắc vẫn sẽ kế thừa tools này (Ubuntu). Má thật, Debian làm tốt quá, không có cơ hội đóng góp (chém giooó)&lt;/p&gt;
 &lt;h3&gt;Cài cắm công cụ&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# apt-get install live-build
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# apt-get install live-build&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Chúng ta có thể thấy &lt;code&gt;live-build&lt;/code&gt; phụ thuộc vào &lt;code&gt;debootstrap&lt;/code&gt;, công cụ chuẩn của Debian mà mình đã dùng trong bài viết &lt;a href="/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html"&gt;Cài đặt Debian từng bước một bằng lệnh&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Như vậy bạn có thể hiểu ngay, &lt;code&gt;live-build&lt;/code&gt; sử dụng &lt;code&gt;debootstrap&lt;/code&gt; để tạo ra một hệ điều hành mới vào 1 thư mục nào đó, rồi thực hiện &lt;code&gt;chroot&lt;/code&gt; vào trỏng để xử lý cài đặt và tinh chỉnh thêm, đại loại là thế.&lt;/p&gt;
 &lt;h2&gt;I. Quá trình xây dựng cơ bản&lt;/h2&gt;
 &lt;p&gt;Tạo 1 thư mục để làm việc ở đó.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# mkdir ~/live-os &amp;amp;&amp;amp; cd ~/live-os
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# mkdir ~/live-os &amp;amp;&amp;amp; cd ~/live-os&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;1. Tạo cấu hình cơ bản&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Cách 1:&lt;/strong&gt; Sinh cấu hình cơ bản mặc định (không khuyến khích)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# lb config
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# lb config&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Sau khi chạy lệnh này, chúng ta sẽ thấy ít nhất 2 thư mục là &lt;code&gt;auto&lt;/code&gt;,&lt;code&gt;config&lt;/code&gt; được tạo ra. &lt;/p&gt;
@@ -620,36 +634,36 @@ Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần n�
 &lt;li&gt;&lt;code&gt;config&lt;/code&gt; là toàn bộ cấu hình mặc định.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Cách 2:&lt;/strong&gt; Clone cấu hình cơ bản các loại từ nhóm phát triển &lt;code&gt;live-team&lt;/code&gt; (quá khuyến khích)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# git clone git://anonscm.debian.org/debian-live/live-images.git --branch debian /tmp/live-images
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# git clone git://anonscm.debian.org/debian-live/live-images.git --branch debian /tmp/live-images&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Gòm có các loại cấu hình như sau &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# ls /tmp/live-images/images/ -1
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# ls /tmp/live-images/images/ -1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    cinnamon-desktop
-    gnome-desktop
-    kde-desktop
-    lxde-desktop
-    mate-desktop
-    standard
-    xfce-desktop
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    cinnamon-desktop&lt;/span&gt;
+&lt;span class="err"&gt;    gnome-desktop&lt;/span&gt;
+&lt;span class="err"&gt;    kde-desktop&lt;/span&gt;
+&lt;span class="err"&gt;    lxde-desktop&lt;/span&gt;
+&lt;span class="err"&gt;    mate-desktop&lt;/span&gt;
+&lt;span class="err"&gt;    standard&lt;/span&gt;
+&lt;span class="err"&gt;    xfce-desktop&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ở đây mình sẽ lấy cái &lt;code&gt;standard&lt;/code&gt; (chưa cài đặt GUI)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# cp /tmp/live-images/images/standard/* ~/live-os/ -av
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# cp /tmp/live-images/images/standard/* ~/live-os/ -av&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;2. Tạo tệp iso&lt;/h3&gt;
 &lt;p&gt;Sau đó chúng ta chỉ việc chạy&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# lb build
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# lb build&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Nó sẽ tự động thực hiện tất cả công đoạn và cuối cùng tạo ra các tệp tin dành cho live.&lt;/p&gt;
@@ -657,8 +671,8 @@ Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần n�
 &lt;h3&gt;3. Tạo boot vào USB&lt;/h3&gt;
 &lt;p&gt;Giả sử &lt;code&gt;/dev/sdc&lt;/code&gt; là đường dẫn của USB sau khi chúng ta cắm vô.
 Thực hiện sao chép dữ liệu từ iso sang USB.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sh# dd if=&amp;lt;file&amp;gt;.iso of=/dev/sdc
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sh# dd if=&amp;lt;file&amp;gt;.iso of=/dev/sdc&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;4. Boot hệ điều hành live&lt;/h3&gt;
@@ -669,7 +683,7 @@ Thực hiện sao chép dữ liệu từ iso sang USB.&lt;/p&gt;
 &lt;p&gt;Mọi người có thêm xem các tham số chi tiết bằng &lt;code&gt;man lb_config&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Ví dụ:
 Cấu hình với Debian phiên bản 9(stretch) trên cấu trúc &lt;code&gt;amd64&lt;/code&gt; và mirror Vietnam cho tốc độ nhanh.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;_ARCH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;amd64&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;_ARCH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;amd64&amp;quot;&lt;/span&gt;
 &lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://debian.xtdv.net/debian&amp;quot;&lt;/span&gt;
 &lt;span class="nv"&gt;_DIST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;stretch&amp;quot;&lt;/span&gt;
 
@@ -684,20 +698,20 @@ lb config noauto &lt;span class="se"&gt;\&lt;/span&gt;
     --mirror-chroot &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
     --mirror-bootstrap &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;_MIRROR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;2. Cài đặt packages cần thiết và tuỳ chọn cho bạn&lt;/h3&gt;
 &lt;p&gt;Bằng cách thêm danh sách gói mới vào tệp tin mới (đuôi &lt;code&gt;.list.chroot&lt;/code&gt;) trong thư mục &lt;code&gt;config/package-lists/&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Ví dụ:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# head -n3 config/package-lists/txgvnn.list.chroot
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# head -n3 config/package-lists/txgvnn.list.chroot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cryptsetup
-i3
-xinit
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cryptsetup&lt;/span&gt;
+&lt;span class="err"&gt;i3&lt;/span&gt;
+&lt;span class="err"&gt;xinit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;3. Cài đặt các cấu hình chi tiết cho môi trường, phần mềm&lt;/h3&gt;
@@ -705,9 +719,9 @@ xinit
 &lt;h4&gt;- Đối với cấu hình tĩnh - Thường áp dụng cho cầu hình hệ thống&lt;/h4&gt;
 &lt;p&gt;Chúng ta chỉ cần copy thằng vào &lt;code&gt;config/includes.chroot/&lt;/code&gt; và xem đây là thư mục gốc (&lt;code&gt;/&lt;/code&gt;) của bản live.&lt;/p&gt;
 &lt;p&gt;Ví dụ: Mình muốn tắt cái tiếng beep như &lt;em&gt;beep&lt;/em&gt; trong terminal.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mkdir config/includes.chroot/etc/modprobe.d/ -p
-sh# echo &amp;quot;blacklist pcspkr&amp;quot; &amp;gt; config/includes.chroot/etc/modprobe.d/nobeep.conf
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# mkdir config/includes.chroot/etc/modprobe.d/ -p&lt;/span&gt;
+&lt;span class="err"&gt;sh# echo &amp;quot;blacklist pcspkr&amp;quot; &amp;gt; config/includes.chroot/etc/modprobe.d/nobeep.conf&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;- Đối với cấu hình động - Thường áp dụng cho cầu hình người dùng&lt;/h4&gt;
@@ -727,10 +741,10 @@ Bạn có thể xem các kịch bản sẽ được thực hiện ở &lt;code&g
 &lt;p&gt;Vấn đề này nảy sinh khi mình tham lam muốn có thể boot 3 bản live khác nhau trong 1 cái USB (16 GB) gồm: Debian, Tails OS và Kali.&lt;/p&gt;
 &lt;h3&gt;1. Mình sử dụng chương trình &lt;code&gt;Tails Installer&lt;/code&gt; (viết bằng &lt;code&gt;Python&lt;/code&gt;) do &lt;code&gt;Tails&lt;/code&gt; cung cấp.&lt;/h3&gt;
 &lt;p&gt;Chương trình này sẽ chia USB thành 2 phân vùng như sau&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    /dev/sdc         16   GB     # Tổng
-    |-/dev/sdc1      2.5  GB     # Tất cả OS và bootloader
-    |-/dev/sdc2      13.5 GB     # Phân vùng dữ liệu riêng, sẽ mã hoá bằng LUKS
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    /dev/sdc         16   GB     # Tổng&lt;/span&gt;
+&lt;span class="err"&gt;    |-/dev/sdc1      2.5  GB     # Tất cả OS và bootloader&lt;/span&gt;
+&lt;span class="err"&gt;    |-/dev/sdc2      13.5 GB     # Phân vùng dữ liệu riêng, sẽ mã hoá bằng LUKS&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Tức nó sẽ chia 1 phân vùng mặc định &lt;code&gt;2.5 GB&lt;/code&gt; cho cả bản Live. Bạn có thể sửa giá trị này trong &lt;code&gt;/usr/lib/python2.7/dist-packages/tails_installer/config.py&lt;/code&gt;. Mình sửa thành &lt;code&gt;3300 MB&lt;/code&gt; để có thể chứa được 3 OS.&lt;/p&gt;
@@ -739,42 +753,42 @@ Bây giờ mình có thể boot live hệ điều hành này rồi.&lt;/p&gt;
 &lt;h3&gt;2. Thêm Debian live vào cùng&lt;/h3&gt;
 &lt;p&gt;Mình thực hiện &lt;code&gt;lb build&lt;/code&gt; để build bản live của mình. Sau khi kết thúc, trong thư mục &lt;code&gt;binary/live&lt;/code&gt; có 3 tệp tin quan trọng là &lt;code&gt;vmlinuz&lt;/code&gt;, &lt;code&gt;initrd.img&lt;/code&gt; và &lt;code&gt;filesystem.debian.squashfs&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Copy 3 tệp tin này vào &lt;code&gt;/dev/sdc1&lt;/code&gt; như sau:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# mount /dev/sdc1 /mnt
-sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
-sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img
-sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# mount /dev/sdc1 /mnt&lt;/span&gt;
+&lt;span class="err"&gt;sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian&lt;/span&gt;
+&lt;span class="err"&gt;sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img&lt;/span&gt;
+&lt;span class="err"&gt;sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Tạo thông tin cho Debian live&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# echo &amp;quot;filesystem.debian.squashfs&amp;quot; &amp;gt; /mnt/live/Debian.module
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# echo &amp;quot;filesystem.debian.squashfs&amp;quot; &amp;gt; /mnt/live/Debian.module&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Thêm thông tin boot cho Debian live&lt;/p&gt;
 &lt;p&gt;Thêm vào 4 tệp tin (mình thấy chỉ cần 2 cái &lt;code&gt;live64.cfg&lt;/code&gt; là đủ)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    - /mnt/EFI/BOOT/live{,64}.cfg      # 2 cho EFI boot (32 và 64)
-    - /mnt/syslinux/live{,64}.cfg      # 2 cho Legacy boot (32 và 64)
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    - /mnt/EFI/BOOT/live{,64}.cfg      # 2 cho EFI boot (32 và 64)&lt;/span&gt;
+&lt;span class="err"&gt;    - /mnt/syslinux/live{,64}.cfg      # 2 cho Legacy boot (32 và 64)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;như sau:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;label livedebian
-        menu label Debian
-        kernel /live/vmlinuz.debian
-        append initrd=/live/initrd.debian.img boot=live module=Debian timezone=Asia/Ho_Chi_Minh components splash quiet
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;label livedebian&lt;/span&gt;
+&lt;span class="err"&gt;        menu label Debian&lt;/span&gt;
+&lt;span class="err"&gt;        kernel /live/vmlinuz.debian&lt;/span&gt;
+&lt;span class="err"&gt;        append initrd=/live/initrd.debian.img boot=live module=Debian timezone=Asia/Ho_Chi_Minh components splash quiet&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Đối với &lt;code&gt;Kali live&lt;/code&gt; thì tương tự.&lt;/p&gt;
 &lt;p&gt;Sau đó &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sh# umount /mnt
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;sh# umount /mnt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và boot hưởng thành quả&lt;/p&gt;
 &lt;h3&gt;? Nếu bạn muốn mutil-boot mà muống dùng Tails Installer để bắt đầu&lt;/h3&gt;
-&lt;p&gt;Ví dụ các bạn dùng &lt;code&gt;dd&lt;/code&gt; để tạo boot từ tệp iso. Mình vẫn nghĩ có thể làm theo cách trên.&lt;/p&gt;</content><category term="huong-dan"></category></entry><entry><title>Cài đặt Debian từng bước một bằng lệnh</title><link href="https://debian-vn.github.io/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html" rel="alternate"></link><published>2016-08-28T17:43:00+07:00</published><updated>2016-08-28T17:43:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-08-28:/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ví dụ các bạn dùng &lt;code&gt;dd&lt;/code&gt; để tạo boot từ tệp iso. Mình vẫn nghĩ có thể làm theo cách trên.&lt;/p&gt;</content><category term="2018"></category><category term="huong-dan"></category></entry><entry><title>Cài đặt Debian từng bước một bằng lệnh</title><link href="https://debian-vn.github.io/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html" rel="alternate"></link><published>2016-08-28T17:43:00+07:00</published><updated>2016-08-28T17:43:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-08-28:/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Không phải next next (&lt;em&gt;trình cài đặt nhanh&lt;/em&gt;) là xong sao?&lt;/p&gt;
 &lt;p&gt;Bạn đã nghe một số distro với triết lý tinh chỉnh nhiều vào hệ thống,
 các distro này không cung cấp &lt;em&gt;trình …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Cài Debian từng bước một là sao?&lt;/strong&gt;&lt;/p&gt;
@@ -805,9 +819,9 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 &lt;p&gt;Nếu cài vào phân vùng khác thì tương tự.&lt;/p&gt;
 &lt;h2&gt;I. Tạo hệ thống file vào phân vùng OS&lt;/h2&gt;
 &lt;h4&gt;Chọn chế độ livecd và login vào tài khoản&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  login: user
-  pass: livecd
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  login: user&lt;/span&gt;
+&lt;span class="err"&gt;  pass: livecd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;P/S: Đối với bản livecd mình đưa link trên&lt;/em&gt;&lt;/p&gt;
@@ -816,30 +830,30 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 &lt;li&gt;/dev/sda1 7GB phân vùng cho OS&lt;/li&gt;
 &lt;li&gt;/dev/sda2 1GB cho swap&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo cfdisk /dev/sda
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo cfdisk /dev/sda&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="cfdisk" src="https://debian-vn.github.io/images/cfdisk.png"&gt;&lt;/p&gt;
 &lt;p&gt;Format phân vùng cài OS&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo mkfs.ext4 /dev/sda1
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo mkfs.ext4 /dev/sda1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Format swap&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo mkswap /dev/sda2
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo mkswap /dev/sda2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;2. Mount /dev/sda1 vào /mnt&lt;/h4&gt;
 &lt;p&gt;Mục đích là cài đặt hệ thống file vào thư mục này&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo mount /dev/sda1 /mnt
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo mount /dev/sda1 /mnt&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;3. Cài đặt &lt;code&gt;debootstrap&lt;/code&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo apt-get install debootstrap -y
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo apt-get install debootstrap -y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Debootstrap&lt;/strong&gt; là script có chức năng tạo ra hệ thống file Debian.&lt;/p&gt;
@@ -848,8 +862,8 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 &lt;p&gt;Nó là 1 công cụ rất tuyệt vời.&lt;/p&gt;
 &lt;p&gt;Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là &lt;code&gt;pacstrap&lt;/code&gt;&lt;/p&gt;
 &lt;h4&gt;4. Cài đặt hệ thống file cho Debian&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo debootstrap stable /mnt http://debian.xtdv.net/debian
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo debootstrap stable /mnt http://debian.xtdv.net/debian&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Lệnh này sẽ:&lt;/p&gt;
@@ -873,35 +887,35 @@ Vậy chúng ta cần:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào &lt;code&gt;/mnt&lt;/code&gt; và &lt;code&gt;chroot&lt;/code&gt; để tiến hành cài đặt&lt;/p&gt;
 &lt;h4&gt;1. Mount các thư mục của hệ thống local vào /mnt&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo mount -o bind /proc /mnt/proc
-  $sudo mount -o bind /sys /mnt/sys
-  $sudo mount -o bind /dev /mnt/dev
-  $sudo chroot /mnt
-  #
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo mount -o bind /proc /mnt/proc&lt;/span&gt;
+&lt;span class="err"&gt;  $sudo mount -o bind /sys /mnt/sys&lt;/span&gt;
+&lt;span class="err"&gt;  $sudo mount -o bind /dev /mnt/dev&lt;/span&gt;
+&lt;span class="err"&gt;  $sudo chroot /mnt&lt;/span&gt;
+&lt;span class="err"&gt;  #&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="mount" src="https://debian-vn.github.io/images/mount.png"&gt;&lt;/p&gt;
 &lt;h4&gt;2. Cài đặt các gói&lt;/h4&gt;
 &lt;h5&gt;&lt;em&gt;Cài đặt kernel và initrd&lt;/em&gt;&lt;/h5&gt;
 &lt;p&gt;Tìm gói chứa kernel và initrd&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  #apt-cache search linux-image
-  linux-headers-3.16.0-4-amd64 - Header files for Linux 3.16.0-4-amd64
-  linux-image-3.16.0-4-amd64 - Linux 3.16 for 64-bit PCs
-  linux-image-3.16.0-4-amd64-dbg - Debugging symbols for Linux 3.16.0-4-amd64
-  linux-image-amd64 - Linux for 64-bit PCs (meta-package)
-  linux-image-amd64-dbg - Debugging symbols for Linux amd64 configuration (meta-package)
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  #apt-cache search linux-image&lt;/span&gt;
+&lt;span class="err"&gt;  linux-headers-3.16.0-4-amd64 - Header files for Linux 3.16.0-4-amd64&lt;/span&gt;
+&lt;span class="err"&gt;  linux-image-3.16.0-4-amd64 - Linux 3.16 for 64-bit PCs&lt;/span&gt;
+&lt;span class="err"&gt;  linux-image-3.16.0-4-amd64-dbg - Debugging symbols for Linux 3.16.0-4-amd64&lt;/span&gt;
+&lt;span class="err"&gt;  linux-image-amd64 - Linux for 64-bit PCs (meta-package)&lt;/span&gt;
+&lt;span class="err"&gt;  linux-image-amd64-dbg - Debugging symbols for Linux amd64 configuration (meta-package)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Kernel phiên bản 3.16. Tiến hành cài đặt&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  #apt-get install linux-image-3.16.0-4-amd64 -y
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  #apt-get install linux-image-3.16.0-4-amd64 -y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h5&gt;&lt;em&gt;Cài đặt GRUB&lt;/em&gt;&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  #apt-get install grub2 -y
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  #apt-get install grub2 -y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="grub" src="https://debian-vn.github.io/images/grub.png"&gt;&lt;/p&gt;
@@ -912,30 +926,30 @@ Vậy chúng ta cần:&lt;/p&gt;
 &lt;p&gt;Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly&lt;/p&gt;
 &lt;p&gt;Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.&lt;/p&gt;
 &lt;h5&gt;&lt;em&gt;Lây UUID của phân vùng chứa OS (ở đây là /dev/sda1)&lt;/em&gt;&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#ls -la /dev/disk/by-uuid/
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#ls -la /dev/disk/by-uuid/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="ls-dev-disk-by-uuid" src="https://debian-vn.github.io/images/ls-dev-disk-by-uuid.png"&gt;
 Chúng ta thấy được UUID của /dev/sda1 là &lt;code&gt;2c0f6023-c802-4640-a8ce-214d079b22c9&lt;/code&gt;&lt;/p&gt;
 &lt;h5&gt;&lt;em&gt;Cấu hình vào /etc/fstab&lt;/em&gt;&lt;/h5&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#cat &amp;gt; /etc/fstab &amp;lt;&amp;lt; EOF
-UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0
-EOF
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#cat &amp;gt; /etc/fstab &amp;lt;&amp;lt; EOF&lt;/span&gt;
+&lt;span class="err"&gt;UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0&lt;/span&gt;
+&lt;span class="err"&gt;EOF&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;2. Cài sudo, và tạo user mới (ví dụ user test)&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#apt-get install sudo -y
-useradd -s /bin/bash -m test
-passwd test
-adduser test sudo
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#apt-get install sudo -y&lt;/span&gt;
+&lt;span class="err"&gt;useradd -s /bin/bash -m test&lt;/span&gt;
+&lt;span class="err"&gt;passwd test&lt;/span&gt;
+&lt;span class="err"&gt;adduser test sudo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;3. Đặt password cho root (tùy chọn)&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  #passwd
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  #passwd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;4. Cài các gói bạn cần.&lt;/h4&gt;
@@ -947,60 +961,60 @@ adduser test sudo
 &lt;p&gt;Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.&lt;/p&gt;
 &lt;p&gt;Cần umount &lt;code&gt;/mnt/{sys,proc,dev,}&lt;/code&gt; và reboot lại máy để dùng nữa thôi.&lt;/p&gt;
 &lt;h4&gt;1. Thoát Chroot&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  #exit
-  $
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  #exit&lt;/span&gt;
+&lt;span class="err"&gt;  $&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;2. Umount và reboot&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  $sudo umount /mnt/proc /mnt/sys /mnt/dev /mnt
-  $sudo reboot
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;  $sudo umount /mnt/proc /mnt/sys /mnt/dev /mnt&lt;/span&gt;
+&lt;span class="err"&gt;  $sudo reboot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="umount" src="https://debian-vn.github.io/images/umount.png"&gt;&lt;/p&gt;
 &lt;h4&gt;3. Thành quả&lt;/h4&gt;
 &lt;p&gt;&lt;img alt="debian-boot" src="https://debian-vn.github.io/images/debian-boot.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="debian-login-test" src="https://debian-vn.github.io/images/debian-login-test.png"&gt;&lt;/p&gt;</content><category term="huong-dan"></category></entry><entry><title>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html" rel="alternate"></link><published>2016-04-24T18:26:00+07:00</published><updated>2016-04-24T18:26:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html</id><summary type="html">&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="debian-login-test" src="https://debian-vn.github.io/images/debian-login-test.png"&gt;&lt;/p&gt;</content><category term="2016"></category><category term="huong-dan"></category></entry><entry><title>Hướng dẫn đóng góp bản dịch Debian Administrator's Handbook</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html" rel="alternate"></link><published>2016-04-24T18:26:00+07:00</published><updated>2016-04-24T18:26:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:/2016/04/huong-dan-dong-gop-ban-dich-debian-handbook.html</id><summary type="html">&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://debian-handbook.info/"&gt;The Debian Administrator's Handbook&lt;/a&gt; được viết bởi hai nhà phát triển &lt;em&gt;Raphaël Hertzog&lt;/em&gt; và &lt;em&gt;Roland Mas&lt;/em&gt;. Là một quyển sách cầm tay hay gối đầu giường tuyệt vời cho tất cả người dùng các bản phân phối dựa trên Debian.&lt;/p&gt;
 &lt;p&gt;Cuốn sách này dạy các yếu tố cần thiết cho bất cứ ai muốn trở thành một quản trị viên &lt;a href="https://www.debian.org"&gt;Debian GNU/Linux&lt;/a&gt; hiệu quả và độc lập.&lt;/p&gt;
 &lt;h2&gt;Tiến hành dịch như thế nào?&lt;/h2&gt;
 &lt;h4&gt;&lt;strong&gt;Kéo mã nguồn của sách về&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git clone https://github.com/Debian-VN/debian-handbook ~/debian-handbook
-        cd ~/debian-handbook
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        git clone https://github.com/Debian-VN/debian-handbook ~/debian-handbook&lt;/span&gt;
+&lt;span class="err"&gt;        cd ~/debian-handbook&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Chúng ta thấy nội dung như sau:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
-├── ja-JP
-├── vi-VN
-│   ├── 00a_preface.po
-│   ├── 00b_foreword.po
-.   .   ...
-.   .   ...
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;.&lt;/span&gt;
+&lt;span class="err"&gt;├── ja-JP&lt;/span&gt;
+&lt;span class="err"&gt;├── vi-VN&lt;/span&gt;
+&lt;span class="err"&gt;│   ├── 00a_preface.po&lt;/span&gt;
+&lt;span class="err"&gt;│   ├── 00b_foreword.po&lt;/span&gt;
+&lt;span class="err"&gt;.   .   ...&lt;/span&gt;
+&lt;span class="err"&gt;.   .   ...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Và chỉ cần quan tâm các tập tin ở trong thư mục &lt;a href="https://github.com/Debian-VN/debian-handbook/tree/master/vi-VN"&gt;vi-VN&lt;/a&gt; thôi.&lt;/p&gt;
 &lt;h4&gt;Mình sẽ dịch 1 đoạn trong phần &lt;em&gt;00a_preface&lt;/em&gt; của quyển sách này&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;Giap&lt;/span&gt; &lt;span class="nt"&gt;Tran&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;txgvnn&lt;/span&gt;&lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;gmail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;2016&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="nt"&gt;T&lt;/span&gt;&lt;span class="err"&gt;ê&lt;/span&gt;&lt;span class="nt"&gt;n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;email&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;n&lt;/span&gt;&lt;span class="err"&gt;ă&lt;/span&gt;&lt;span class="nt"&gt;m-d&lt;/span&gt;&lt;span class="err"&gt;ị&lt;/span&gt;&lt;span class="nt"&gt;ch&lt;/span&gt;
-&lt;span class="nt"&gt;msgid&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="nt"&gt;msgstr&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;Project-Id-Version: 0\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;POT-Creation-Date: 2015-10-01 20:53+0200\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;PO-Revision-Date: 2015-10-01 20:53+0200\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;Last-Translator: Automatically generated\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;Language-Team: Debian-VN\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;Language: vi-VN \n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;MIME-Version: 1.0\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;Content-Type: application/x-publican; charset=UTF-8\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;Content-Transfer-Encoding: 8bit\n&amp;quot;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;quot;X-Generator: Publican v4.3.2\n&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Giap&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Tran&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;txgvnn&lt;/span&gt;&lt;span class="nv"&gt;@gmail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Tên&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;năm&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dịch&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;msgid&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;msgstr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;Project-Id-Version: 0\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;POT-Creation-Date: 2015-10-01 20:53+0200\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;PO-Revision-Date: 2015-10-01 20:53+0200\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;Last-Translator: Automatically generated\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;Language-Team: Debian-VN\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;Language: vi-VN \n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;MIME-Version: 1.0\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;Content-Type: application/x-publican; charset=UTF-8\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;Content-Transfer-Encoding: 8bit\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;X-Generator: Publican v4.3.2\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="nt"&gt;msgid&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Preface&amp;quot;&lt;/span&gt;
-&lt;span class="nt"&gt;msgstr&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Lời nói đầu&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="n"&gt;msgid&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Preface&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;msgstr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;Lời nói đầu&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -1011,17 +1025,17 @@ adduser test sudo
 &lt;ul&gt;
 &lt;li&gt;Tạo commit thôi&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git add vi-VN/00a_preface.po
-        git commit -m &amp;#39;vi-VN: translate first line in 00a_preface&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        git add vi-VN/00a_preface.po&lt;/span&gt;
+&lt;span class="err"&gt;        git commit -m &amp;#39;vi-VN: translate first line in 00a_preface&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Chú ý là commit thì bắt đầu bằng &lt;strong&gt;vi-VN:&lt;/strong&gt; để các bạn nước khác còn biết mà phân biệt nhé&lt;/em&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Đẩy lên github&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git push origin master
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    git push origin master&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -1036,24 +1050,24 @@ adduser test sudo
 &lt;ul&gt;
 &lt;li&gt;Cài đặt môi trường, tool để build&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        sudo apt-get install \
-        dblatex texlive texlive-xetex publican publican-debian \
-        curl lmodern texlive-lang-cyrillic ghostscript \
-        texlive-fonts-extra texlive-font-utils texlive-generic-recommended \
-        texlive-math-extra texlive-pstricks
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        sudo apt-get install \&lt;/span&gt;
+&lt;span class="err"&gt;        dblatex texlive texlive-xetex publican publican-debian \&lt;/span&gt;
+&lt;span class="err"&gt;        curl lmodern texlive-lang-cyrillic ghostscript \&lt;/span&gt;
+&lt;span class="err"&gt;        texlive-fonts-extra texlive-font-utils texlive-generic-recommended \&lt;/span&gt;
+&lt;span class="err"&gt;        texlive-math-extra texlive-pstricks&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Build thôi&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        cd ~/debian-handbook
-        ./build/build-pdf --lang=&amp;quot;vi-VN&amp;quot;        #build only pdf
-        ./build/build-html --lang=&amp;quot;vi-VN&amp;quot;       #build only html
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        cd ~/debian-handbook&lt;/span&gt;
+&lt;span class="err"&gt;        ./build/build-pdf --lang=&amp;quot;vi-VN&amp;quot;        #build only pdf&lt;/span&gt;
+&lt;span class="err"&gt;        ./build/build-html --lang=&amp;quot;vi-VN&amp;quot;       #build only html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Còn để build epub còn 1 số gói phụ thuộc nữa.&lt;/p&gt;</content><category term="huong-dan"></category><category term="dong-gop"></category><category term="dich"></category></entry><entry><title>Hướng dẫn dịch trang bits.debian.org</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html" rel="alternate"></link><published>2016-04-24T10:10:00+07:00</published><updated>2016-04-24T10:10:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:/2016/04/huong-dan-dich-trang-bits-debian.html</id><summary type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang blog chính thức của dự án Debian.&lt;/p&gt;
+&lt;p&gt;Còn để build epub còn 1 số gói phụ thuộc nữa.&lt;/p&gt;</content><category term="2016"></category><category term="huong-dan"></category><category term="dong-gop"></category><category term="dich"></category></entry><entry><title>Hướng dẫn dịch trang bits.debian.org</title><link href="https://debian-vn.github.io/2016/04/huong-dan-dich-trang-bits-debian.html" rel="alternate"></link><published>2016-04-24T10:10:00+07:00</published><updated>2016-04-24T10:10:00+07:00</updated><author><name>Giáp Trần</name></author><id>tag:debian-vn.github.io,2016-04-24:/2016/04/huong-dan-dich-trang-bits-debian.html</id><summary type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang blog chính thức của dự án Debian.&lt;/p&gt;
 &lt;p&gt;Các tin tức quan trọng luôn được cập nhật ở &lt;a href="http://bits.debian.org"&gt;bits&lt;/a&gt;.
 Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn giản.&lt;/p&gt;
 &lt;p&gt;Bits sử dụng &lt;a href="http://docs.getpelican.com/"&gt;Pelican …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://bits.debian.org"&gt;bits.debian.org&lt;/a&gt; là trang blog chính thức của dự án Debian.&lt;/p&gt;
@@ -1062,56 +1076,56 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;p&gt;Bits sử dụng &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; để quản lý nội dung bằng markdown và tạo ra nội dung web.&lt;/p&gt;
 &lt;h2&gt;Bắt đầu dịch như thế nào?&lt;/h2&gt;
 &lt;h4&gt;&lt;strong&gt;Kéo mã nguồn của bits về&lt;/strong&gt;&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git clone git://anonscm.debian.org/publicity/bits.git ~/bits
-        cd ~/bits
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        git clone git://anonscm.debian.org/publicity/bits.git ~/bits&lt;/span&gt;
+&lt;span class="err"&gt;        cd ~/bits&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Chúng ta thấy nội dung như sau:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        content/
-        ├── 2013
-        .
-        └── 2016
-            ├── debconf16-cfp.md
-            ├── debconf16-cfp-vi.md  // bản dịch tiếng việt của debconf16-cfp
-            └── results-dpl-election.md
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        content/&lt;/span&gt;
+&lt;span class="err"&gt;        ├── 2013&lt;/span&gt;
+&lt;span class="err"&gt;        .&lt;/span&gt;
+&lt;span class="err"&gt;        └── 2016&lt;/span&gt;
+&lt;span class="err"&gt;            ├── debconf16-cfp.md&lt;/span&gt;
+&lt;span class="err"&gt;            ├── debconf16-cfp-vi.md  // bản dịch tiếng việt của debconf16-cfp&lt;/span&gt;
+&lt;span class="err"&gt;            └── results-dpl-election.md&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    Nội dung nào chưa có tập tin chứa &amp;quot;-vi&amp;quot; là chưa được dịch.
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    Nội dung nào chưa có tập tin chứa &amp;quot;-vi&amp;quot; là chưa được dịch.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Mình lấy ví dụ 1 đoạn về dịch trang &lt;a href="https://bits.debian.org/2016/04/results-dpl-elections-2016.html"&gt;results-dpl-election.md&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;em&gt;Nội dung gốc:&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  Title: DPL elections 2016, congratulations Mehdi Dogguy!
-  Date: 2016-04-17 18:40
-  Tags: dpl
-  Slug: results-dpl-elections-2016
-  Author: Ana Guerrero Lopez
-  Status: published
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  &lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;DPL&lt;/span&gt; &lt;span class="n"&gt;elections&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;congratulations&lt;/span&gt; &lt;span class="n"&gt;Mehdi&lt;/span&gt; &lt;span class="n"&gt;Dogguy&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+  &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;
+  &lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dpl&lt;/span&gt;
+  &lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dpl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;elections&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2016&lt;/span&gt;
+  &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Ana&lt;/span&gt; &lt;span class="n"&gt;Guerrero&lt;/span&gt; &lt;span class="n"&gt;Lopez&lt;/span&gt;
+  &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;published&lt;/span&gt;
 
-  The Debian Project Leader elections finished yesterday and the winner is Mehdi Dogguy!
-  ...
-&lt;/pre&gt;&lt;/div&gt;
+  &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Debian&lt;/span&gt; &lt;span class="n"&gt;Project&lt;/span&gt; &lt;span class="n"&gt;Leader&lt;/span&gt; &lt;span class="n"&gt;elections&lt;/span&gt; &lt;span class="n"&gt;finished&lt;/span&gt; &lt;span class="n"&gt;yesterday&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;winner&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;Mehdi&lt;/span&gt; &lt;span class="n"&gt;Dogguy&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Bản dịch:&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  Title: Bầu cử lãnh đạo dự án Debian 2016, chúc mừng Mehdi Dogguy!
-  Date: 2016-04-17 18:40
-  Tags: dpl
-  Slug: results-dpl-elections-2016
-  Author: Ana Guerrero Lopez
-  Translator: Giáp Trần
-  Lang: vi
-  Status: published
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;  &lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Bầu&lt;/span&gt; &lt;span class="n"&gt;cử&lt;/span&gt; &lt;span class="n"&gt;lãnh&lt;/span&gt; &lt;span class="err"&gt;đạ&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;dự&lt;/span&gt; &lt;span class="err"&gt;á&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;Debian&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;chúc&lt;/span&gt; &lt;span class="n"&gt;mừng&lt;/span&gt; &lt;span class="n"&gt;Mehdi&lt;/span&gt; &lt;span class="n"&gt;Dogguy&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+  &lt;span class="nb"&gt;Date&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;04&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;17&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;
+  &lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;dpl&lt;/span&gt;
+  &lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dpl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;elections&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2016&lt;/span&gt;
+  &lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Ana&lt;/span&gt; &lt;span class="n"&gt;Guerrero&lt;/span&gt; &lt;span class="n"&gt;Lopez&lt;/span&gt;
+  &lt;span class="n"&gt;Translator&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Giáp&lt;/span&gt; &lt;span class="n"&gt;Trần&lt;/span&gt;
+  &lt;span class="n"&gt;Lang&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;vi&lt;/span&gt;
+  &lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;published&lt;/span&gt;
 
-  Bầu cử lãnh đạo dự án Debian đã kết thúc vào ngày hôm qua và người thằng cuộc là Mehdi Dogguy!
-  ...
-&lt;/pre&gt;&lt;/div&gt;
+  &lt;span class="n"&gt;Bầu&lt;/span&gt; &lt;span class="n"&gt;cử&lt;/span&gt; &lt;span class="n"&gt;lãnh&lt;/span&gt; &lt;span class="err"&gt;đạ&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;dự&lt;/span&gt; &lt;span class="err"&gt;á&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;Debian&lt;/span&gt; &lt;span class="err"&gt;đã&lt;/span&gt; &lt;span class="n"&gt;kết&lt;/span&gt; &lt;span class="n"&gt;thúc&lt;/span&gt; &lt;span class="n"&gt;vào&lt;/span&gt; &lt;span class="n"&gt;ngày&lt;/span&gt; &lt;span class="n"&gt;hôm&lt;/span&gt; &lt;span class="n"&gt;qua&lt;/span&gt; &lt;span class="n"&gt;và&lt;/span&gt; &lt;span class="n"&gt;người&lt;/span&gt; &lt;span class="n"&gt;thằng&lt;/span&gt; &lt;span class="n"&gt;cuộc&lt;/span&gt; &lt;span class="n"&gt;là&lt;/span&gt; &lt;span class="n"&gt;Mehdi&lt;/span&gt; &lt;span class="n"&gt;Dogguy&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+  &lt;span class="p"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;/blockquote&gt;
@@ -1122,8 +1136,8 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;ul&gt;
 &lt;li&gt;Khởi chạy web để kiểm thử&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        make devserver
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        make devserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
@@ -1134,26 +1148,26 @@ Mỗi năm, lượng tin tức không nhiều nên công việc dịch đơn gi�
 &lt;p&gt;Tắt web&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        make stopserver
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        make stopserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Gửi đóng góp bản dịch cho dự án Debian&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Tạo commit thôi nào&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git checkout vietnamese
-        git add content/2016/results-dpl-election-vi.md
-        git commit -m &amp;#39;Add results-dpl-election translatian for Vietnamese&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        git checkout vietnamese&lt;/span&gt;
+&lt;span class="err"&gt;        git add content/2016/results-dpl-election-vi.md&lt;/span&gt;
+&lt;span class="err"&gt;        git commit -m &amp;#39;Add results-dpl-election translatian for Vietnamese&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Gửi đóng góp&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Tiếp theo là tạo bản patch và gửi về hòm thư chung của dự án dịch &lt;a href="mailto:debian-l10n-vietnamese@lists.debian.org"&gt;debian-l10n-vietnamese&lt;/a&gt; do anh Trần Ngọc Quân điều phối.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;        git format-patch origin/master --stdout &amp;gt; ban-dich-results-dpl-election.patch
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;        git format-patch origin/master --stdout &amp;gt; ban-dich-results-dpl-election.patch&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Tạo email mới và đính kèm "ban-dich-results-dpl-election.path"
@@ -1163,4 +1177,4 @@ với nội dung "&lt;em&gt;gửi bản vá đóng góp bản dịch results-dpl
 &lt;li&gt;Hòm thư công khai tại:
 &lt;a href="https://lists.debian.org/debian-l10n-vietnamese/"&gt;https://lists.debian.org/debian-l10n-vietnamese/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Xin hết!&lt;/p&gt;</content><category term="huong-dan"></category><category term="dong-gop"></category><category term="dich"></category></entry></feed>
+&lt;p&gt;Xin hết!&lt;/p&gt;</content><category term="2016"></category><category term="huong-dan"></category><category term="dong-gop"></category><category term="dich"></category></entry></feed>

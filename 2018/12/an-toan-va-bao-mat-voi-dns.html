@@ -50,12 +50,12 @@ with tags <a href="https://debian-vn.github.io/tag/huong-dan.html">huong-dan</a>
 <h2>II. Thiết lập từng dịch vụ</h2>
 <h3>DNSSEC</h3>
 <p>Debian cung cấp gói <code>unbound</code>, theo như mô tả thì</p>
-<div class="highlight"><pre><span></span>sh# apt-cache show unbound
-...
-Description-en: validating, recursive, caching DNS resolver
- Unbound is a recursive-only caching DNS server which can perform DNSSEC
- validation of results...
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# apt-cache show unbound</span>
+<span class="err">...</span>
+<span class="c">Description-en: validating, recursive, caching DNS resolver</span>
+<span class="c"> Unbound is a recursive-only caching DNS server which can perform DNSSEC</span>
+<span class="c"> validation of results...</span>
+</code></pre></div>
 
 
 <p>Sau khi cài xong với <code>apt-get install unbound</code> chúng ta sẽ có 2 service là</p>
@@ -67,7 +67,7 @@ Description-en: validating, recursive, caching DNS resolver
 <p>Để kiểm tra xem DNSSEC đã hoạt động hay chưa, thử truy vấn thông tin dnssec từ địa chỉ <em>dnssec.cz</em>.
 Nếu cờ <code>ad</code> xuất hiện là đã truy vấn DNSSEC thành công, hãy tìm hiểu các cờ nhé.</p>
 <p>Chúng ta sẽ so sánh một chút.</p>
-<div class="highlight"><pre><span></span><span class="cp"># TRUY VẤN VỚI DNS Server được cấp phát tự động</span>
+<div class="highlight"><pre><span></span><code><span class="cp"># TRUY VẤN VỚI DNS Server được cấp phát tự động</span>
 <span class="err">└</span><span class="o">&gt;</span><span class="n">dig</span> <span class="mf">@192.168.0.1</span> <span class="o">+</span><span class="n">dnssec</span> <span class="n">A</span> <span class="n">dnssec</span><span class="p">.</span><span class="n">cz</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="err">&#39;</span><span class="n">ad</span><span class="o">|</span><span class="nl">SERVER</span><span class="p">:</span><span class="err">&#39;</span> <span class="err">#</span> <span class="n">check</span> <span class="nl">flags</span><span class="p">:</span> <span class="n">ad</span>
 <span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">192.168.0.1</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">192.168.0.1</span><span class="p">)</span>
 
@@ -85,20 +85,20 @@ Nếu cờ <code>ad</code> xuất hiện là đã truy vấn DNSSEC thành công
 <span class="err">└</span><span class="o">&gt;</span><span class="n">dig</span> <span class="mf">@1.1.1.1</span> <span class="o">+</span><span class="n">dnssec</span> <span class="n">A</span> <span class="n">dnssec</span><span class="p">.</span><span class="n">cz</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">E</span> <span class="err">&#39;</span><span class="n">ad</span><span class="o">|</span><span class="nl">SERVER</span><span class="p">:</span><span class="err">&#39;</span> <span class="err">#</span> <span class="n">check</span> <span class="nl">flags</span><span class="p">:</span> <span class="n">ad</span>
 <span class="p">;;</span> <span class="nl">flags</span><span class="p">:</span> <span class="n">qr</span> <span class="n">rd</span> <span class="n">ra</span> <span class="n">ad</span><span class="p">;</span> <span class="nl">QUERY</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">ANSWER</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nl">AUTHORITY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">ADDITIONAL</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">;;</span> <span class="nl">SERVER</span><span class="p">:</span> <span class="mf">1.1.1.1</span><span class="err">#</span><span class="mi">53</span><span class="p">(</span><span class="mf">1.1.1.1</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Như bạn có thể thấy, kết quả trả về từ máy chủ nhà cung cấp không hỗ trợ DNSSEC. Còn Google và Cloudflare có hỗ trợ DNSSEC, nên đơn giản bạn có thể sử dụng 2 nhà cung cấp này.</p>
 <p>Nhưng phần tiếp theo mình cài cắm DNSCRYPT và sẽ là tuyệt nếu tích hợp với Unbound</p>
 <h3>DNSCRYPT</h3>
 <p>Debian cung cấp gói <code>dnscrypt-proxy</code>, tương tự chúng ta có:</p>
-<div class="highlight"><pre><span></span>sh# apt-cache show dnscrypt-proxy
-...
-Description-en: Tool for securing communications between a client and a DNS resolver
- dnscrypt-proxy provides local service which can be used directly as your local
- resolver or as a DNS forwarder, encrypting and authenticating requests using
- the DNSCrypt protocol and passing them to an upstream server...
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# apt-cache show dnscrypt-proxy</span>
+<span class="err">...</span>
+<span class="c">Description-en: Tool for securing communications between a client and a DNS resolver</span>
+<span class="c"> dnscrypt-proxy provides local service which can be used directly as your local</span>
+<span class="c"> resolver or as a DNS forwarder, encrypting and authenticating requests using</span>
+<span class="c"> the DNSCrypt protocol and passing them to an upstream server...</span>
+</code></pre></div>
 
 
 <p>Sau khi cài xong <code>apt-get install dnscrypt-proxy</code> chúng ta sẽ có 2 service là</p>
@@ -108,15 +108,15 @@ Description-en: Tool for securing communications between a client and a DNS reso
 </ul>
 <p>Đặc điểm của DNScrypt là bạn phải chọn một máy chủ cung cấp dịch vụ này, danh sách này có ở <code>/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv</code>.
 Bạn có thể chọn 1 trong số đó và cấu hình vào <code>/etc/dnscrypt-proxy/dnscrypt-proxy.conf</code>, nó sẽ trông như thế này.</p>
-<div class="highlight"><pre><span></span>ResolverName ipredator
-Daemonize no
-LocalAddress 127.0.2.1:53
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ResolverName ipredator</span>
+<span class="err">Daemonize no</span>
+<span class="err">LocalAddress 127.0.2.1:53</span>
+</code></pre></div>
 
 
 <p>Có 1 điểm khá bất tiện, là đôi khi máy chủ DNScrypt không truy cập được. Nên bạn phải tìm và đổi sang máy chủ khác bằng tay. Vì thế bạn nên viết 1 kịch bản có thể tìm và thay tự động cho bạn.</p>
 <p>Ví dụ như <code>/usr/local/bin/dnscrypt-update</code></p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEBUG</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span> -eq <span class="m">1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span>  <span class="nb">set</span> -x
 
 <span class="nv">FILE</span><span class="o">=</span><span class="s2">&quot;/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv&quot;</span>
@@ -138,62 +138,62 @@ msg<span class="o">(){</span> <span class="nb">printf</span> <span class="s2">&q
 
 msg <span class="s2">&quot;I&quot;</span> <span class="s2">&quot;Choose </span><span class="nv">$choice</span><span class="s2">&quot;</span>
 sed -i <span class="s1">&#39;s/ResolverName.*/ResolverName &#39;</span><span class="s2">&quot;</span><span class="nv">$choice</span><span class="s2">/&quot;</span> /etc/dnscrypt-proxy/dnscrypt-proxy.conf
-</pre></div>
+</code></pre></div>
 
 
 <h4>Testing</h4>
 <p>Để có thể dễ dàng quan sát, hãy đảm bảo không có ứng dụng nào đang hoạt động mà cần kết nối mạng.</p>
 <p>Ví dụ mình đang sử dụng wifi với interface là <code>wpl3s0</code>, chúng ta sẽ sử dụng tcpdump để theo dõi kết nối vào cổng UDP/53 như sau</p>
-<div class="highlight"><pre><span></span>└&gt;sudo tcpdump -n -i wlp3s0 udp port 53
-tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
-listening on wlp3s0, link-type EN10MB (Ethernet), capture size 262144 bytes
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;sudo tcpdump -n -i wlp3s0 udp port 53</span>
+<span class="c">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</span>
+<span class="err">listening on wlp3s0, link-type EN10MB (Ethernet), capture size 262144 bytes</span>
+</code></pre></div>
 
 
 <h5>1. Thử nghiệm với lệnh <code>192.168.0.1</code></h5>
 <p>Kết quả lệnh:</p>
-<div class="highlight"><pre><span></span>nslookup gnu.org 192.168.0.1
-Server:         192.168.0.1
-Address:        192.168.0.1#53
+<div class="highlight"><pre><span></span><code><span class="n">nslookup</span> <span class="n">gnu</span><span class="p">.</span><span class="n">org</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">Server</span><span class="p">:</span>         <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">Address</span><span class="p">:</span>        <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="o">#</span><span class="mi">53</span>
 
-Non-authoritative answer:
-Name:   gnu.org
-Address: 208.118.235.148
-</pre></div>
+<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span> <span class="n">answer</span><span class="p">:</span>
+<span class="n">Name</span><span class="p">:</span>   <span class="n">gnu</span><span class="p">.</span><span class="n">org</span>
+<span class="n">Address</span><span class="p">:</span> <span class="mi">208</span><span class="p">.</span><span class="mi">118</span><span class="p">.</span><span class="mi">235</span><span class="p">.</span><span class="mi">148</span>
+</code></pre></div>
 
 
 <p>Và từ tcpdump</p>
-<div class="highlight"><pre><span></span>... IP 192.168.0.186.38101 &gt; 192.168.0.1.53: 55790+ A? gnu.org. (28)
-... IP 192.168.0.1.53 &gt; 192.168.0.186.38101: 55790 1/0/0 A 208.118.235.148 (41)
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">... IP 192.168.0.186.38101 &gt; 192.168.0.1.53: 55790+ A? gnu.org. (28)</span>
+<span class="err">... IP 192.168.0.1.53 &gt; 192.168.0.186.38101: 55790 1/0/0 A 208.118.235.148 (41)</span>
+</code></pre></div>
 
 
 <h5>2. Thử nghiệm với <code>1.1.1.1</code></h5>
-<div class="highlight"><pre><span></span>└&gt;nslookup gnu.org 1.1.1.1
-Server:         1.1.1.1
-Address:        1.1.1.1#53
+<div class="highlight"><pre><span></span><code><span class="err">└</span><span class="o">&gt;</span><span class="n">nslookup</span> <span class="n">gnu</span><span class="p">.</span><span class="n">org</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">Server</span><span class="p">:</span>         <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">Address</span><span class="p">:</span>        <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="o">#</span><span class="mi">53</span>
 
-Non-authoritative answer:
-Name:   gnu.org
-Address: 208.118.235.148
-</pre></div>
+<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span> <span class="n">answer</span><span class="p">:</span>
+<span class="n">Name</span><span class="p">:</span>   <span class="n">gnu</span><span class="p">.</span><span class="n">org</span>
+<span class="n">Address</span><span class="p">:</span> <span class="mi">208</span><span class="p">.</span><span class="mi">118</span><span class="p">.</span><span class="mi">235</span><span class="p">.</span><span class="mi">148</span>
+</code></pre></div>
 
 
 <p>Và từ tcpdump</p>
-<div class="highlight"><pre><span></span>... IP 192.168.0.186.40491 &gt; 1.1.1.1.53: 58978+ A? gnu.org. (28)
-... IP 1.1.1.1.53 &gt; 192.168.0.186.40491: 58978 1/0/0 A 208.118.235.148 (41)
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">... IP 192.168.0.186.40491 &gt; 1.1.1.1.53: 58978+ A? gnu.org. (28)</span>
+<span class="err">... IP 1.1.1.1.53 &gt; 192.168.0.186.40491: 58978 1/0/0 A 208.118.235.148 (41)</span>
+</code></pre></div>
 
 
 <h5>3. Thử nghiệm với <code>127.0.2.1</code></h5>
-<div class="highlight"><pre><span></span>└&gt;nslookup gnu.org 127.0.2.1
-Server:         127.0.2.1
-Address:        127.0.2.1#53
+<div class="highlight"><pre><span></span><code><span class="err">└</span><span class="o">&gt;</span><span class="n">nslookup</span> <span class="n">gnu</span><span class="p">.</span><span class="n">org</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">Server</span><span class="p">:</span>         <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span>
+<span class="n">Address</span><span class="p">:</span>        <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span><span class="o">#</span><span class="mi">53</span>
 
-Non-authoritative answer:
-Name:   gnu.org
-Address: 208.118.235.148
-</pre></div>
+<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span> <span class="n">answer</span><span class="p">:</span>
+<span class="n">Name</span><span class="p">:</span>   <span class="n">gnu</span><span class="p">.</span><span class="n">org</span>
+<span class="n">Address</span><span class="p">:</span> <span class="mi">208</span><span class="p">.</span><span class="mi">118</span><span class="p">.</span><span class="mi">235</span><span class="p">.</span><span class="mi">148</span>
+</code></pre></div>
 
 
 <p>Và từ tcpdump là rỗng. Bởi vì dnscrypt-proxy đã truy vấn tới máy chủ đã cấu hình không qua giao thức UDP/53 như thông thường. Hãy tìm hiểu thêm chi tiết nhé.</p>
@@ -205,20 +205,20 @@ Address: 208.118.235.148
 </ul>
 <p>Máy tính sẽ sử dụng địa chỉ được cấu hình trong <code>/etc/resolv.conf</code> để truy vấn tên miền.</p>
 <p>Chúng ta sẽ cấu hình để truy vấn DNSsec sẽ đi qua DNScrypt bằng cách tạo tệp <code>/etc/unbound/unbound.conf.d/dnscrypt.conf</code> với nội dung:</p>
-<div class="highlight"><pre><span></span><span class="nl">server</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nl">server</span><span class="p">:</span>
         <span class="k">do</span><span class="o">-</span><span class="n">not</span><span class="o">-</span><span class="n">query</span><span class="o">-</span><span class="nl">localhost</span><span class="p">:</span> <span class="n">no</span>
 <span class="n">forward</span><span class="o">-</span><span class="nl">zone</span><span class="p">:</span>
         <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;.&quot;</span>
         <span class="n">forward</span><span class="o">-</span><span class="nl">addr</span><span class="p">:</span> <span class="mf">127.0.2.1</span><span class="mi">@53</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Và không cho dnscrypt cập nhật vào <code>/etc/resolv.conf</code> bằng cách <code>systemctl stop dnscrypt-proxy-resolvconf</code></p>
 <p>Kết quả</p>
-<div class="highlight"><pre><span></span>└&gt;cat /etc/resolv.conf
-# Generated by resolvconf
-nameserver 127.0.0.1
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;cat /etc/resolv.conf</span>
+<span class="err"># Generated by resolvconf</span>
+<span class="err">nameserver 127.0.0.1</span>
+</code></pre></div>
 
 
 <p>Như vậy là hệ thống của bạn mỗi lần kết nối mạng và phân giải tên miền một cách an toàn và bảo mật hơn với DNSsec và DNScrypt. Hãy tìm hiểu 2 từ khoá trên để hiểu rõ hơn về chúng.</p></div>

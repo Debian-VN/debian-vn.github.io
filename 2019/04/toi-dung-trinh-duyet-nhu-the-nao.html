@@ -35,7 +35,7 @@ by <a class="url fn" href="https://debian-vn.github.io/author/giap-tran.html">Gi
 
 with tags <a href="https://debian-vn.github.io/tag/chia-se.html">chia-se</a>         </div>
 
-        <div><p>Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser). </p>
+        <div><p>Ngày nay ai cũng dùng trình duyệt web mỗi ngay, có thể nói khi nhắc tới Internet là hầu như mọi người nghĩ đến lướt web. Và chúng ta có vô số chương trình để lướt web gọi là Trình duyệt web (browser).</p>
 <p>Bài này nó lên quan điểm cá nhân nên mình chỉ để cập tới 2 browser mà mình đang dùng là <code>Firefox</code> và <code>Chromium</code>.</p>
 <h2>I. Mình dùng khác gì mọi người, sao tận 2 cái?</h2>
 <p>Mình dùng để làm việc và đọc tin tức, không khác mọi người.</p>
@@ -46,15 +46,30 @@ with tags <a href="https://debian-vn.github.io/tag/chia-se.html">chia-se</a>    
 <p>Đấy cái chính hôm nay là mình chia sẻ việc tạo ra các profile linh động dùng trên các Distro Linux bằng lệnh thuận tiện.</p>
 <h3>Firefox</h3>
 <p>Mình gọi script là <code>w2</code></p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash                                                       </span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEBUG</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span> -eq <span class="m">1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">set</span> -x
 
 <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -gt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;--private-window&quot;</span>
-<span class="k">fi</span>
-firefox -P <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> <span class="nv">$OPTS</span>
-</pre></div>
+<span class="k">for</span> opt in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$opt</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="o">[</span>-<span class="o">]</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">case</span> <span class="si">${</span><span class="nv">opt</span><span class="p">:</span><span class="nv">1</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> in
+            p<span class="o">)</span> <span class="nv">PRIVATE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+            -<span class="o">)</span>
+                <span class="k">case</span> <span class="si">${</span><span class="nv">opt</span><span class="p">:</span><span class="nv">2</span><span class="si">}</span> in
+                    private<span class="o">)</span> <span class="nv">PRIVATE</span><span class="o">=</span><span class="m">0</span> <span class="p">;;</span>
+                <span class="k">esac</span><span class="p">;;</span>
+        <span class="k">esac</span>
+    <span class="k">else</span>
+        <span class="nv">args_string</span><span class="o">+=</span><span class="s2">&quot;</span><span class="nv">$IFS$opt</span><span class="s2">&quot;</span>
+    <span class="k">fi</span>
+<span class="k">done</span>
+<span class="nv">args</span><span class="o">=(</span><span class="nv">$args_string</span><span class="o">)</span>
+<span class="nv">profile_name</span><span class="o">=</span><span class="si">${</span><span class="nv">args</span><span class="p">[0]</span><span class="si">}</span>
+
+<span class="o">[</span> <span class="nv">$PRIVATE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;--private-window&quot;</span>
+
+firefox -P <span class="s2">&quot;</span><span class="nv">$profile_name</span><span class="s2">&quot;</span> <span class="nv">$OPTS</span>
+</code></pre></div>
 
 
 <p>Với <code>w2</code> chúng ta có thể gọi Firefox ra với một profile nhanh chóng</p>
@@ -70,16 +85,17 @@ firefox -P <span class="s2">&quot;</span><span class="nv">$1</span><span class="
 </ul>
 <h3>Chromium</h3>
 <p>Mình gọi script là <code>w3</code></p>
-<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEBUG</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span> -eq <span class="m">1</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">set</span> -x
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DEBUG</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&quot;</span> -eq <span class="m">0</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">set</span> -x
 
 <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 
 _help<span class="o">(){</span>
     <span class="nb">echo</span> <span class="s2">&quot;Usage: w3 [-p] [-c] [-d] PROFILE&quot;</span>
     <span class="nb">echo</span> <span class="s2">&quot;Profiles:</span><span class="si">${</span><span class="nv">profiles</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="o">}</span>
+    pgrep dunst &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="o">&amp;&amp;</span> notify-send -u low <span class="s2">&quot;Chromium profiles&quot;</span> <span class="s2">&quot;Usage: w3 [-p] [-c] PROFILE\n\nProfiles:</span><span class="si">${</span><span class="nv">profiles</span><span class="si">}</span><span class="s2">&quot;</span>
 
+<span class="o">}</span>
 <span class="k">for</span> opt in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">do</span>
     <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$opt</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="o">[</span>-<span class="o">]</span>* <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
         <span class="k">case</span> <span class="si">${</span><span class="nv">opt</span><span class="p">:</span><span class="nv">1</span><span class="p">:</span><span class="nv">1</span><span class="si">}</span> in
@@ -100,6 +116,7 @@ _help<span class="o">(){</span>
 
 <span class="nv">args</span><span class="o">=(</span><span class="nv">$args_string</span><span class="o">)</span>
 <span class="nv">profile_name</span><span class="o">=</span><span class="si">${</span><span class="nv">args</span><span class="p">[0]</span><span class="si">}</span>
+<span class="nv">url</span><span class="o">=</span><span class="si">${</span><span class="nv">args</span><span class="p">[1]</span><span class="si">}</span>
 
 <span class="o">[</span> <span class="nv">$PRIVATE</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">OPTS</span><span class="o">=</span><span class="s2">&quot;--incognito&quot;</span>
 
@@ -115,7 +132,6 @@ _help<span class="o">(){</span>
     <span class="nb">exit</span> <span class="m">1</span>
 <span class="k">fi</span>
 
-<span class="c1"># If --delete is set</span>
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$DELETE</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="k">if</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="nv">$profiles</span><span class="s2">&quot;</span> <span class="o">==</span> *<span class="s2">&quot; </span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2"> &quot;</span>* <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
         rm -rf <span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.config/chromium/profile.</span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -123,7 +139,6 @@ _help<span class="o">(){</span>
     <span class="nb">exit</span> <span class="m">0</span>
 <span class="k">fi</span>
 
-<span class="c1"># If --create is not set, check the exist before start</span>
 <span class="k">if</span> <span class="o">[</span> ! <span class="nv">$CREATE</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="k">if</span> <span class="o">[[</span> ! <span class="s2">&quot;</span><span class="nv">$profiles</span><span class="s2">&quot;</span> <span class="o">==</span> *<span class="s2">&quot; </span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2"> &quot;</span>* <span class="o">]]</span><span class="p">;</span><span class="k">then</span>
         _help
@@ -131,9 +146,8 @@ _help<span class="o">(){</span>
     <span class="k">fi</span>
 <span class="k">fi</span>
 
-<span class="c1"># Start one is default</span>
-chromium --args --profile-directory<span class="o">=</span><span class="s2">&quot;profile.</span><span class="nv">$profile_name</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$OPTS</span><span class="s2">&quot;</span>
-</pre></div>
+chromium --user-data-dir<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.config/chromium/profile.</span><span class="si">${</span><span class="nv">profile_name</span><span class="si">}</span><span class="s2">&quot;</span> --profile-directory<span class="o">=</span><span class="s2">&quot;profile.</span><span class="nv">$profile_name</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$OPTS</span><span class="s2">&quot;</span> --app<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$url</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 
 <p>Với <code>w3</code> chúng ta có thể tạo mới, mở ra hoặc xoá một profile</p>

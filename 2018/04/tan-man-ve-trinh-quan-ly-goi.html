@@ -42,17 +42,17 @@ with tags <a href="https://debian-vn.github.io/tag/apt.html">apt</a> <a href="ht
 <li>dpkg</li>
 </ul>
 <p>Bao gồm các công cụ</p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -L dpkg | grep bin/
-/usr/bin/dpkg
-/usr/bin/dpkg-deb
-/usr/bin/dpkg-divert
-/usr/bin/dpkg-maintscript-helper
-/usr/bin/dpkg-query
-/usr/bin/dpkg-split
-/usr/bin/dpkg-statoverride
-/usr/bin/dpkg-trigger
-/usr/bin/update-alternatives
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -L dpkg | grep bin/</span>
+<span class="err">/usr/bin/dpkg</span>
+<span class="err">/usr/bin/dpkg-deb</span>
+<span class="err">/usr/bin/dpkg-divert</span>
+<span class="err">/usr/bin/dpkg-maintscript-helper</span>
+<span class="err">/usr/bin/dpkg-query</span>
+<span class="err">/usr/bin/dpkg-split</span>
+<span class="err">/usr/bin/dpkg-statoverride</span>
+<span class="err">/usr/bin/dpkg-trigger</span>
+<span class="err">/usr/bin/update-alternatives</span>
+</code></pre></div>
 
 
 <p>Viết tắt của <code>D</code>ebian <code>P</code>ac<code>K</code>a<code>G</code>e, nó sẽ quản lý tất cả các vấn đề liên quan tới package trên máy của bạn.</p>
@@ -60,24 +60,24 @@ with tags <a href="https://debian-vn.github.io/tag/apt.html">apt</a> <a href="ht
 <li>apt</li>
 </ul>
 <p>Bao gồm các công cụ</p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -L apt | grep bin/
-/usr/bin/apt
-/usr/bin/apt-cache
-/usr/bin/apt-cdrom
-/usr/bin/apt-config
-/usr/bin/apt-get
-/usr/bin/apt-key
-/usr/bin/apt-mark
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -L apt | grep bin/</span>
+<span class="err">/usr/bin/apt</span>
+<span class="err">/usr/bin/apt-cache</span>
+<span class="err">/usr/bin/apt-cdrom</span>
+<span class="err">/usr/bin/apt-config</span>
+<span class="err">/usr/bin/apt-get</span>
+<span class="err">/usr/bin/apt-key</span>
+<span class="err">/usr/bin/apt-mark</span>
+</code></pre></div>
 
 
 <p>Viết tắt của <code>A</code>dvanced <code>P</code>ackaging <code>T</code>ool</p>
 <ul>
 <li>apt-file</li>
 </ul>
-<div class="highlight"><pre><span></span>└&gt;dpkg -L apt-file | grep bin/
-/usr/bin/apt-file
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -L apt-file | grep bin/</span>
+<span class="err">/usr/bin/apt-file</span>
+</code></pre></div>
 
 
 <p>Không viêt tắt nữa, gói này cho phép chúng ta tìm kiếm các gói có trong repo bằng các đường dẫn tệp tệp</p>
@@ -86,18 +86,18 @@ with tags <a href="https://debian-vn.github.io/tag/apt.html">apt</a> <a href="ht
 <ul>
 <li>Ở góc nhìn tệp nén bình thưòng, chúng ta có thể giải nén bằng <code>ar</code> (cung cấp bởi gói <code>binutils</code>)</li>
 </ul>
-<div class="highlight"><pre><span></span>└&gt;ar t dpkg_1.18.24_amd64.deb
-debian-binary      # version của địng dạng gói *deb
-control.tar.gz     # Toàn bộ tệp nằm trong DEBIAN giúp hỗ trợ về cài đặt, gỡ bỏ gói và thông tin các phụ thuộc
-data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một thư mục / giả để caì vào / thật
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;ar t dpkg_1.18.24_amd64.deb</span>
+<span class="err">debian-binary      # version của địng dạng gói *deb</span>
+<span class="err">control.tar.gz     # Toàn bộ tệp nằm trong DEBIAN giúp hỗ trợ về cài đặt, gỡ bỏ gói và thông tin các phụ thuộc</span>
+<span class="err">data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một thư mục / giả để caì vào / thật</span>
+</code></pre></div>
 
 
 <ul>
 <li>Mở bằng dpkg-deb</li>
 </ul>
-<div class="highlight"><pre><span></span>dpkg-deb  -R dpkg_1.18.24_amd64.deb tree
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">dpkg-deb  -R dpkg_1.18.24_amd64.deb tree</span>
+</code></pre></div>
 
 
 <p>Giải nén vào thư mục <code>tree</code>, trong thự mục này tương tự nhưng data.tar.xz đã giải nén vào, và control.tar.gz thì giải nén vào thư mục con <code>tree/DEBIAN</code></p>
@@ -113,21 +113,21 @@ data.tar.xz        # Toàn bộ dữ liệu của chương trình, là một th�
 <li>mình hay dùng cái này để grep xem máy mình đã cài cắm cái gì rồi</li>
 </ul>
 <p>Ví dụ:</p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -l | grep dpkg
-ii  dpkg                                        1.18.24                                 amd64        Debian package management system
-ii  dpkg-dev                                    1.18.24                                 all          Debian package development tools
-ii  libdpkg-perl                                1.18.24                                 all          Dpkg perl modules
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -l | grep dpkg</span>
+<span class="err">ii  dpkg                                        1.18.24                                 amd64        Debian package management system</span>
+<span class="err">ii  dpkg-dev                                    1.18.24                                 all          Debian package development tools</span>
+<span class="err">ii  libdpkg-perl                                1.18.24                                 all          Dpkg perl modules</span>
+</code></pre></div>
 
 
 <ul>
 <li>Hoặc kiểm tra xem gói nào đã gỡ nhưng vẫn tồn tại cấu hình, tức đã <code>remove</code> mà chưa <code>purge</code></li>
 </ul>
-<div class="highlight"><pre><span></span>└&gt;dpkg -l | awk &#39;/^rc/&#39;
-rc  dnssec-trigger                              0.13-6                                  amd64        reconfiguration tool to make DNSSEC work
-rc  irssi                                       1.0.2-1+deb9u3                          amd64        terminal based IRC client
-rc  resolvconf                                  1.79                                    all          name server information handler
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -l | awk &#39;/^rc/&#39;</span>
+<span class="err">rc  dnssec-trigger                              0.13-6                                  amd64        reconfiguration tool to make DNSSEC work</span>
+<span class="err">rc  irssi                                       1.0.2-1+deb9u3                          amd64        terminal based IRC client</span>
+<span class="err">rc  resolvconf                                  1.79                                    all          name server information handler</span>
+</code></pre></div>
 
 
 <p>Và có thể purge ngay <code>sudo dpkg -P $(dpkg -l | awk '/^rc/ {print $2}')</code> hoặc <code>sudo apt-get purge $(dpkg -l | awk '/^rc/ {print $2}')</code></p>
@@ -135,57 +135,57 @@ rc  resolvconf                                  1.79                            
 <p>Bạn có thể thấy ngay ở mục giới thiệu các gói mình sử dụng <code>dpkg -L</code>. Dùng để lệt kê toàn bộ tệp tin có trong 1 gói.</p>
 <p>Tính năng này giúp chúng ta xem xét trong 1 gói có những tệp thực thi, cấu hình, thư viện nào?</p>
 <p>Ví dụ</p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -L dpkg | grep var/
-/var/lib
-/var/lib/dpkg
-/var/lib/dpkg/alternatives
-/var/lib/dpkg/info
-/var/lib/dpkg/parts
-/var/lib/dpkg/updates
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -L dpkg | grep var/</span>
+<span class="err">/var/lib</span>
+<span class="err">/var/lib/dpkg</span>
+<span class="err">/var/lib/dpkg/alternatives</span>
+<span class="err">/var/lib/dpkg/info</span>
+<span class="err">/var/lib/dpkg/parts</span>
+<span class="err">/var/lib/dpkg/updates</span>
+</code></pre></div>
 
 
 <p>Lưu ý: Có những gói sinh thêm các tệp cấu hình trong quá trình cài đặt hay runtime, và nó không được liệt kê bởi <code>dpkg -L</code></p>
 <h3>3. dpkg -S (--search)</h3>
 <p>Đồng nghiệp thấy mình đang dùng <code>xrandr</code> (mình chuyển để chuyển VGA =)) ) liển hỏi cái cái lệnh <code>xrandr</code> ở đâu.</p>
 <p>Câu trả lời là <code>dpkg -S xrandr</code> ra 1 đống liên quan tới <code>*xrandr</code></p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -S xrandr
-bash-completion: /usr/share/bash-completion/completions/xrandr
-libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2
-libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2/changelog.gz
-x11-xserver-utils: /usr/bin/xrandr
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -S xrandr</span>
+<span class="c">bash-completion: /usr/share/bash-completion/completions/xrandr</span>
+<span class="c">libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2</span>
+<span class="c">libxrandr2:amd64, libxrandr2:i386: /usr/share/doc/libxrandr2/changelog.gz</span>
+<span class="c">x11-xserver-utils: /usr/bin/xrandr</span>
+</code></pre></div>
 
 
 <p>Nên cách tốt nhất là mình gõ ngay <code>dpkg -S `which xrandr`</code></p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -S `which xrandr`
-x11-xserver-utils: /usr/bin/xrandr
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -S `which xrandr`</span>
+<span class="c">x11-xserver-utils: /usr/bin/xrandr</span>
+</code></pre></div>
 
 
 <h3>3. dpkg -s (--status)</h3>
 <p>Sau khi hắn cài xong <code>x11-xserver-utils</code> nhưng <code>xrandr</code> của hắn không chuyển VGA được (do chưa biết dùng =]]] ), hắn quay sang hỏi mình dùng phiên bản gói nào.</p>
 <p>Mình gõ ngay</p>
-<div class="highlight"><pre><span></span>└&gt;dpkg -s x11-xserver-utils
-Package: x11-xserver-utils
-Status: install ok installed
-Priority: optional
-Section: x11
-Installed-Size: 516
-Maintainer: Debian X Strike Force &lt;debian-x@lists.debian.org&gt;
-Architecture: amd64
-Source: x11-xserver-utils (7.7+7)
-Version: 7.7+7+b1
-...
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;dpkg -s x11-xserver-utils</span>
+<span class="c">Package: x11-xserver-utils</span>
+<span class="c">Status: install ok installed</span>
+<span class="c">Priority: optional</span>
+<span class="c">Section: x11</span>
+<span class="c">Installed-Size: 516</span>
+<span class="c">Maintainer: Debian X Strike Force &lt;debian-x@lists.debian.org&gt;</span>
+<span class="c">Architecture: amd64</span>
+<span class="c">Source: x11-xserver-utils (7.7+7)</span>
+<span class="c">Version: 7.7+7+b1</span>
+<span class="err">...</span>
+</code></pre></div>
 
 
 <p>Lưu ý: đây chỉ là version gói thôi nhá, thường nó tương đương với version của công cụ đối với các gói chỉ cung cấp một công cụ duy nhất (thường thôi nhé).</p>
 <p>Ví dụ như</p>
-<div class="highlight"><pre><span></span>└&gt;xrandr --version
-xrandr program version       1.5.0
-Server reports RandR version 1.5
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;xrandr --version</span>
+<span class="err">xrandr program version       1.5.0</span>
+<span class="err">Server reports RandR version 1.5</span>
+</code></pre></div>
 
 
 <h2>Đôi điều với apt</h2>
@@ -194,76 +194,76 @@ Server reports RandR version 1.5
 <p>Apt cung cấp rất nhiều công công để thực hiện các bước khác nhau. Mình hay sử dụng <code>apt-key</code>,<code>apt-get</code>, <code>apt-cache</code></p>
 <h3>1. apt-cache policy</h3>
 <p>Lệnh này check xem 1 gói đang có những phiên bản ở các kho nào</p>
-<div class="highlight"><pre><span></span>└&gt;apt-cache policy base-files
-base-files:
-  Installed: 9.9+deb9u4
-  Candidate: 10.0.0-1.1
-  Version table:
-     10.0.0-1.1 500
-        500 https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages
- *** 9.9+deb9u4 500
-        500 http://deb.debian.org/debian stretch/main amd64 Packages
-        100 /var/lib/dpkg/status
-     9.9+deb9u2 500
-        500 http://deb.debian.org/debian stretch-updates/main amd64 Packages
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;apt-cache policy base-files</span>
+<span class="c">base-files:</span>
+<span class="c">  Installed: 9.9+deb9u4</span>
+<span class="c">  Candidate: 10.0.0-1.1</span>
+<span class="c">  Version table:</span>
+<span class="c">     10.0.0-1.1 500</span>
+<span class="c">        500 https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages</span>
+<span class="c"> *** 9.9+deb9u4 500</span>
+<span class="c">        500 http://deb.debian.org/debian stretch/main amd64 Packages</span>
+<span class="c">        100 /var/lib/dpkg/status</span>
+<span class="c">     9.9+deb9u2 500</span>
+<span class="c">        500 http://deb.debian.org/debian stretch-updates/main amd64 Packages</span>
+</code></pre></div>
 
 
 <p>Trên máy mình base-files đang có 3 phiên bản cung cấp bởi 3 kho khác nhau, vào chỉ có phiên bản <code>9.9+deb9u4</code> là đang được cài đặt</p>
 <h3>2. apt-cache madison</h3>
 <p>Lệnh này chỉ liệt kê các thông tin về phiên bản, kho của tên gói hoặc gói nguồn.</p>
-<div class="highlight"><pre><span></span>└&gt;apt-cache madison base-files
-base-files | 10.0.0-1.1 | https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages
-base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main amd64 Packages
-base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main amd64 Packages
-base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main Sources
-base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main Sources
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;apt-cache madison base-files</span>
+<span class="err">base-files | 10.0.0-1.1 | https://devrepo.subgraph.com/subgraph aaron/main amd64 Packages</span>
+<span class="err">base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main amd64 Packages</span>
+<span class="err">base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main amd64 Packages</span>
+<span class="err">base-files | 9.9+deb9u4 | http://deb.debian.org/debian stretch/main Sources</span>
+<span class="err">base-files | 9.9+deb9u2 | http://deb.debian.org/debian stretch-updates/main Sources</span>
+</code></pre></div>
 
 
 <p>Hiển thị thêm 2 gói nguồn từ <code>stretch/main</code> và <code>stretch-updates/main</code></p>
 <h3>3. apt-cache depends</h3>
 <p>Lệnh này mình hay sử dụng để xem 1 gói nó phụ thuộc vào các gói nào, qua đó có chút mường tượng ra cách hoạt động và độ phức tạp của nó</p>
-<div class="highlight"><pre><span></span>└&gt;apt-cache depends htop
-htop
-  Depends: libc6
-  Depends: libncursesw5
-  Depends: libtinfo5
-  Suggests: lsof
-  Suggests: strace
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;apt-cache depends htop</span>
+<span class="err">htop</span>
+<span class="err">  Depends: libc6</span>
+<span class="err">  Depends: libncursesw5</span>
+<span class="err">  Depends: libtinfo5</span>
+<span class="err">  Suggests: lsof</span>
+<span class="err">  Suggests: strace</span>
+</code></pre></div>
 
 
 <h3>4. apt-get changelog</h3>
 <p>Debian bản stable rất ít khi cập nhật phần mềm theo upstream mà chỉ cập nhật các bản vá là chính, vì thế mà mình hay tò mò đã có gì thay đổi khi update 1 gói.</p>
-<div class="highlight"><pre><span></span><span class="err">└</span><span class="o">&gt;</span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">changelog</span> <span class="n">apt</span>
+<div class="highlight"><pre><span></span><code><span class="err">└</span><span class="o">&gt;</span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">changelog</span> <span class="n">apt</span>
 <span class="n">apt</span> <span class="p">(</span><span class="mf">1.4.8</span><span class="p">)</span> <span class="n">stretch</span><span class="p">;</span> <span class="n">urgency</span><span class="o">=</span><span class="n">medium</span>
 
   <span class="p">[</span> <span class="n">Balint</span> <span class="n">Reczey</span> <span class="p">]</span>
   <span class="o">*</span> <span class="n">Gracefully</span> <span class="n">terminate</span> <span class="n">process</span> <span class="n">when</span> <span class="n">stopping</span> <span class="n">apt</span><span class="o">-</span><span class="n">daily</span><span class="o">-</span><span class="n">upgrade</span> <span class="p">(</span><span class="nl">LP</span><span class="p">:</span> <span class="err">#</span><span class="mi">1690980</span><span class="p">)</span>
 <span class="p">...</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>5. apt-get source</h3>
 <p>Tò mò qua changelog vẫn chưa đủ, thi thoảng mình kéo cả mã nguồn của nó về để cập nhật những gì</p>
-<div class="highlight"><pre><span></span>apt-get source ibus-unikey
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">apt-get source ibus-unikey</span>
+</code></pre></div>
 
 
 <p>Với cách kéo mã nguồn này thì bạn chỉ có thể xem sự thay đổi so vơí upstream thôi, vì Debian sẽ lưu trữ nhưng bản vá so với phiên bản upstream vào trong thư mục <code>debian/patches</code></p>
 <p>Lưu ý: Để làm việc với các mã nguồn của gói thì trong /etc/apt/source* phải cấu hình thêm <code>deb-src</code>. Ví dụ</p>
-<div class="highlight"><pre><span></span><span class="k">deb-src</span> <span class="s">http://deb.debian.org/debian/</span> <span class="kp">stretch</span> <span class="kp">main</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">deb-src</span> <span class="s">http://deb.debian.org/debian/</span> <span class="kp">stretch</span> <span class="kp">main</span>
+</code></pre></div>
 
 
 <h3>6. apt-cache showsrc</h3>
 <p>Vì thế mà câu lệnh này giúp chúng ta lấy mã nguồn được maintain ở đâu.</p>
-<div class="highlight"><pre><span></span>└&gt;apt-get source apt
-Reading package lists... Done
-NOTICE: &#39;apt&#39; packaging is maintained in the &#39;Git&#39; version control system at:
-https://anonscm.debian.org/git/apt/apt.git
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;apt-get source apt</span>
+<span class="err">Reading package lists... Done</span>
+<span class="c">NOTICE: &#39;apt&#39; packaging is maintained in the &#39;Git&#39; version control system at:</span>
+<span class="c">https://anonscm.debian.org/git/apt/apt.git</span>
+</code></pre></div>
 
 
 <h2>Đôi điều với apt-file</h2>
@@ -271,34 +271,34 @@ https://anonscm.debian.org/git/apt/apt.git
 <p>Sau khi cài gói <code>apt-file</code>, nó yêu cầu mình phải cập nhật để nó có thông tin mà tìm kiếm bằng <code>apt-file update</code> kiểu như <code>apt-get update</code></p>
 <h3>apt-file search</h3>
 <p>Đồng nghiệp đang ngồi xem <code>hack wifi với aircrack</code>. Nhìn thấy youtuber gõ <code>airmon-ng start balabốnla</code>, thấy vậy hắn gõ ngay  <code>apt-get install airmon-ng</code></p>
-<div class="highlight"><pre><span></span>dongnghiep#apt-get install airmon-ng
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-E: Unable to locate package airmon-ng
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">dongnghiep#apt-get install airmon-ng</span>
+<span class="err">Reading package lists... Done</span>
+<span class="err">Building dependency tree</span>
+<span class="err">Reading state information... Done</span>
+<span class="c">E: Unable to locate package airmon-ng</span>
+</code></pre></div>
 
 
 <p>Đây là lúc mà siêu nhân sysadmin ra tay, mình gõ ngay trên máy mình</p>
-<div class="highlight"><pre><span></span>└&gt;apt-file search bin/airmon-ng
-aircrack-ng: /usr/sbin/airmon-ng
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;apt-file search bin/airmon-ng</span>
+<span class="c">aircrack-ng: /usr/sbin/airmon-ng</span>
+</code></pre></div>
 
 
 <p>Rồi bảo hắn "tools này thuộc gói aircrack-ng", hắn liền gõ ngay <code>apt-get install aircrack-ng</code> không cần mình nói gì thêm</p>
 <h3>apt-file list</h3>
 <p>dpkg -L dùng để list toàn bộ tệp trong 1 gói ĐÃ CÀI, đó mà lý do chúng ta cần cái chức năng này để liệt kê các tệp có trong gói mà ta cài hay chưa nó không quan tâm</p>
-<div class="highlight"><pre><span></span>apt-file list aircrack-ng
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">apt-file list aircrack-ng</span>
+</code></pre></div>
 
 
 <h2>Đôi điều về kho phần mềm</h2>
 <p>Việc sử dụng <code>apt-*</code> phụ thuộc vào kho phần mềm online mà bạn đang cài đặt. Các kho phần mềm trong <code>/etc/apt/source*</code></p>
 <p>Ví dụ máy bạn nào chưa có kho phần mềm cuả docker thì apt-* không biêt gì về gói <code>docker-ce</code> chẳng hạn.</p>
 <p>Ngoài ra Ubuntu cung cấp thêm các kho PPA riêng cho nguời dùng, ngưòi sử dụng chỉ cần gõ <code>add-apt-repository</code>, kho ppa có ưu điểm cung cấp thêm nhiều kho phần mềm khác nhau cho người dùng. Nhưng cũng có nhược điểm là các kho ppa mang tính cá nhân cao, thường không có đảm bảo về mã nguồn. Nên phải tìm hiểu kho PPA tin cậy trước khi sử dụng</p>
-<div class="highlight"><pre><span></span>└&gt;apt-file search bin/add-apt-repository
-software-properties-common: /usr/bin/add-apt-repository
-</pre></div></div>
+<div class="highlight"><pre><span></span><code><span class="err">└&gt;apt-file search bin/add-apt-repository</span>
+<span class="c">software-properties-common: /usr/bin/add-apt-repository</span>
+</code></pre></div></div>
 
         <hr>
     </div>

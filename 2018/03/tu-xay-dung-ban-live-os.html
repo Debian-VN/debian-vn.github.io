@@ -52,22 +52,22 @@ Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần n�
 <p>Công cụ này là tập hợp các kịch bản giúp tạo ra một bản live từ cơ bản đến phức tạp bằng cách hỗ trợ rất tốt trong việc chinh tỉnh bản live theo ý bạn muốn. <em>Đó là lý do mình gọi là <strong>bản live-os cho riêng bạn</strong></em>. </p>
 <p>Các bản distro based Debian chắc vẫn sẽ kế thừa tools này (Ubuntu). Má thật, Debian làm tốt quá, không có cơ hội đóng góp (chém giooó)</p>
 <h3>Cài cắm công cụ</h3>
-<div class="highlight"><pre><span></span>sh# apt-get install live-build
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# apt-get install live-build</span>
+</code></pre></div>
 
 
 <p>Chúng ta có thể thấy <code>live-build</code> phụ thuộc vào <code>debootstrap</code>, công cụ chuẩn của Debian mà mình đã dùng trong bài viết <a href="/2016/08/cai-dat-debian-tung-buoc-mot-bang-lenh.html">Cài đặt Debian từng bước một bằng lệnh</a></p>
 <p>Như vậy bạn có thể hiểu ngay, <code>live-build</code> sử dụng <code>debootstrap</code> để tạo ra một hệ điều hành mới vào 1 thư mục nào đó, rồi thực hiện <code>chroot</code> vào trỏng để xử lý cài đặt và tinh chỉnh thêm, đại loại là thế.</p>
 <h2>I. Quá trình xây dựng cơ bản</h2>
 <p>Tạo 1 thư mục để làm việc ở đó.</p>
-<div class="highlight"><pre><span></span>    sh# mkdir ~/live-os &amp;&amp; cd ~/live-os
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# mkdir ~/live-os &amp;&amp; cd ~/live-os</span>
+</code></pre></div>
 
 
 <h3>1. Tạo cấu hình cơ bản</h3>
 <p><strong>Cách 1:</strong> Sinh cấu hình cơ bản mặc định (không khuyến khích)</p>
-<div class="highlight"><pre><span></span>    sh# lb config
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# lb config</span>
+</code></pre></div>
 
 
 <p>Sau khi chạy lệnh này, chúng ta sẽ thấy ít nhất 2 thư mục là <code>auto</code>,<code>config</code> được tạo ra. </p>
@@ -76,36 +76,36 @@ Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần n�
 <li><code>config</code> là toàn bộ cấu hình mặc định.</li>
 </ul>
 <p><strong>Cách 2:</strong> Clone cấu hình cơ bản các loại từ nhóm phát triển <code>live-team</code> (quá khuyến khích)</p>
-<div class="highlight"><pre><span></span>    sh# git clone git://anonscm.debian.org/debian-live/live-images.git --branch debian /tmp/live-images
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# git clone git://anonscm.debian.org/debian-live/live-images.git --branch debian /tmp/live-images</span>
+</code></pre></div>
 
 
 <ul>
 <li>Gòm có các loại cấu hình như sau </li>
 </ul>
-<div class="highlight"><pre><span></span>    sh# ls /tmp/live-images/images/ -1
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# ls /tmp/live-images/images/ -1</span>
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span>    cinnamon-desktop
-    gnome-desktop
-    kde-desktop
-    lxde-desktop
-    mate-desktop
-    standard
-    xfce-desktop
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    cinnamon-desktop</span>
+<span class="err">    gnome-desktop</span>
+<span class="err">    kde-desktop</span>
+<span class="err">    lxde-desktop</span>
+<span class="err">    mate-desktop</span>
+<span class="err">    standard</span>
+<span class="err">    xfce-desktop</span>
+</code></pre></div>
 
 
 <p>Ở đây mình sẽ lấy cái <code>standard</code> (chưa cài đặt GUI)</p>
-<div class="highlight"><pre><span></span>    sh# cp /tmp/live-images/images/standard/* ~/live-os/ -av
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# cp /tmp/live-images/images/standard/* ~/live-os/ -av</span>
+</code></pre></div>
 
 
 <h3>2. Tạo tệp iso</h3>
 <p>Sau đó chúng ta chỉ việc chạy</p>
-<div class="highlight"><pre><span></span>    sh# lb build
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# lb build</span>
+</code></pre></div>
 
 
 <p>Nó sẽ tự động thực hiện tất cả công đoạn và cuối cùng tạo ra các tệp tin dành cho live.</p>
@@ -113,8 +113,8 @@ Ví dụ, chúng ta đi đâu mà không mang PC/Laptop theo, mà lại cần n�
 <h3>3. Tạo boot vào USB</h3>
 <p>Giả sử <code>/dev/sdc</code> là đường dẫn của USB sau khi chúng ta cắm vô.
 Thực hiện sao chép dữ liệu từ iso sang USB.</p>
-<div class="highlight"><pre><span></span>    sh# dd if=&lt;file&gt;.iso of=/dev/sdc
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    sh# dd if=&lt;file&gt;.iso of=/dev/sdc</span>
+</code></pre></div>
 
 
 <h3>4. Boot hệ điều hành live</h3>
@@ -125,7 +125,7 @@ Thực hiện sao chép dữ liệu từ iso sang USB.</p>
 <p>Mọi người có thêm xem các tham số chi tiết bằng <code>man lb_config</code></p>
 <p>Ví dụ:
 Cấu hình với Debian phiên bản 9(stretch) trên cấu trúc <code>amd64</code> và mirror Vietnam cho tốc độ nhanh.</p>
-<div class="highlight"><pre><span></span><span class="nv">_ARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">_ARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
 <span class="nv">_MIRROR</span><span class="o">=</span><span class="s2">&quot;http://debian.xtdv.net/debian&quot;</span>
 <span class="nv">_DIST</span><span class="o">=</span><span class="s2">&quot;stretch&quot;</span>
 
@@ -140,20 +140,20 @@ lb config noauto <span class="se">\</span>
     --mirror-chroot <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_MIRROR</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
     --mirror-bootstrap <span class="s2">&quot;</span><span class="si">${</span><span class="nv">_MIRROR</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
     <span class="s2">&quot;</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>2. Cài đặt packages cần thiết và tuỳ chọn cho bạn</h3>
 <p>Bằng cách thêm danh sách gói mới vào tệp tin mới (đuôi <code>.list.chroot</code>) trong thư mục <code>config/package-lists/</code></p>
 <p>Ví dụ:</p>
-<div class="highlight"><pre><span></span>sh# head -n3 config/package-lists/txgvnn.list.chroot
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# head -n3 config/package-lists/txgvnn.list.chroot</span>
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span>cryptsetup
-i3
-xinit
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">cryptsetup</span>
+<span class="err">i3</span>
+<span class="err">xinit</span>
+</code></pre></div>
 
 
 <h3>3. Cài đặt các cấu hình chi tiết cho môi trường, phần mềm</h3>
@@ -161,9 +161,9 @@ xinit
 <h4>- Đối với cấu hình tĩnh - Thường áp dụng cho cầu hình hệ thống</h4>
 <p>Chúng ta chỉ cần copy thằng vào <code>config/includes.chroot/</code> và xem đây là thư mục gốc (<code>/</code>) của bản live.</p>
 <p>Ví dụ: Mình muốn tắt cái tiếng beep như <em>beep</em> trong terminal.</p>
-<div class="highlight"><pre><span></span>sh# mkdir config/includes.chroot/etc/modprobe.d/ -p
-sh# echo &quot;blacklist pcspkr&quot; &gt; config/includes.chroot/etc/modprobe.d/nobeep.conf
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# mkdir config/includes.chroot/etc/modprobe.d/ -p</span>
+<span class="err">sh# echo &quot;blacklist pcspkr&quot; &gt; config/includes.chroot/etc/modprobe.d/nobeep.conf</span>
+</code></pre></div>
 
 
 <h4>- Đối với cấu hình động - Thường áp dụng cho cầu hình người dùng</h4>
@@ -183,10 +183,10 @@ Bạn có thể xem các kịch bản sẽ được thực hiện ở <code>conf
 <p>Vấn đề này nảy sinh khi mình tham lam muốn có thể boot 3 bản live khác nhau trong 1 cái USB (16 GB) gồm: Debian, Tails OS và Kali.</p>
 <h3>1. Mình sử dụng chương trình <code>Tails Installer</code> (viết bằng <code>Python</code>) do <code>Tails</code> cung cấp.</h3>
 <p>Chương trình này sẽ chia USB thành 2 phân vùng như sau</p>
-<div class="highlight"><pre><span></span>    /dev/sdc         16   GB     # Tổng
-    |-/dev/sdc1      2.5  GB     # Tất cả OS và bootloader
-    |-/dev/sdc2      13.5 GB     # Phân vùng dữ liệu riêng, sẽ mã hoá bằng LUKS
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    /dev/sdc         16   GB     # Tổng</span>
+<span class="err">    |-/dev/sdc1      2.5  GB     # Tất cả OS và bootloader</span>
+<span class="err">    |-/dev/sdc2      13.5 GB     # Phân vùng dữ liệu riêng, sẽ mã hoá bằng LUKS</span>
+</code></pre></div>
 
 
 <p>Tức nó sẽ chia 1 phân vùng mặc định <code>2.5 GB</code> cho cả bản Live. Bạn có thể sửa giá trị này trong <code>/usr/lib/python2.7/dist-packages/tails_installer/config.py</code>. Mình sửa thành <code>3300 MB</code> để có thể chứa được 3 OS.</p>
@@ -195,37 +195,37 @@ Bây giờ mình có thể boot live hệ điều hành này rồi.</p>
 <h3>2. Thêm Debian live vào cùng</h3>
 <p>Mình thực hiện <code>lb build</code> để build bản live của mình. Sau khi kết thúc, trong thư mục <code>binary/live</code> có 3 tệp tin quan trọng là <code>vmlinuz</code>, <code>initrd.img</code> và <code>filesystem.debian.squashfs</code></p>
 <p>Copy 3 tệp tin này vào <code>/dev/sdc1</code> như sau:</p>
-<div class="highlight"><pre><span></span>sh# mount /dev/sdc1 /mnt
-sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian
-sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img
-sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# mount /dev/sdc1 /mnt</span>
+<span class="err">sh# cp binary/live/vmlinuz /mnt/live/vmlinuz.debian</span>
+<span class="err">sh# cp binary/live/initrd.img /mnt/live/initrd.debian.img</span>
+<span class="err">sh# cp binary/live/filesystem.squashfs /mnt/live/filesystem.debian.squashfs</span>
+</code></pre></div>
 
 
 <p>Tạo thông tin cho Debian live</p>
-<div class="highlight"><pre><span></span>sh# echo &quot;filesystem.debian.squashfs&quot; &gt; /mnt/live/Debian.module
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# echo &quot;filesystem.debian.squashfs&quot; &gt; /mnt/live/Debian.module</span>
+</code></pre></div>
 
 
 <p>Thêm thông tin boot cho Debian live</p>
 <p>Thêm vào 4 tệp tin (mình thấy chỉ cần 2 cái <code>live64.cfg</code> là đủ)</p>
-<div class="highlight"><pre><span></span>    - /mnt/EFI/BOOT/live{,64}.cfg      # 2 cho EFI boot (32 và 64)
-    - /mnt/syslinux/live{,64}.cfg      # 2 cho Legacy boot (32 và 64)
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    - /mnt/EFI/BOOT/live{,64}.cfg      # 2 cho EFI boot (32 và 64)</span>
+<span class="err">    - /mnt/syslinux/live{,64}.cfg      # 2 cho Legacy boot (32 và 64)</span>
+</code></pre></div>
 
 
 <p>như sau:</p>
-<div class="highlight"><pre><span></span>label livedebian
-        menu label Debian
-        kernel /live/vmlinuz.debian
-        append initrd=/live/initrd.debian.img boot=live module=Debian timezone=Asia/Ho_Chi_Minh components splash quiet
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">label livedebian</span>
+<span class="err">        menu label Debian</span>
+<span class="err">        kernel /live/vmlinuz.debian</span>
+<span class="err">        append initrd=/live/initrd.debian.img boot=live module=Debian timezone=Asia/Ho_Chi_Minh components splash quiet</span>
+</code></pre></div>
 
 
 <p>Đối với <code>Kali live</code> thì tương tự.</p>
 <p>Sau đó </p>
-<div class="highlight"><pre><span></span>sh# umount /mnt
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">sh# umount /mnt</span>
+</code></pre></div>
 
 
 <p>Và boot hưởng thành quả</p>

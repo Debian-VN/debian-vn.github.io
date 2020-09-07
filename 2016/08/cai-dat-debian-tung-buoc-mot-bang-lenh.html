@@ -63,9 +63,9 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 <p>Nếu cài vào phân vùng khác thì tương tự.</p>
 <h2>I. Tạo hệ thống file vào phân vùng OS</h2>
 <h4>Chọn chế độ livecd và login vào tài khoản</h4>
-<div class="highlight"><pre><span></span>  login: user
-  pass: livecd
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  login: user</span>
+<span class="err">  pass: livecd</span>
+</code></pre></div>
 
 
 <p><em>P/S: Đối với bản livecd mình đưa link trên</em></p>
@@ -74,30 +74,30 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 <li>/dev/sda1 7GB phân vùng cho OS</li>
 <li>/dev/sda2 1GB cho swap</li>
 </ul>
-<div class="highlight"><pre><span></span>  $sudo cfdisk /dev/sda
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo cfdisk /dev/sda</span>
+</code></pre></div>
 
 
 <p><img alt="cfdisk" src="https://debian-vn.github.io/images/cfdisk.png"></p>
 <p>Format phân vùng cài OS</p>
-<div class="highlight"><pre><span></span>  $sudo mkfs.ext4 /dev/sda1
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo mkfs.ext4 /dev/sda1</span>
+</code></pre></div>
 
 
 <p>Format swap</p>
-<div class="highlight"><pre><span></span>  $sudo mkswap /dev/sda2
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo mkswap /dev/sda2</span>
+</code></pre></div>
 
 
 <h4>2. Mount /dev/sda1 vào /mnt</h4>
 <p>Mục đích là cài đặt hệ thống file vào thư mục này</p>
-<div class="highlight"><pre><span></span>  $sudo mount /dev/sda1 /mnt
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo mount /dev/sda1 /mnt</span>
+</code></pre></div>
 
 
 <h4>3. Cài đặt <code>debootstrap</code></h4>
-<div class="highlight"><pre><span></span>  $sudo apt-get install debootstrap -y
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo apt-get install debootstrap -y</span>
+</code></pre></div>
 
 
 <p><strong>Debootstrap</strong> là script có chức năng tạo ra hệ thống file Debian.</p>
@@ -106,8 +106,8 @@ mang đến góc nhìn mới về cài đặt một bản distro, và hiểu hơ
 <p>Nó là 1 công cụ rất tuyệt vời.</p>
 <p>Mỗi distro thường sẽ có 1 tool có chức năng như thế này: VD: Arch linux là <code>pacstrap</code></p>
 <h4>4. Cài đặt hệ thống file cho Debian</h4>
-<div class="highlight"><pre><span></span>  $sudo debootstrap stable /mnt http://debian.xtdv.net/debian
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo debootstrap stable /mnt http://debian.xtdv.net/debian</span>
+</code></pre></div>
 
 
 <p>Lệnh này sẽ:</p>
@@ -131,35 +131,35 @@ Vậy chúng ta cần:</p>
 </ul>
 <p>Để cài đặt 3 phần trên, chúng ta cần phải mount bind các thư mục hệ thống local vào <code>/mnt</code> và <code>chroot</code> để tiến hành cài đặt</p>
 <h4>1. Mount các thư mục của hệ thống local vào /mnt</h4>
-<div class="highlight"><pre><span></span>  $sudo mount -o bind /proc /mnt/proc
-  $sudo mount -o bind /sys /mnt/sys
-  $sudo mount -o bind /dev /mnt/dev
-  $sudo chroot /mnt
-  #
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo mount -o bind /proc /mnt/proc</span>
+<span class="err">  $sudo mount -o bind /sys /mnt/sys</span>
+<span class="err">  $sudo mount -o bind /dev /mnt/dev</span>
+<span class="err">  $sudo chroot /mnt</span>
+<span class="err">  #</span>
+</code></pre></div>
 
 
 <p><img alt="mount" src="https://debian-vn.github.io/images/mount.png"></p>
 <h4>2. Cài đặt các gói</h4>
 <h5><em>Cài đặt kernel và initrd</em></h5>
 <p>Tìm gói chứa kernel và initrd</p>
-<div class="highlight"><pre><span></span>  #apt-cache search linux-image
-  linux-headers-3.16.0-4-amd64 - Header files for Linux 3.16.0-4-amd64
-  linux-image-3.16.0-4-amd64 - Linux 3.16 for 64-bit PCs
-  linux-image-3.16.0-4-amd64-dbg - Debugging symbols for Linux 3.16.0-4-amd64
-  linux-image-amd64 - Linux for 64-bit PCs (meta-package)
-  linux-image-amd64-dbg - Debugging symbols for Linux amd64 configuration (meta-package)
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  #apt-cache search linux-image</span>
+<span class="err">  linux-headers-3.16.0-4-amd64 - Header files for Linux 3.16.0-4-amd64</span>
+<span class="err">  linux-image-3.16.0-4-amd64 - Linux 3.16 for 64-bit PCs</span>
+<span class="err">  linux-image-3.16.0-4-amd64-dbg - Debugging symbols for Linux 3.16.0-4-amd64</span>
+<span class="err">  linux-image-amd64 - Linux for 64-bit PCs (meta-package)</span>
+<span class="err">  linux-image-amd64-dbg - Debugging symbols for Linux amd64 configuration (meta-package)</span>
+</code></pre></div>
 
 
 <p>Kernel phiên bản 3.16. Tiến hành cài đặt</p>
-<div class="highlight"><pre><span></span>  #apt-get install linux-image-3.16.0-4-amd64 -y
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  #apt-get install linux-image-3.16.0-4-amd64 -y</span>
+</code></pre></div>
 
 
 <h5><em>Cài đặt GRUB</em></h5>
-<div class="highlight"><pre><span></span>  #apt-get install grub2 -y
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  #apt-get install grub2 -y</span>
+</code></pre></div>
 
 
 <p><img alt="grub" src="https://debian-vn.github.io/images/grub.png"></p>
@@ -170,30 +170,30 @@ Vậy chúng ta cần:</p>
 <p>Ừ, thì nó boot ngon lành, nhưng cầu hình file này để mount chính xác hệ thống của mình, không là Grub sẽ mount / chỉ readonly</p>
 <p>Và nếu bạn có thư mục /home, /usr ở phân vùng hay thư mục riêng thì cần phải viết file này để hệ thống nó mount lúc boot.</p>
 <h5><em>Lây UUID của phân vùng chứa OS (ở đây là /dev/sda1)</em></h5>
-<div class="highlight"><pre><span></span>#ls -la /dev/disk/by-uuid/
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#ls -la /dev/disk/by-uuid/</span>
+</code></pre></div>
 
 
 <p><img alt="ls-dev-disk-by-uuid" src="https://debian-vn.github.io/images/ls-dev-disk-by-uuid.png">
 Chúng ta thấy được UUID của /dev/sda1 là <code>2c0f6023-c802-4640-a8ce-214d079b22c9</code></p>
 <h5><em>Cấu hình vào /etc/fstab</em></h5>
-<div class="highlight"><pre><span></span>#cat &gt; /etc/fstab &lt;&lt; EOF
-UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0
-EOF
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#cat &gt; /etc/fstab &lt;&lt; EOF</span>
+<span class="err">UUID=2c0f6023-c802-4640-a8ce-214d079b22c9   /   ext4    defaults    0   0</span>
+<span class="err">EOF</span>
+</code></pre></div>
 
 
 <h4>2. Cài sudo, và tạo user mới (ví dụ user test)</h4>
-<div class="highlight"><pre><span></span>#apt-get install sudo -y
-useradd -s /bin/bash -m test
-passwd test
-adduser test sudo
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#apt-get install sudo -y</span>
+<span class="err">useradd -s /bin/bash -m test</span>
+<span class="err">passwd test</span>
+<span class="err">adduser test sudo</span>
+</code></pre></div>
 
 
 <h4>3. Đặt password cho root (tùy chọn)</h4>
-<div class="highlight"><pre><span></span>  #passwd
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  #passwd</span>
+</code></pre></div>
 
 
 <h4>4. Cài các gói bạn cần.</h4>
@@ -205,15 +205,15 @@ adduser test sudo
 <p>Như vậy là đã xong toàn bộ quá trình cài đặt 1 OS Debian mới tinh vào /dev/sda1.</p>
 <p>Cần umount <code>/mnt/{sys,proc,dev,}</code> và reboot lại máy để dùng nữa thôi.</p>
 <h4>1. Thoát Chroot</h4>
-<div class="highlight"><pre><span></span>  #exit
-  $
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  #exit</span>
+<span class="err">  $</span>
+</code></pre></div>
 
 
 <h4>2. Umount và reboot</h4>
-<div class="highlight"><pre><span></span>  $sudo umount /mnt/proc /mnt/sys /mnt/dev /mnt
-  $sudo reboot
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">  $sudo umount /mnt/proc /mnt/sys /mnt/dev /mnt</span>
+<span class="err">  $sudo reboot</span>
+</code></pre></div>
 
 
 <p><img alt="umount" src="https://debian-vn.github.io/images/umount.png"></p>
